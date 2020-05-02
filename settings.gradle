@@ -1,0 +1,2 @@
+rootProject.name='Imagine-Movies'
+include ':app'

@@ -1,7 +1,8 @@
-package com.serj113.imaginemovies
+package com.serj113.imaginemovies.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.serj113.imaginemovies.R
 
 class MainActivity : AppCompatActivity() {
 

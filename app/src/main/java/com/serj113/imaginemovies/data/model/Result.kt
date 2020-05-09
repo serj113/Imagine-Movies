@@ -1,6 +1,7 @@
 package com.serj113.imaginemovies.data.model
 
 
+import com.serj113.imaginemovies.domain.entity.Movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -34,4 +35,21 @@ data class Result(
     var voteAverage: Double = 0.0,
     @Json(name = "vote_count")
     var voteCount: Int = 0
+)
+
+fun Result.toMovieEntity() = Movie(
+    adult,
+    backdropPath,
+    genreIds,
+    id,
+    originalLanguage,
+    originalTitle,
+    overview,
+    popularity,
+    posterPath,
+    releaseDate,
+    title,
+    video,
+    voteAverage,
+    voteCount
 )

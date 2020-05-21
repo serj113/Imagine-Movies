@@ -53,3 +53,5 @@ fun Result.toMovieEntity() = Movie(
     voteAverage,
     voteCount
 )
+
+fun List<Result>.toMovieEntities(): List<Movie> = this.map { it.toMovieEntity() }

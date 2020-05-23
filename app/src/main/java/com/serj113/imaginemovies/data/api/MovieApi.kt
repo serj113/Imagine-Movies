@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MovieApi {
-    @GET("/discover/movie")
+    @GET("discover/movie")
     fun getDiscoverMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY,
@@ -16,7 +16,7 @@ interface MovieApi {
         page: Long
     ): Single<Response>
 
-    @GET("/movie/popular")
+    @GET("movie/popular")
     fun getPopularMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY,
@@ -25,7 +25,7 @@ interface MovieApi {
         page: Long
     ): Single<Response>
 
-    @GET("/movie/latest")
+    @GET("movie/latest")
     fun getLatestMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY

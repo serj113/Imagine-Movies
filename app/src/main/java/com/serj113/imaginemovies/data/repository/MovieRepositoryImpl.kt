@@ -17,7 +17,9 @@ class MovieRepositoryImpl @Inject constructor(
     private val factory: MovieFactory
 ) : MovieRepository {
 
-    private val pagedListMovie = MediatorLiveData<PagedEntity<Movie>>()
+    private val pagedListMovie = MediatorLiveData<PagedEntity<Movie>>().apply {
+        postValue(PagedEntity(null, NetworkState.LOADING))
+    }
 
     private val config = PagedList.Config.Builder().apply {
         setEnablePlaceholders(false)
@@ -30,14 +32,16 @@ class MovieRepositoryImpl @Inject constructor(
             config
         ).build()
 
-        factory.getDataSourceState?.let {
-            pagedListMovie.addSource(it.invoke()) { networkState ->
-                val listMovie = pagedListMovie.value?.value ?: listOf()
-                pagedListMovie.postValue(PagedEntity(listMovie, networkState))
-            }
+        pagedListMovie.removeSource(factory.dataSourceState)
+        pagedListMovie.removeSource(listMovie)
+        pagedListMovie.value = null
+
+        pagedListMovie.addSource(factory.dataSourceState) { networkState ->
+            pagedListMovie.postValue(PagedEntity(listMovie.value, networkState))
         }
+
         pagedListMovie.addSource(listMovie) {
-            val networkState = pagedListMovie.value?.state ?: NetworkState.LOADING
+            val networkState = factory.dataSourceState.value ?: NetworkState.LOADING
             pagedListMovie.postValue(PagedEntity(it, networkState))
         }
 

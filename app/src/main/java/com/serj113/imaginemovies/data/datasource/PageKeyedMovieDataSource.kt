@@ -15,7 +15,7 @@ class PageKeyedMovieDataSource constructor(
     private val service: MovieApi
 ) : PageKeyedDataSource<Long, Movie>() {
 
-    private val state = MutableLiveData<NetworkState>()
+    private val state = MutableLiveData<NetworkState>(NetworkState.LOADING)
     private val disposables: CompositeDisposable = CompositeDisposable()
     private var totalPages: Long = 1L
 

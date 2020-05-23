@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/movieListFragment">
+
+    <fragment
+        android:id="@+id/movieListFragment"
+        android:name="com.serj113.imaginemovies.ui.list.MovieListFragment"
+        android:label="movie_list_fragment"
+        tools:layout="@layout/movie_list_fragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.serj113.imaginemovies.ui.detail.DetailFragment"
+        android:label="detail_fragment"
+        tools:layout="@layout/detail_fragment" />
+</navigation>

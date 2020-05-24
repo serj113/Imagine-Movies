@@ -11,8 +11,8 @@ import com.serj113.imaginemovies.databinding.MovieListItemBinding
 import com.serj113.imaginemovies.domain.entity.Movie
 
 class MovieListAdapter(
-    itemCallback: ItemCallback<Movie> = MovieItemCallback
-) : PagedListAdapter<Movie, MovieListAdapter.MovieItemViewHolder>(itemCallback) {
+    private val onItemClick: (Movie) -> Unit
+) : PagedListAdapter<Movie, MovieListAdapter.MovieItemViewHolder>(MovieItemCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
         return MovieItemViewHolder(
             MovieListItemBinding.inflate(
@@ -24,8 +24,9 @@ class MovieListAdapter(
     }
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
-        getItem(position)?.let {
-            holder.bind(it)
+        getItem(position)?.let { movie ->
+            holder.bind(movie)
+            holder.itemView.setOnClickListener { onItemClick.invoke(movie) }
         }
     }
 

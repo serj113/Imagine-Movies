@@ -2,10 +2,8 @@ package com.serj113.imaginemovies.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.serj113.imaginemovies.data.api.MovieApi
 import com.serj113.imaginemovies.data.factory.MovieFactory
 import com.serj113.imaginemovies.domain.base.NetworkState
 import com.serj113.imaginemovies.domain.base.PagedEntity

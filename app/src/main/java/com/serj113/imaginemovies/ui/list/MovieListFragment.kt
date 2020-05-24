@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 
-import com.serj113.imaginemovies.R
 import com.serj113.imaginemovies.databinding.MovieListFragmentBinding
 import com.serj113.imaginemovies.domain.base.NetworkState
+import com.serj113.imaginemovies.domain.entity.Movie
 import com.serj113.imaginemovies.util.ViewModelFactory
+import com.serj113.imaginemovies.util.navigateTo
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -35,7 +35,7 @@ class MovieListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = MovieListFragmentBinding.inflate(inflater, container, false)
-        adapter = MovieListAdapter()
+        adapter = MovieListAdapter(this::onClick)
 
         binding.recyclerView.adapter = adapter
 
@@ -51,6 +51,14 @@ class MovieListFragment : Fragment() {
                 adapter.submitList(it.value)
             }
         })
+    }
+
+    private fun navigateToMovieDetail(movie: Movie) {
+        navigateTo(MovieListFragmentDirections.actionMovieListFragmentToDetailFragment())
+    }
+
+    private fun onClick(movie: Movie) {
+        navigateToMovieDetail(movie)
     }
 
 }

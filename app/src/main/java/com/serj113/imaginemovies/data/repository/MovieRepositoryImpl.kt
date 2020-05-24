@@ -23,14 +23,15 @@ class MovieRepositoryImpl @Inject constructor(
     }.build()
 
     override fun fetchMovies(): LiveData<PagedEntity<Movie>> {
-        val pagedListMovie = MediatorLiveData<PagedEntity<Movie>>().apply {
-            postValue(PagedEntity(null, NetworkState.LOADING))
-        }
-
+        factory.finalize()
         val listMovie = LivePagedListBuilder<Long, Movie>(
             factory,
             config
         ).build()
+
+        val pagedListMovie = MediatorLiveData<PagedEntity<Movie>>().apply {
+            postValue(PagedEntity(null, NetworkState.LOADING))
+        }
 
         pagedListMovie.removeSource(factory.dataSourceState)
         pagedListMovie.removeSource(listMovie)

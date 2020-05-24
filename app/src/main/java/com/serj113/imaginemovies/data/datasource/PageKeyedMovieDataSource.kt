@@ -1,23 +1,16 @@
 package com.serj113.imaginemovies.data.datasource
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.paging.PageKeyedDataSource
 import com.serj113.imaginemovies.data.api.MovieApi
+import com.serj113.imaginemovies.data.base.BaseDataSource
 import com.serj113.imaginemovies.data.model.toMovieEntities
 import com.serj113.imaginemovies.domain.base.NetworkState
 import com.serj113.imaginemovies.domain.entity.Movie
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class PageKeyedMovieDataSource constructor(
     private val service: MovieApi
-) : PageKeyedDataSource<Long, Movie>() {
-
-    private val state = MutableLiveData<NetworkState>(NetworkState.LOADING)
-    private val disposables: CompositeDisposable = CompositeDisposable()
-    private var totalPages: Long = 1L
+) : BaseDataSource<Long, Movie>() {
 
     override fun loadInitial(
         params: LoadInitialParams<Long>,
@@ -63,6 +56,4 @@ class PageKeyedMovieDataSource constructor(
     }
 
     override fun loadBefore(params: LoadParams<Long>, callback: LoadCallback<Long, Movie>) = Unit
-
-    fun getState(): LiveData<NetworkState> = state
 }

@@ -13,4 +13,8 @@ class MovieListViewModel @Inject constructor(
     val pagedEntityMovie = useCase.observe().apply {
         useCase.invoke()
     }
+
+    override fun onCleared() {
+        super.onCleared()
+    }
 }

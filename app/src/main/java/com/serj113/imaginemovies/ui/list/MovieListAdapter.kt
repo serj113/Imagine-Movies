@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.serj113.imaginemovies.BuildConfig
 import com.serj113.imaginemovies.databinding.MovieListItemBinding
 import com.serj113.imaginemovies.domain.entity.Movie
 
@@ -32,6 +34,11 @@ class MovieListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.tvTitle.text = movie.title
+            binding.tvRate.text = movie.voteAverage.toString()
+            Glide
+                .with(binding.root)
+                .load("${BuildConfig.IMAGE_URL}/${movie.posterPath}")
+                .into(binding.ivPoster)
         }
     }
 }

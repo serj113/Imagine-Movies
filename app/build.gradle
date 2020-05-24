@@ -76,6 +76,12 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    // need to enable multidex
+    // implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
     // Rx
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"

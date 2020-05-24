@@ -19,6 +19,15 @@ class ApiModule {
         return OkHttpClient.Builder().build()
     }
 
+//    need to enable multidex
+//    @Provides
+//    @Singleton
+//    internal fun provideMoshi(): Moshi {
+//        return Moshi.Builder()
+//            .add(KotlinJsonAdapterFactory())
+//            .build()
+//    }
+
     @Provides
     @Singleton
     internal fun provideRetrofitInterface(): Retrofit {

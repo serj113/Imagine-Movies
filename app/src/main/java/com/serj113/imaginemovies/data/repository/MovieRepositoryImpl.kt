@@ -17,16 +17,16 @@ class MovieRepositoryImpl @Inject constructor(
     private val factory: MovieFactory
 ) : MovieRepository {
 
-    private val pagedListMovie = MediatorLiveData<PagedEntity<Movie>>().apply {
-        postValue(PagedEntity(null, NetworkState.LOADING))
-    }
-
     private val config = PagedList.Config.Builder().apply {
         setEnablePlaceholders(false)
         setPageSize(20)
     }.build()
 
     override fun fetchMovies(): LiveData<PagedEntity<Movie>> {
+        val pagedListMovie = MediatorLiveData<PagedEntity<Movie>>().apply {
+            postValue(PagedEntity(null, NetworkState.LOADING))
+        }
+
         val listMovie = LivePagedListBuilder<Long, Movie>(
             factory,
             config

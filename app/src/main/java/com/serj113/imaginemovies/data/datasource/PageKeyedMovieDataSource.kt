@@ -1,10 +1,10 @@
 package com.serj113.imaginemovies.data.datasource
 
+import com.serj113.domain.base.NetworkState
+import com.serj113.domain.entity.Movie
 import com.serj113.imaginemovies.data.api.MovieApi
 import com.serj113.imaginemovies.data.base.BaseDataSource
 import com.serj113.imaginemovies.data.model.toMovieEntities
-import com.serj113.imaginemovies.domain.base.NetworkState
-import com.serj113.imaginemovies.domain.entity.Movie
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

@@ -1,7 +1,7 @@
-package com.serj113.imaginemovies.domain.usecase
+package com.serj113.imaginemovies.domain
 
-import com.serj113.imaginemovies.domain.interactor.FetchMovieUseCase
-import com.serj113.imaginemovies.domain.repository.MovieRepository
+import com.serj113.domain.interactor.FetchMovieUseCase
+import com.serj113.domain.repository.MovieRepository
 import javax.inject.Inject
 
 class FetchMovieUseCaseImpl @Inject constructor(

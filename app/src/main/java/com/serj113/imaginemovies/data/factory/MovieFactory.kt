@@ -1,10 +1,10 @@
 package com.serj113.imaginemovies.data.factory
 
 import androidx.paging.DataSource
+import com.serj113.domain.entity.Movie
 import com.serj113.imaginemovies.data.api.MovieApi
 import com.serj113.imaginemovies.data.base.BaseDataSourceFactory
 import com.serj113.imaginemovies.data.datasource.PageKeyedMovieDataSource
-import com.serj113.imaginemovies.domain.entity.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

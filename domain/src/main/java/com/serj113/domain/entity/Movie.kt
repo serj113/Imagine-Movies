@@ -1,4 +1,4 @@
-package com.serj113.imaginemovies.domain.entity
+package com.serj113.domain.entity
 
 data class Movie(
     var adult: Boolean = false,

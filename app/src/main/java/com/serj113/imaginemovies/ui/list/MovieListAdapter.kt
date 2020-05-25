@@ -3,12 +3,11 @@ package com.serj113.imaginemovies.ui.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.serj113.domain.entity.Movie
 import com.serj113.imaginemovies.BuildConfig
 import com.serj113.imaginemovies.databinding.MovieListItemBinding
-import com.serj113.imaginemovies.domain.entity.Movie
 
 class MovieListAdapter(
     private val onItemClick: (Movie) -> Unit

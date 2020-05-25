@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.serj113.domain.base.NetworkState
+import com.serj113.domain.entity.Movie
 
 import com.serj113.imaginemovies.databinding.MovieListFragmentBinding
-import com.serj113.imaginemovies.domain.base.NetworkState
-import com.serj113.imaginemovies.domain.entity.Movie
 import com.serj113.imaginemovies.util.ViewModelFactory
 import com.serj113.imaginemovies.util.navigateTo
 import dagger.android.support.AndroidSupportInjection

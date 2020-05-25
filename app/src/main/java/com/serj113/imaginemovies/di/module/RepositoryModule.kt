@@ -1,7 +1,7 @@
 package com.serj113.imaginemovies.di.module
 
+import com.serj113.domain.repository.MovieRepository
 import com.serj113.imaginemovies.data.repository.MovieRepositoryImpl
-import com.serj113.imaginemovies.domain.repository.MovieRepository
 import dagger.Binds
 import dagger.Module
 

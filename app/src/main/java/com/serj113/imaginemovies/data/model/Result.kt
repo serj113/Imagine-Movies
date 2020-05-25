@@ -1,6 +1,6 @@
 package com.serj113.imaginemovies.data.model
 
-import com.serj113.imaginemovies.domain.entity.Movie
+import com.serj113.domain.entity.Movie
 import com.squareup.moshi.Json
 
 data class Result(

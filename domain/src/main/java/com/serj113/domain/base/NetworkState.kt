@@ -1,4 +1,4 @@
-package com.serj113.imaginemovies.domain.base
+package com.serj113.domain.base
 
 sealed class NetworkState {
     object LOADING : NetworkState()

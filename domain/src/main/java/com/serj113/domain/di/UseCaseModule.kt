@@ -1,7 +1,7 @@
-package com.serj113.imaginemovies.di.module
+package com.serj113.domain.di
 
 import com.serj113.domain.interactor.FetchMovieUseCase
-import com.serj113.imaginemovies.domain.FetchMovieUseCaseImpl
+import com.serj113.domain.usecase.FetchMovieUseCaseImpl
 import dagger.Binds
 import dagger.Module
 

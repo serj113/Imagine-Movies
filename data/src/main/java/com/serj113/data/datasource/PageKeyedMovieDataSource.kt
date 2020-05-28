@@ -1,10 +1,11 @@
-package com.serj113.imaginemovies.data.datasource
+package com.serj113.data.datasource
 
+import androidx.paging.PageKeyedDataSource
+import com.serj113.data.api.MovieApi
+import com.serj113.data.base.BaseDataSource
+import com.serj113.data.model.toMovieEntities
 import com.serj113.domain.base.NetworkState
 import com.serj113.domain.entity.Movie
-import com.serj113.imaginemovies.data.api.MovieApi
-import com.serj113.imaginemovies.data.base.BaseDataSource
-import com.serj113.imaginemovies.data.model.toMovieEntities
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -13,8 +14,8 @@ class PageKeyedMovieDataSource constructor(
 ) : BaseDataSource<Long, Movie>() {
 
     override fun loadInitial(
-        params: LoadInitialParams<Long>,
-        callback: LoadInitialCallback<Long, Movie>
+        params: PageKeyedDataSource.LoadInitialParams<Long>,
+        callback: PageKeyedDataSource.LoadInitialCallback<Long, Movie>
     ) {
         disposables.add(
             service.getDiscoverMovie(page = 1)
@@ -35,7 +36,7 @@ class PageKeyedMovieDataSource constructor(
         )
     }
 
-    override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Long, Movie>) {
+    override fun loadAfter(params: PageKeyedDataSource.LoadParams<Long>, callback: PageKeyedDataSource.LoadCallback<Long, Movie>) {
         if (params.key > totalPages) return
         disposables.add(
             service.getDiscoverMovie(page = params.key)
@@ -55,5 +56,5 @@ class PageKeyedMovieDataSource constructor(
         )
     }
 
-    override fun loadBefore(params: LoadParams<Long>, callback: LoadCallback<Long, Movie>) = Unit
+    override fun loadBefore(params: PageKeyedDataSource.LoadParams<Long>, callback: PageKeyedDataSource.LoadCallback<Long, Movie>) = Unit
 }

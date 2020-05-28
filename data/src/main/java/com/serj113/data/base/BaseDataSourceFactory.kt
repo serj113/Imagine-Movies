@@ -1,4 +1,4 @@
-package com.serj113.imaginemovies.data.base
+package com.serj113.data.base
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.paging.DataSource

@@ -1,4 +1,4 @@
-package com.serj113.imaginemovies.data.model
+package com.serj113.data.model
 
 import com.squareup.moshi.Json
 

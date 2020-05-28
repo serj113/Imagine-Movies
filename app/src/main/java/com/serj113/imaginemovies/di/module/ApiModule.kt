@@ -1,7 +1,7 @@
 package com.serj113.imaginemovies.di.module
 
-import com.serj113.imaginemovies.BuildConfig
-import com.serj113.imaginemovies.data.api.MovieApi
+import com.serj113.data.BuildConfig
+import com.serj113.data.api.MovieApi
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers

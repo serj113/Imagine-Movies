@@ -1,14 +1,14 @@
-package com.serj113.imaginemovies.data.repository
+package com.serj113.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.serj113.data.factory.MovieFactory
 import com.serj113.domain.base.NetworkState
 import com.serj113.domain.base.PagedEntity
 import com.serj113.domain.entity.Movie
 import com.serj113.domain.repository.MovieRepository
-import com.serj113.imaginemovies.data.factory.MovieFactory
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(

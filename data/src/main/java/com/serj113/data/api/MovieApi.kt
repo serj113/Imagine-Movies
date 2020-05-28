@@ -1,7 +1,7 @@
-package com.serj113.imaginemovies.data.api
+package com.serj113.data.api
 
-import com.serj113.imaginemovies.BuildConfig
-import com.serj113.imaginemovies.data.model.Response
+import com.serj113.data.BuildConfig
+import com.serj113.data.model.Response
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,11 +1,11 @@
 package com.serj113.imaginemovies.di
 
 import android.app.Application
+import com.serj113.data.di.ApiModule
+import com.serj113.data.di.RepositoryModule
 import com.serj113.domain.di.UseCaseModule
 import com.serj113.imaginemovies.App
-import com.serj113.imaginemovies.di.module.ApiModule
 import com.serj113.imaginemovies.di.module.FragmentModule
-import com.serj113.imaginemovies.di.module.RepositoryModule
 import com.serj113.imaginemovies.di.module.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component

@@ -5,8 +5,8 @@ import com.serj113.data.di.ApiModule
 import com.serj113.data.di.RepositoryModule
 import com.serj113.domain.di.UseCaseModule
 import com.serj113.imaginemovies.App
-import com.serj113.imaginemovies.di.module.FragmentModule
-import com.serj113.imaginemovies.di.module.ViewModelModule
+import com.serj113.presentation.di.FragmentModule
+import com.serj113.presentation.di.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

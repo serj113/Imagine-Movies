@@ -18,7 +18,6 @@ android {
 
         buildConfigField 'String', 'API_KEY', '"0db16e52aeb64bb11168a6b456e8d140"'
         buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/"'
-        buildConfigField 'String', 'IMAGE_URL', '"https://image.tmdb.org/t/p/original"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -47,6 +46,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':data')
     implementation project(path: ':domain')
+    implementation project(path: ':presentation')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

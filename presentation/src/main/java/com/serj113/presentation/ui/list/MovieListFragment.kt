@@ -19,6 +19,7 @@ class MovieListFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
     private lateinit var viewModel: MovieListViewModel
     private lateinit var binding: MovieListFragmentBinding
     private lateinit var adapter: MovieListAdapter
@@ -53,7 +54,7 @@ class MovieListFragment : Fragment() {
     }
 
     private fun navigateToMovieDetail(movie: Movie) {
-        navigateTo(MovieListFragmentDirections.actionMovieListFragmentToDetailFragment())
+        navigateTo(MovieListFragmentDirections.actionMovieListFragmentToDetailFragment(movie))
     }
 
     private fun onClick(movie: Movie) {

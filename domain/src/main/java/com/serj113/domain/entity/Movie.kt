@@ -1,5 +1,9 @@
 package com.serj113.domain.entity
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Movie(
     var adult: Boolean = false,
     var backdropPath: String = "",
@@ -15,4 +19,4 @@ data class Movie(
     var video: Boolean = false,
     var voteAverage: Double = 0.0,
     var voteCount: Int = 0
-)
+) : Parcelable

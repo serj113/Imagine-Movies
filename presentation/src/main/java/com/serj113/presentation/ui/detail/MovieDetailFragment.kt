@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.serj113.presentation.BuildConfig
 import com.serj113.presentation.databinding.MovieDetailFragmentBinding
 import com.serj113.presentation.util.ViewModelFactory
-import dagger.android.support.AndroidSupportInjection
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MovieDetailFragment : Fragment() {
 
     @Inject
@@ -24,7 +24,6 @@ class MovieDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AndroidSupportInjection.inject(this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MovieDetailViewModel::class.java)
     }
 

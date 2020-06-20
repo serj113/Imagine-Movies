@@ -5,6 +5,7 @@ import com.serj113.domain.usecase.FetchMovieUseCaseImpl
 import dagger.Binds
 import dagger.Module
 
+@InstallIn(ApplicationComponent::class)
 @Module
 abstract class UseCaseModule {
     @Binds

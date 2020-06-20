@@ -12,9 +12,10 @@ import com.serj113.domain.entity.Movie
 import com.serj113.presentation.databinding.MovieListFragmentBinding
 import com.serj113.presentation.util.ViewModelFactory
 import com.serj113.presentation.util.navigateTo
-import dagger.android.support.AndroidSupportInjection
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MovieListFragment : Fragment() {
 
     @Inject
@@ -26,7 +27,6 @@ class MovieListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AndroidSupportInjection.inject(this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MovieListViewModel::class.java)
     }
 

@@ -8,8 +8,11 @@ import com.serj113.presentation.util.ViewModelFactory
 import com.serj113.presentation.util.ViewModelKey
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import dagger.multibindings.IntoMap
 
+@InstallIn(ApplicationComponent::class)
 @Module
 abstract class ViewModelModule {
     @Binds

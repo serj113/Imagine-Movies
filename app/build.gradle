@@ -3,9 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
-//apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: 'jacoco-android'
-//apply plugin: 'jacoco'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 29
@@ -28,9 +26,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-//        debug {
-//            testCoverageEnabled true
-//        }
     }
 
     compileOptions {
@@ -41,10 +36,6 @@ android {
     viewBinding {
         enabled = true
     }
-}
-
-jacoco {
-    toolVersion = "0.8.4"
 }
 
 dependencies {
@@ -73,8 +64,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
 
     // Hilt
-//    implementation "com.google.dagger:hilt-android:$hilt_version"
-//    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

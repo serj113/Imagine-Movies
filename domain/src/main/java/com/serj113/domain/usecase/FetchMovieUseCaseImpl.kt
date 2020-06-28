@@ -8,13 +8,5 @@ class FetchMovieUseCaseImpl @Inject constructor(
     private var movieRepository: MovieRepository
 ) : FetchMovieUseCase() {
 
-    override fun invoke() {
-        val movieList = movieRepository.fetchMovies()
-
-        result.removeSource(movieList)
-
-        result.addSource(movieList) {
-            result.postValue(it)
-        }
-    }
+    override fun invoke() = movieRepository.fetchMovies()
 }

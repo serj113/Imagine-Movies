@@ -1,7 +1,7 @@
 package com.serj113.data.repository
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.asFlow
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.serj113.data.factory.MovieFactory
@@ -9,6 +9,7 @@ import com.serj113.domain.base.NetworkState
 import com.serj113.domain.base.PagedEntity
 import com.serj113.domain.entity.Movie
 import com.serj113.domain.repository.MovieRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
@@ -20,7 +21,7 @@ class MovieRepositoryImpl @Inject constructor(
         setPageSize(20)
     }.build()
 
-    override fun fetchMovies(): LiveData<PagedEntity<Movie>> {
+    override fun fetchMovies(): Flow<PagedEntity<Movie>> {
         factory.finalize()
         val listMovie = LivePagedListBuilder<Long, Movie>(
             factory,
@@ -31,10 +32,6 @@ class MovieRepositoryImpl @Inject constructor(
             postValue(PagedEntity(null, NetworkState.LOADING))
         }
 
-        pagedListMovie.removeSource(factory.dataSourceState)
-        pagedListMovie.removeSource(listMovie)
-        pagedListMovie.value = null
-
         pagedListMovie.addSource(factory.dataSourceState) { networkState ->
             pagedListMovie.postValue(PagedEntity(listMovie.value, networkState))
         }
@@ -44,6 +41,6 @@ class MovieRepositoryImpl @Inject constructor(
             pagedListMovie.postValue(PagedEntity(it, networkState))
         }
 
-        return pagedListMovie
+        return pagedListMovie.asFlow()
     }
 }

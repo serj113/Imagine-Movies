@@ -1,46 +1,26 @@
 package com.serj113.data.repository
 
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.asFlow
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
-import com.serj113.data.factory.MovieFactory
+import com.serj113.data.api.MovieApi
+import com.serj113.data.model.toMovieEntities
+import com.serj113.domain.base.Entity
 import com.serj113.domain.base.NetworkState
-import com.serj113.domain.base.PagedEntity
 import com.serj113.domain.entity.Movie
 import com.serj113.domain.repository.MovieRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
-    private val factory: MovieFactory
+    private val movieApi: MovieApi
 ) : MovieRepository {
-
-    private val config = PagedList.Config.Builder().apply {
-        setEnablePlaceholders(false)
-        setPageSize(20)
-    }.build()
-
-    override fun fetchMovies(): Flow<PagedEntity<Movie>> {
-        factory.finalize()
-        val listMovie = LivePagedListBuilder<Long, Movie>(
-            factory,
-            config
-        ).build()
-
-        val pagedListMovie = MediatorLiveData<PagedEntity<Movie>>().apply {
-            postValue(PagedEntity(null, NetworkState.LOADING))
-        }
-
-        pagedListMovie.addSource(factory.dataSourceState) { networkState ->
-            pagedListMovie.postValue(PagedEntity(listMovie.value, networkState))
-        }
-
-        pagedListMovie.addSource(listMovie) {
-            val networkState = factory.dataSourceState.value ?: NetworkState.LOADING
-            pagedListMovie.postValue(PagedEntity(it, networkState))
-        }
-
-        return pagedListMovie.asFlow()
+    override fun fetchMovies(): Flow<Entity<List<Movie>>> {
+        return flow {
+            emit(Entity(listOf(), NetworkState.LOADING))
+            val movies: List<Movie> = movieApi.getDiscoverMovie(page = 1)
+                .results.toMovieEntities()
+            emit(Entity(movies, NetworkState.SUCCESS))
+        }.flowOn(Dispatchers.IO)
     }
 }

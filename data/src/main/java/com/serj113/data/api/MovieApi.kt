@@ -8,26 +8,26 @@ import retrofit2.http.Query
 
 interface MovieApi {
     @GET("discover/movie")
-    fun getDiscoverMovie(
+    suspend fun getDiscoverMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY,
 
         @Query("page")
         page: Long
-    ): Single<Response>
+    ): Response
 
     @GET("movie/popular")
-    fun getPopularMovie(
+    suspend fun getPopularMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY,
 
         @Query("page")
         page: Long
-    ): Single<Response>
+    ): Response
 
     @GET("movie/latest")
-    fun getLatestMovie(
+    suspend fun getLatestMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
-    ): Single<Response>
+    ): Response
 }

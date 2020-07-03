@@ -46,7 +46,7 @@ class MovieListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
 
-        viewModel.pageEntityMovies.observe(viewLifecycleOwner, Observer {
+        viewModel.pagedEntityMovies.observe(viewLifecycleOwner, Observer {
             if (it.state == NetworkState.SUCCESS) {
                 adapter.submitList(it.value)
             }

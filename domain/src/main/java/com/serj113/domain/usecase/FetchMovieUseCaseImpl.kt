@@ -7,5 +7,5 @@ import javax.inject.Inject
 class FetchMovieUseCaseImpl @Inject constructor(
     private var movieRepository: MovieRepository
 ) : FetchMovieUseCase() {
-    override fun invoke() = movieRepository.fetchMovies()
+    override fun invoke(args: Args) = movieRepository.fetchMovies(args.page)
 }

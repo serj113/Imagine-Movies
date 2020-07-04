@@ -15,10 +15,10 @@ import javax.inject.Inject
 class MovieRepositoryImpl @Inject constructor(
     private val movieApi: MovieApi
 ) : MovieRepository {
-    override fun fetchMovies(): Flow<Entity<List<Movie>>> {
+    override fun fetchMovies(page: Long): Flow<Entity<List<Movie>>> {
         return flow {
             emit(Entity(listOf(), NetworkState.LOADING))
-            val movies: List<Movie> = movieApi.getDiscoverMovie(page = 1)
+            val movies: List<Movie> = movieApi.getDiscoverMovie(page = page)
                 .results.toMovieEntities()
             emit(Entity(movies, NetworkState.SUCCESS))
         }.flowOn(Dispatchers.IO)

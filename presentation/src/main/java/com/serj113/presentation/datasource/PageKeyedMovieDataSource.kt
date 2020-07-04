@@ -22,7 +22,7 @@ class PageKeyedMovieDataSource constructor(
     ) {
         val mutableListMovies = mutableListOf<Movie>()
         GlobalScope.launch(Dispatchers.Default) {
-            useCase.invoke()
+            useCase.invoke(FetchMovieUseCase.Args(page))
                 .onStart {
                     state.postValue(NetworkState.LOADING)
                 }
@@ -34,7 +34,7 @@ class PageKeyedMovieDataSource constructor(
                 .onCompletion { flowCollector ->
                     if (flowCollector?.cause == null) {
                         state.postValue(NetworkState.SUCCESS)
-                        callback.onResult(mutableListMovies, null, 1L)
+                        callback.onResult(mutableListMovies, null, page)
                     }
                 }
                 .collect()
@@ -43,8 +43,9 @@ class PageKeyedMovieDataSource constructor(
 
     override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Long, Movie>) {
         val mutableListMovies = mutableListOf<Movie>()
+        page += 1
         GlobalScope.launch(Dispatchers.Default) {
-            useCase.invoke()
+            useCase.invoke(FetchMovieUseCase.Args(page))
                 .onStart {
                     state.postValue(NetworkState.LOADING)
                 }
@@ -56,7 +57,7 @@ class PageKeyedMovieDataSource constructor(
                 .onCompletion { flowCollector ->
                     if (flowCollector?.cause == null) {
                         state.postValue(NetworkState.SUCCESS)
-                        callback.onResult(mutableListMovies, 1L)
+                        callback.onResult(mutableListMovies, page)
                     }
                 }
                 .collect()

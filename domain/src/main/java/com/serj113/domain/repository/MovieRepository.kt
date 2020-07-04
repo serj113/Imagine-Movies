@@ -1,10 +1,9 @@
 package com.serj113.domain.repository
 
 import com.serj113.domain.base.Entity
-import com.serj113.domain.base.PagedEntity
 import com.serj113.domain.entity.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    fun fetchMovies(): Flow<Entity<List<Movie>>>
+    fun fetchMovies(page: Long): Flow<Entity<List<Movie>>>
 }

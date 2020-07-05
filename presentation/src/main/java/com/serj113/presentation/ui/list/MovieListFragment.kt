@@ -36,10 +36,8 @@ class MovieListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.pagedEntityMovies.observe(viewLifecycleOwner, Observer {
-            if (it.state == NetworkState.SUCCESS) {
-                adapter.submitList(it.value)
-            }
+        viewModel.listMovies.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
         })
     }
 

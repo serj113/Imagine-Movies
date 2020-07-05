@@ -44,6 +44,7 @@ ext {
     okhttp_version = '4.2.2'
     rxandroid_version = '2.1.1'
     rxkotlin_version = '2.4.0'
+    kotlinx_version = '1.3.6'
     coroutines_version = '1.3.7'
     glide_version = '4.11.0'
     room_version = '2.2.3'

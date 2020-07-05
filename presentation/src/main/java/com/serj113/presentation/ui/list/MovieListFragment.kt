@@ -5,30 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.serj113.domain.base.NetworkState
 import com.serj113.domain.entity.Movie
 import com.serj113.presentation.databinding.MovieListFragmentBinding
-import com.serj113.presentation.util.ViewModelFactory
 import com.serj113.presentation.util.navigateTo
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MovieListFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
-    private lateinit var viewModel: MovieListViewModel
     private lateinit var binding: MovieListFragmentBinding
     private lateinit var adapter: MovieListAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MovieListViewModel::class.java)
-    }
+    private val viewModel: MovieListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +35,6 @@ class MovieListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
 
         viewModel.pagedEntityMovies.observe(viewLifecycleOwner, Observer {
             if (it.state == NetworkState.SUCCESS) {

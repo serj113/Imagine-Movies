@@ -1,19 +1,16 @@
 package com.serj113.presentation.ui.list
 
-import androidx.lifecycle.*
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.serj113.domain.base.Entity
 import com.serj113.domain.base.NetworkState
 import com.serj113.domain.base.PagedEntity
 import com.serj113.domain.entity.Movie
-import com.serj113.domain.interactor.FetchMovieUseCase
 import com.serj113.presentation.factory.MovieFactory
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onStart
-import javax.inject.Inject
 
-class MovieListViewModel @Inject constructor(
+class MovieListViewModel @ViewModelInject constructor(
     private val sourceFactory: MovieFactory
 ) : ViewModel() {
     private val config = PagedList.Config.Builder().apply {

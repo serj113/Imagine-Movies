@@ -1,12 +1,14 @@
 package com.serj113.presentation.ui.list
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.serj113.domain.base.Entity
 import com.serj113.domain.base.NetworkState
-import com.serj113.domain.base.PagedEntity
 import com.serj113.domain.entity.Movie
 import com.serj113.presentation.factory.MovieFactory
 
@@ -18,20 +20,24 @@ class MovieListViewModel @ViewModelInject constructor(
         setPageSize(20)
     }.build()
 
-    val pagedEntityMovies = MediatorLiveData<PagedEntity<Movie>>().apply {
+    private val entityListMovie = MediatorLiveData<Entity<PagedList<Movie>>>().apply {
         val listMovie = LivePagedListBuilder(
             sourceFactory,
             config
         ).build()
 
-        postValue(PagedEntity(null, NetworkState.LOADING))
+        postValue(Entity(null, NetworkState.LOADING))
 
         addSource(sourceFactory.dataSourceState) { networkState ->
-            postValue(PagedEntity(listMovie.value, networkState))
+            postValue(Entity(listMovie.value, networkState))
         }
         addSource(listMovie) {
             val networkState = sourceFactory.dataSourceState.value ?: NetworkState.LOADING
-            postValue(PagedEntity(it, networkState))
+            postValue(Entity(it, networkState))
         }
+    }
+
+    val listMovies: LiveData<PagedList<Movie>> = Transformations.map(entityListMovie) {
+        it.value
     }
 }

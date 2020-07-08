@@ -8,9 +8,8 @@ import com.serj113.presentation.datasource.PageKeyedMovieDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class MovieFactory @Inject constructor(
+class MovieFactory (
     private val useCase: FetchMovieUseCase
 ) : BaseDataSourceFactory<Long, Movie>() {
     override fun create(): DataSource<Long, Movie> {

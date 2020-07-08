@@ -6,11 +6,13 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Singleton
 
 @InstallIn(ApplicationComponent::class)
 @Module
 abstract class RepositoryModule {
     @Binds
+    @Singleton
     internal abstract fun provideMovieRepository(
         movieRepositoryImpl: MovieRepositoryImpl
     ): MovieRepository

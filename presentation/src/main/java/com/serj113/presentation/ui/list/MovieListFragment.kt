@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.serj113.domain.base.NetworkState
 import com.serj113.domain.entity.Movie
 import com.serj113.presentation.databinding.MovieListFragmentBinding
 import com.serj113.presentation.util.navigateTo
@@ -36,8 +35,20 @@ class MovieListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.listMovies.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
+        viewModel.listViewState.observe(viewLifecycleOwner, Observer {
+            when(it) {
+                is MovieListViewState.Success -> {
+                    it.data?.let { pagedList->
+                        adapter.submitList(pagedList)
+                    }
+                }
+                is MovieListViewState.Error -> {
+
+                }
+                else -> {
+
+                }
+            }
         })
     }
 

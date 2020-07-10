@@ -37,7 +37,11 @@ class MovieListViewModel @ViewModelInject constructor(
         }
     }
 
-    val listMovies: LiveData<PagedList<Movie>> = Transformations.map(entityListMovie) {
-        it.value
+    val listViewState: LiveData<MovieListViewState> = Transformations.map(entityListMovie) {
+        when (it.state) {
+            is NetworkState.FAILED -> MovieListViewState.Error((it.state as NetworkState.FAILED).error)
+            is NetworkState.SUCCESS -> MovieListViewState.Success(it.value)
+            else -> MovieListViewState.Loading
+        }
     }
 }

@@ -1,18 +1,26 @@
 package com.serj113.presentation.ui.detail
 
-import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class MovieDetailViewPagerAdapter(private val context: Context, fm: FragmentManager) :
-    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class MovieDetailViewPagerAdapter(fragment: Fragment) :
+    FragmentStateAdapter(fragment) {
 
-    override fun getItem(position: Int): Fragment {
-        TODO("Not yet implemented")
+    override fun getItemCount() = TOTAL_FRAGMENT
+
+    override fun createFragment(position: Int) = when (position) {
+        0 -> InfoFragment()
+        1 -> CastFragment()
+        else -> ReviewFragment()
     }
 
-    override fun getCount(): Int {
-        TODO("Not yet implemented")
+    fun getTitle(position: Int) = when (position) {
+        0 -> "Info"
+        1 -> "Cast"
+        else -> "Review"
+    }
+
+    companion object {
+        private const val TOTAL_FRAGMENT = 3
     }
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayoutMediator
 import com.serj113.presentation.databinding.MovieDetailFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MovieDetailFragment : Fragment() {
 
     private lateinit var binding: MovieDetailFragmentBinding
+    private lateinit var viewPagerAdapter: MovieDetailViewPagerAdapter
 
     private val viewModel: MovieDetailViewModel by viewModels()
 
@@ -23,11 +25,16 @@ class MovieDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = MovieDetailFragmentBinding.inflate(inflater, container, false)
+        viewPagerAdapter = MovieDetailViewPagerAdapter(this)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        binding.viewPager.adapter = viewPagerAdapter
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = viewPagerAdapter.getTitle(position)
+        }.attach()
 
         viewModel.getMovieBackdrop().observe(viewLifecycleOwner, Observer {
             Glide.with(requireContext()).load(it).into(binding.ivBackdrop)

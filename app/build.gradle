@@ -10,6 +10,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.serj113.imaginemovies"
         minSdkVersion 16
         targetSdkVersion 29
@@ -50,6 +51,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.paging:paging-runtime-ktx:2.1.2'
     implementation "androidx.activity:activity:1.1.0"
+    implementation "androidx.multidex:multidex:2.0.1"
 
     // Layouts
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"

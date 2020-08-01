@@ -3,7 +3,8 @@ package com.serj113.data.repository
 import com.serj113.data.api.MovieApi
 import com.serj113.data.model.toMovieEntities
 import com.serj113.domain.base.Entity
-import com.serj113.domain.base.NetworkState
+import com.serj113.domain.base.Entity.Success
+import com.serj113.domain.base.Entity.Loading
 import com.serj113.domain.entity.Movie
 import com.serj113.domain.repository.MovieRepository
 import kotlinx.coroutines.Dispatchers
@@ -17,10 +18,10 @@ class MovieRepositoryImpl @Inject constructor(
 ) : MovieRepository {
     override fun fetchMovies(page: Long): Flow<Entity<List<Movie>>> {
         return flow {
-            emit(Entity(listOf(), NetworkState.LOADING))
+            emit(Loading<List<Movie>>())
             val movies: List<Movie> = movieApi.getDiscoverMovie(page = page)
                 .results.toMovieEntities()
-            emit(Entity(movies, NetworkState.SUCCESS))
+            emit(Success(movies))
         }.flowOn(Dispatchers.IO)
     }
 }

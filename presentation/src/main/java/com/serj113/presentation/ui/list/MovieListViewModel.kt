@@ -8,7 +8,9 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.serj113.domain.base.Entity
-import com.serj113.domain.base.NetworkState
+import com.serj113.domain.base.Entity.Idle
+import com.serj113.domain.base.Entity.Success
+import com.serj113.domain.base.Entity.Error
 import com.serj113.domain.entity.Movie
 import com.serj113.presentation.factory.MovieFactory
 
@@ -26,21 +28,17 @@ class MovieListViewModel @ViewModelInject constructor(
             config
         ).build()
 
-        postValue(Entity(null, NetworkState.LOADING))
+        postValue(Idle())
 
-        addSource(sourceFactory.dataSourceState) { networkState ->
-            postValue(Entity(listMovie.value, networkState))
-        }
         addSource(listMovie) {
-            val networkState = sourceFactory.dataSourceState.value ?: NetworkState.LOADING
-            postValue(Entity(it, networkState))
+            postValue(Success(it))
         }
     }
 
-    val listViewState: LiveData<MovieListViewState> = Transformations.map(entityListMovie) {
-        when (it.state) {
-            is NetworkState.FAILED -> MovieListViewState.Error((it.state as NetworkState.FAILED).error)
-            is NetworkState.SUCCESS -> MovieListViewState.Success(it.value)
+    val listViewState: LiveData<MovieListViewState> = Transformations.map(entityListMovie) { entity ->
+        when (entity) {
+            is Error -> MovieListViewState.Error(entity.t)
+            is Success -> MovieListViewState.Success(entity.data)
             else -> MovieListViewState.Loading
         }
     }

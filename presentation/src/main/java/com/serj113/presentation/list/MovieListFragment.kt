@@ -55,10 +55,10 @@ class MovieListFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        adapter = MoviePagingAdapter(::onClick).apply {
-            withLoadStateFooter(MovieListLoadStateAdapter(this@MovieListFragment::onClickRetry))
-        }
-        binding.recyclerView.adapter = adapter
+        adapter = MoviePagingAdapter(::onClick)
+        binding.recyclerView.adapter = adapter.withLoadStateFooter(
+            MovieListLoadStateAdapter(this@MovieListFragment::onClickRetry)
+        )
     }
 
     private fun navigateToMovieDetail(movie: Movie) {
@@ -70,6 +70,6 @@ class MovieListFragment : Fragment() {
     }
 
     private fun onClickRetry() {
-
+        adapter.retry()
     }
 }

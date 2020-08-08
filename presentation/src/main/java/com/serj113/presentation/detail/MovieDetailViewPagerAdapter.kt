@@ -1,4 +1,4 @@
-package com.serj113.presentation.ui.detail
+package com.serj113.presentation.detail
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

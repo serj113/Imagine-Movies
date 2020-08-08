@@ -1,4 +1,4 @@
-package com.serj113.presentation.ui.detail
+package com.serj113.presentation.detail
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

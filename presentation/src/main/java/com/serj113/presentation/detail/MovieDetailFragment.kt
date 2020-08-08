@@ -1,4 +1,4 @@
-package com.serj113.presentation.ui.detail
+package com.serj113.presentation.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater

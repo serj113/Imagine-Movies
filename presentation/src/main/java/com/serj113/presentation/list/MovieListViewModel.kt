@@ -1,32 +1,32 @@
-package com.serj113.presentation.ui.list
+package com.serj113.presentation.list
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.serj113.domain.base.Entity
 import com.serj113.domain.base.Entity.Idle
 import com.serj113.domain.base.Entity.Success
 import com.serj113.domain.base.Entity.Error
 import com.serj113.domain.entity.Movie
-import com.serj113.presentation.factory.MovieFactory
+import com.serj113.domain.interactor.FetchMovieUseCase
+import com.serj113.presentation.datasource.MoviePagingDataSource
 
 class MovieListViewModel @ViewModelInject constructor(
-    private val sourceFactory: MovieFactory
+    private val useCase: FetchMovieUseCase
 ) : ViewModel() {
-    private val config = PagedList.Config.Builder().apply {
-        setEnablePlaceholders(false)
-        setPageSize(20)
-    }.build()
+    private val config =  PagingConfig(pageSize = 20, enablePlaceholders = false)
 
-    private val entityListMovie = MediatorLiveData<Entity<PagedList<Movie>>>().apply {
-        val listMovie = LivePagedListBuilder(
-            sourceFactory,
-            config
-        ).build()
+    private val entityListMovie = MediatorLiveData<Entity<PagingData<Movie>>>().apply {
+        val listMovie = Pager(
+            config = config,
+            pagingSourceFactory = { MoviePagingDataSource(useCase) }
+        ).liveData
 
         postValue(Idle())
 

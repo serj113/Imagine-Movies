@@ -25,9 +25,7 @@ class MovieListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = MovieListFragmentBinding.inflate(inflater, container, false)
-        adapter = MovieListAdapter(this::onClick)
-
-        binding.recyclerView.adapter = adapter
+        initAdapter()
 
         return binding.root
     }
@@ -52,6 +50,13 @@ class MovieListFragment : Fragment() {
         })
     }
 
+    private fun initAdapter() {
+        adapter = MovieListAdapter(::onClick).apply {
+            withLoadStateFooter(MovieListLoadStateAdapter(this@MovieListFragment::onClickRetry))
+        }
+        binding.recyclerView.adapter = adapter
+    }
+
     private fun navigateToMovieDetail(movie: Movie) {
         navigateTo(MovieListFragmentDirections.actionMovieListFragmentToDetailFragment(movie))
     }
@@ -60,4 +65,7 @@ class MovieListFragment : Fragment() {
         navigateToMovieDetail(movie)
     }
 
+    private fun onClickRetry() {
+
+    }
 }

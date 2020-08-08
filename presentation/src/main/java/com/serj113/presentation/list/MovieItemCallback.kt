@@ -1,4 +1,4 @@
-package com.serj113.presentation.ui.list
+package com.serj113.presentation.list
 
 import androidx.recyclerview.widget.DiffUtil
 import com.serj113.domain.entity.Movie

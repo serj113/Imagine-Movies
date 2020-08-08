@@ -1,4 +1,4 @@
-package com.serj113.presentation.ui.list
+package com.serj113.presentation.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

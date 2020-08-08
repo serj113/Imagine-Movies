@@ -1,18 +1,29 @@
-package com.serj113.presentation.ui.list
+package com.serj113.presentation.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.serj113.domain.entity.Movie
 import com.serj113.presentation.BuildConfig
 import com.serj113.presentation.databinding.MovieListItemBinding
 
-class MovieListAdapter(
+class MoviePagingAdapter(
     private val onItemClick: (Movie) -> Unit
-) : PagedListAdapter<Movie, MovieListAdapter.MovieItemViewHolder>(MovieItemCallback) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
+) : PagingDataAdapter<Movie, MoviePagingAdapter.MovieItemViewHolder>(MovieItemCallback) {
+
+    override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
+        getItem(position)?.let { movie ->
+            holder.bind(movie)
+            holder.itemView.setOnClickListener { onItemClick.invoke(movie) }
+        }
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MovieItemViewHolder {
         return MovieItemViewHolder(
             MovieListItemBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -20,13 +31,6 @@ class MovieListAdapter(
                 false
             )
         )
-    }
-
-    override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
-        getItem(position)?.let { movie ->
-            holder.bind(movie)
-            holder.itemView.setOnClickListener { onItemClick.invoke(movie) }
-        }
     }
 
     inner class MovieItemViewHolder(

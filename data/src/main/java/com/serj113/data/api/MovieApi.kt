@@ -1,9 +1,9 @@
 package com.serj113.data.api
 
 import com.serj113.data.BuildConfig
-import com.serj113.data.model.Response
-import io.reactivex.Single
+import com.serj113.data.model.MovieResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApi {
@@ -14,7 +14,7 @@ interface MovieApi {
 
         @Query("page")
         page: Long
-    ): Response
+    ): MovieResponse
 
     @GET("movie/popular")
     suspend fun getPopularMovie(
@@ -23,11 +23,19 @@ interface MovieApi {
 
         @Query("page")
         page: Long
-    ): Response
+    ): MovieResponse
 
     @GET("movie/latest")
     suspend fun getLatestMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
-    ): Response
+    ): MovieResponse
+
+    @GET("movie/{id}/reviews")
+    suspend fun getMovieReviews(
+        @Path("id")
+        id: Int,
+        @Query("api_key")
+        apiKey: String = BuildConfig.API_KEY
+    ): MovieResponse
 }

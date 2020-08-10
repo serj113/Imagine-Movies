@@ -21,4 +21,9 @@ class ReviewFragment : Fragment() {
         binding = FragmentReviewBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+    }
 }

@@ -3,7 +3,7 @@ package com.serj113.data.model
 import com.serj113.domain.entity.Movie
 import com.squareup.moshi.Json
 
-data class Result(
+data class RemoteMovie (
     @field:Json(name = "adult")
     var adult: Boolean = false,
     @field:Json(name = "backdrop_path")
@@ -34,7 +34,7 @@ data class Result(
     var voteCount: Int = 0
 )
 
-fun Result.toMovieEntity() = Movie(
+fun RemoteMovie.toMovieEntity() = Movie(
     adult,
     backdropPath ?: "",
     genreIds,
@@ -51,4 +51,4 @@ fun Result.toMovieEntity() = Movie(
     voteCount
 )
 
-fun List<Result>.toMovieEntities(): List<Movie> = this.map { it.toMovieEntity() }
+fun List<RemoteMovie>.toMovieEntities(): List<Movie> = this.map { it.toMovieEntity() }

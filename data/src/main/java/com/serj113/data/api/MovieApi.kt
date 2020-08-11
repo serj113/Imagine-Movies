@@ -2,6 +2,7 @@ package com.serj113.data.api
 
 import com.serj113.data.BuildConfig
 import com.serj113.data.model.MovieResponse
+import com.serj113.data.model.ReviewResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -34,8 +35,10 @@ interface MovieApi {
     @GET("movie/{id}/reviews")
     suspend fun getMovieReviews(
         @Path("id")
-        id: Int,
+        id: Long,
+        @Query("page")
+        page: Long,
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
-    ): MovieResponse
+    ): ReviewResponse
 }

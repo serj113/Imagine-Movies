@@ -1,4 +1,4 @@
-package com.serj113.presentation.list
+package com.serj113.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,18 +8,18 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.serj113.presentation.databinding.LoadStateFooterItemBinding
 
-class MovieListLoadStateAdapter(private val retry: () -> Unit) :
-    LoadStateAdapter<MovieListLoadStateAdapter.MovieLoadStateViewHolder>() {
+class ListLoadStateAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<ListLoadStateAdapter.LoadStateViewHolder>() {
 
-    override fun onBindViewHolder(holder: MovieLoadStateViewHolder, loadState: LoadState) {
+    override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
         holder.bind(loadState)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         loadState: LoadState
-    ): MovieLoadStateViewHolder {
-        return MovieLoadStateViewHolder(
+    ): LoadStateViewHolder {
+        return LoadStateViewHolder(
             LoadStateFooterItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -29,7 +29,7 @@ class MovieListLoadStateAdapter(private val retry: () -> Unit) :
         )
     }
 
-    class MovieLoadStateViewHolder(
+    class LoadStateViewHolder(
         private val binding: LoadStateFooterItemBinding,
         retry: () -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {

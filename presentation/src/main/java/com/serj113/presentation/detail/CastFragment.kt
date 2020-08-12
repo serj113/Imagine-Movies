@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.serj113.presentation.R
 import com.serj113.presentation.databinding.FragmentCastBinding
@@ -12,7 +13,7 @@ import com.serj113.presentation.databinding.FragmentCastBinding
 class CastFragment : Fragment() {
 
     private lateinit var binding: FragmentCastBinding
-    private val viewModel: MovieDetailViewModel by viewModels()
+    private val viewModel: MovieDetailViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

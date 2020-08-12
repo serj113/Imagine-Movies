@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.serj113.domain.entity.Movie
+import com.serj113.presentation.adapter.ListLoadStateAdapter
 import com.serj113.presentation.databinding.MovieListFragmentBinding
 import com.serj113.presentation.util.navigateTo
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,7 +58,7 @@ class MovieListFragment : Fragment() {
     private fun initAdapter() {
         adapter = MoviePagingAdapter(::onClick)
         binding.recyclerView.adapter = adapter.withLoadStateFooter(
-            MovieListLoadStateAdapter(this@MovieListFragment::onClickRetry)
+            ListLoadStateAdapter(this@MovieListFragment::onClickRetry)
         )
     }
 

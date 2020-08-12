@@ -1,6 +1,8 @@
 package com.serj113.domain.di
 
+import com.serj113.domain.interactor.FetchMovieReviewUseCase
 import com.serj113.domain.interactor.FetchMovieUseCase
+import com.serj113.domain.usecase.FetchMovieReviewUseCaseImpl
 import com.serj113.domain.usecase.FetchMovieUseCaseImpl
 import dagger.Binds
 import dagger.Module
@@ -16,4 +18,10 @@ abstract class UseCaseModule {
     internal abstract fun provideFetchMovieUseCase(
         fetchMovieUseCaseImpl: FetchMovieUseCaseImpl
     ): FetchMovieUseCase
+
+    @Binds
+    @Singleton
+    internal abstract fun provideFetchMovieReviewUseCase(
+        fetchMovieReviewUseCaseImpl: FetchMovieReviewUseCaseImpl
+    ): FetchMovieReviewUseCase
 }

@@ -1,12 +1,14 @@
 package com.serj113.data.repository
 
 import com.serj113.data.api.MovieApi
+import com.serj113.data.model.toMovieDetailEntity
 import com.serj113.data.model.toMovieEntities
 import com.serj113.data.model.toReviewEntities
 import com.serj113.domain.base.Entity
 import com.serj113.domain.base.Entity.Success
 import com.serj113.domain.base.Entity.Loading
 import com.serj113.domain.entity.Movie
+import com.serj113.domain.entity.MovieDetail
 import com.serj113.domain.entity.Review
 import com.serj113.domain.repository.MovieRepository
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +35,15 @@ class MovieRepositoryImpl @Inject constructor(
             val reviews: List<Review> = movieApi.getMovieReviews(id = movieId, page = page)
                 .results.toReviewEntities()
             emit(Success(reviews))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    override fun fetchMovieDetail(movieId: Long): Flow<Entity<MovieDetail>> {
+        return flow {
+            emit(Loading<MovieDetail>())
+            val response = movieApi.getMovieDetail(id = movieId)
+            val movieDetail: MovieDetail = response.toMovieDetailEntity()
+            emit(Success(movieDetail))
         }.flowOn(Dispatchers.IO)
     }
 }

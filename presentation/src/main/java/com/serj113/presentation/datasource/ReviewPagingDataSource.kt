@@ -1,7 +1,9 @@
 package com.serj113.presentation.datasource
 
 import androidx.paging.PagingSource
-import com.serj113.domain.base.Entity
+import androidx.paging.PagingSource.LoadResult.Page
+import androidx.paging.PagingSource.LoadResult.Error
+import com.serj113.domain.base.Entity.Success
 import com.serj113.domain.entity.Review
 import com.serj113.domain.interactor.FetchMovieReviewUseCase
 import kotlinx.coroutines.flow.collect
@@ -19,20 +21,20 @@ class ReviewPagingDataSource constructor(
             useCase.invoke(FetchMovieReviewUseCase.Args(movieId, pageKey))
                 .onEach { entity ->
                     when (entity) {
-                        is Entity.Success -> {
+                        is Success -> {
                             mutableListReview.addAll(entity.data)
                         }
                     }
                 }
                 .collect()
 
-            LoadResult.Page(
+            Page(
                 data = mutableListReview,
                 prevKey = null,
                 nextKey = pageKey + 1
             )
         } catch (exception: IOException) {
-            return LoadResult.Error(exception)
+            return Error(exception)
         }
     }
 }

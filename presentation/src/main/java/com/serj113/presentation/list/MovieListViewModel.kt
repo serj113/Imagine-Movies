@@ -1,14 +1,8 @@
 package com.serj113.presentation.list
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
+import androidx.lifecycle.*
+import androidx.paging.*
 import com.serj113.domain.base.Entity
 import com.serj113.domain.base.Entity.Idle
 import com.serj113.domain.base.Entity.Success
@@ -26,7 +20,7 @@ class MovieListViewModel @ViewModelInject constructor(
         val listMovie = Pager(
             config = config,
             pagingSourceFactory = { MoviePagingDataSource(useCase) }
-        ).liveData
+        ).liveData.cachedIn(viewModelScope)
 
         postValue(Idle())
 

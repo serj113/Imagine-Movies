@@ -47,6 +47,8 @@ interface MovieApi {
         id: Long,
         @Query("page")
         page: Long,
+        @Query("append_to_response")
+        appendToResponse: String = "credits",
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
     ): ReviewResponse

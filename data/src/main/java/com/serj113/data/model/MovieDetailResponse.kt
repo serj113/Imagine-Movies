@@ -2,66 +2,67 @@ package com.serj113.data.model
 
 import com.serj113.domain.entity.MovieDetail
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 data class MovieDetailResponse(
     @field:Json(name = "adult")
-    var adult: Boolean,
+    var adult: Boolean = false,
     @field:Json(name = "backdrop_path")
-    var backdropPath: String,
+    var backdropPath: String = "",
     @field:Json(name = "belongs_to_collection")
-    var belongsToCollection: Any,
+    var belongsToCollection: Any? = null,
     @field:Json(name = "budget")
-    var budget: Int,
+    var budget: Int = 0,
     @field:Json(name = "credits")
-    var credits: RemoteCredits,
+    var credits: RemoteCredits = RemoteCredits(),
     @field:Json(name = "genres")
-    var genres: List<RemoteGenre>,
+    var genres: List<RemoteGenre> = listOf(),
     @field:Json(name = "homepage")
-    var homepage: String,
+    var homepage: String = "",
     @field:Json(name = "id")
-    var id: Int,
+    var id: Int = 0,
     @field:Json(name = "imdb_id")
-    var imdbId: String,
+    var imdbId: String = "",
     @field:Json(name = "original_language")
-    var originalLanguage: String,
+    var originalLanguage: String = "",
     @field:Json(name = "original_title")
-    var originalTitle: String,
+    var originalTitle: String = "",
     @field:Json(name = "overview")
-    var overview: String,
+    var overview: String = "",
     @field:Json(name = "popularity")
-    var popularity: Double,
+    var popularity: Double = 0.0,
     @field:Json(name = "poster_path")
-    var posterPath: String,
+    var posterPath: String = "",
     @field:Json(name = "production_companies")
-    var productionCompanies: List<RemoteProductionCompany>,
+    var productionCompanies: List<RemoteProductionCompany> = listOf(),
     @field:Json(name = "production_countries")
-    var productionCountries: List<RemoteProductionCountry>,
+    var productionCountries: List<RemoteProductionCountry> = listOf(),
     @field:Json(name = "release_date")
-    var releaseDate: String,
+    var releaseDate: String = "",
     @field:Json(name = "revenue")
-    var revenue: Int,
+    var revenue: Int = 0,
     @field:Json(name = "runtime")
-    var runtime: Int,
+    var runtime: Int = 0,
     @field:Json(name = "spoken_languages")
-    var spokenLanguages: List<RemoteSpokenLanguage>,
+    var spokenLanguages: List<RemoteSpokenLanguage> = listOf(),
     @field:Json(name = "status")
-    var status: String,
+    var status: String = "",
     @field:Json(name = "tagline")
-    var tagline: String,
+    var tagline: String = "",
     @field:Json(name = "title")
-    var title: String,
+    var title: String = "",
     @field:Json(name = "video")
-    var video: Boolean,
+    var video: Boolean = false,
     @field:Json(name = "vote_average")
-    var voteAverage: Double,
+    var voteAverage: Double = 0.0,
     @field:Json(name = "vote_count")
-    var voteCount: Int
+    var voteCount: Int = 0
 )
 
-fun MovieDetailResponse.toMovieDetailEntity() =
-    MovieDetail(
+fun MovieDetailResponse.toMovieDetailEntity(): MovieDetail {
+    return MovieDetail(
         adult,
-        backdropPath,
+        backdropPath ?: "",
         budget,
         credits.toCreditsEntity(),
         genres.toGenreEntities(),
@@ -83,3 +84,4 @@ fun MovieDetailResponse.toMovieDetailEntity() =
         voteAverage,
         voteCount
     )
+}

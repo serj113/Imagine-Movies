@@ -2,16 +2,19 @@ package com.serj113.presentation.detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.serj113.domain.entity.Cast
 import com.serj113.presentation.databinding.CastListItemBinding
 
-class CastPagingAdapter :
-    PagingDataAdapter<Cast, CastPagingAdapter.CastItemViewHolder>(CastItemCallback) {
+class CastRecyclerViewAdapter :
+    RecyclerView.Adapter<CastRecyclerViewAdapter.CastItemViewHolder>() {
+
+    private var items = listOf<Cast>()
+
+    override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: CastItemViewHolder, position: Int) {
-        getItem(position)?.let { cast ->
+        items.getOrNull(position)?.let { cast ->
             holder.bind(cast)
         }
     }
@@ -24,6 +27,11 @@ class CastPagingAdapter :
                 false
             )
         )
+    }
+
+    fun set(items: List<Cast>) {
+        this.items = items
+        notifyDataSetChanged()
     }
 
     inner class CastItemViewHolder(

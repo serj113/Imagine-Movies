@@ -41,8 +41,8 @@ class MovieRepositoryImpl @Inject constructor(
     override fun fetchMovieDetail(movieId: Long): Flow<Entity<MovieDetail>> {
         return flow {
             emit(Loading<MovieDetail>())
-            val movieDetail: MovieDetail = movieApi.getMovieDetail(id = movieId)
-                .toMovieDetailEntity()
+            val response = movieApi.getMovieDetail(id = movieId)
+            val movieDetail: MovieDetail = response.toMovieDetailEntity()
             emit(Success(movieDetail))
         }.flowOn(Dispatchers.IO)
     }

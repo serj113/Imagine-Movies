@@ -2,7 +2,6 @@ package com.serj113.data.model
 
 import com.serj113.domain.entity.MovieDetail
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
 data class MovieDetailResponse(
     @field:Json(name = "adult")

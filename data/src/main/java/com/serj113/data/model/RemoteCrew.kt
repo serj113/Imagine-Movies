@@ -5,21 +5,21 @@ import com.squareup.moshi.Json
 
 data class RemoteCrew(
     @field:Json(name = "credit_id")
-    var creditId: String,
+    var creditId: String = "",
     @field:Json(name = "department")
-    var department: String,
+    var department: String = "",
     @field:Json(name = "gender")
-    var gender: Int,
+    var gender: Int = 0,
     @field:Json(name = "id")
-    var id: Int,
+    var id: Int = 0,
     @field:Json(name = "job")
-    var job: String,
+    var job: String = "",
     @field:Json(name = "name")
-    var name: String,
+    var name: String = "",
     @field:Json(name = "profile_path")
-    var profilePath: String
+    var profilePath: String? = null
 )
 
-fun RemoteCrew.toCrewEntity() = Crew(creditId, department, gender, id, job, name, profilePath)
+fun RemoteCrew.toCrewEntity() = Crew(creditId, department, gender, id, job, name, profilePath ?: "")
 
 fun List<RemoteCrew>.toCrewEntities(): List<Crew> = map { it.toCrewEntity() }

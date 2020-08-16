@@ -37,6 +37,8 @@ interface MovieApi {
     suspend fun getMovieDetail(
         @Path("id")
         id: Long,
+        @Query("append_to_response")
+        appendToResponse: String = "credits",
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
     ): MovieDetailResponse
@@ -47,8 +49,6 @@ interface MovieApi {
         id: Long,
         @Query("page")
         page: Long,
-        @Query("append_to_response")
-        appendToResponse: String = "credits",
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
     ): ReviewResponse

@@ -2,7 +2,6 @@ package com.serj113.data.model
 
 import com.serj113.domain.entity.Credits
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
 data class RemoteCredits(
     @field:Json(name = "cast")

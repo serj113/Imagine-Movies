@@ -3,7 +3,9 @@ package com.serj113.presentation.detail
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.serj113.domain.entity.Cast
+import com.serj113.presentation.BuildConfig
 import com.serj113.presentation.databinding.CastListItemBinding
 
 class CastRecyclerViewAdapter :
@@ -38,7 +40,13 @@ class CastRecyclerViewAdapter :
         private val binding: CastListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(cast: Cast) {
-
+            if (cast.profilePath.isNotEmpty()) {
+                Glide.with(binding.ivCast)
+                    .load(BuildConfig.IMAGE_URL + cast.profilePath)
+                    .into(binding.ivCast)
+            }
+            binding.tvCastName.text = cast.name
+            binding.tvCastCharacter.text = cast.character
         }
     }
 }

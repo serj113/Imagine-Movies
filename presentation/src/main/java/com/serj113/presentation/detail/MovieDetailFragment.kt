@@ -44,7 +44,5 @@ class MovieDetailFragment : Fragment() {
         arguments?.let { arguments ->
             viewModel.bind(MovieDetailFragmentArgs.fromBundle(arguments).movie)
         }
-
     }
-
 }

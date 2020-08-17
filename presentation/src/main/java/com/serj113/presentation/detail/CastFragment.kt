@@ -23,7 +23,6 @@ class CastFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCastBinding.inflate(inflater, container, false)
-//        adapter = CastRecyclerViewAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView
             .addItemDecoration(DividerItemDecoration(context, ClipDrawable.HORIZONTAL))

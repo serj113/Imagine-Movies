@@ -17,8 +17,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField 'String', 'API_KEY', '"0db16e52aeb64bb11168a6b456e8d140"'
-        buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -96,6 +98,12 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    // Analytics
+    implementation "com.google.firebase:firebase-analytics-ktx:$analytics_version"
+
+    // Crashlytics
+    implementation "com.google.firebase:firebase-crashlytics:$crashlytics_version"
 
     // MockK
     testImplementation "io.mockk:mockk:$mockk_version"

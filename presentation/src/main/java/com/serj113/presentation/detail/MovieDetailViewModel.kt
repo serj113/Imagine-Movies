@@ -2,10 +2,7 @@ package com.serj113.presentation.detail
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
+import androidx.paging.*
 import com.serj113.domain.base.Entity
 import com.serj113.domain.entity.Cast
 import com.serj113.domain.entity.Movie
@@ -55,11 +52,11 @@ class MovieDetailViewModel @ViewModelInject constructor(
         movieSynopsis.postValue(movie.overview)
         movieId = movie.id.toLong()
         fetchCast(movieId)
-        entityListReview = MediatorLiveData<Entity<PagingData<Review>>>().apply {
+        entityListReview.apply {
             val listReview = Pager(
                 config = pagingConfig,
                 pagingSourceFactory = { ReviewPagingDataSource(movieId, fetchMoviewReviewUseCase) }
-            ).liveData
+            ).liveData.cachedIn(viewModelScope)
 
             postValue(Entity.Idle())
 

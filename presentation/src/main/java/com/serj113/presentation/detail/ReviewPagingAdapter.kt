@@ -30,7 +30,8 @@ class ReviewPagingAdapter :
         private val binding: ReviewListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(review: Review) {
-
+            binding.tvReviewAuthor.text = review.author
+            binding.tvReviewContent.text = review.content
         }
     }
 }

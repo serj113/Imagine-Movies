@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:textSize="18sp"
-        android:id="@+id/tv_no_reviews"
-        android:drawableTop="@drawable/comment"
-        android:text="@string/review_empty"
-        android:visibility="invisible"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:textSize="18sp"-->
+<!--        android:id="@+id/tv_no_reviews"-->
+<!--        android:drawableTop="@drawable/comment"-->
+<!--        android:text="@string/review_empty"-->
+<!--        android:visibility="invisible"/>-->
 
 </FrameLayout>

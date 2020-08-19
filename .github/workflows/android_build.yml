@@ -17,7 +17,7 @@ jobs:
 
     - name: Decode google-services.json
       env:
-        GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        GOOGLE_SERVICES_JSON: ${ secrets.GOOGLE_SERVICES_JSON }
       run: echo $FIREBASE_CONFIG > app/google-services.json
 
     - name: Build with Gradle

@@ -12,6 +12,7 @@ class ListLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<ListLoadStateAdapter.LoadStateViewHolder>() {
 
     override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
+
         holder.bind(loadState)
     }
 

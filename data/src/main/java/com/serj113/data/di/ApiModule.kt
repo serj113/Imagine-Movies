@@ -1,15 +1,14 @@
 package com.serj113.data.di
 
+import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.serj113.data.BuildConfig
 import com.serj113.data.api.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
@@ -18,8 +17,13 @@ import javax.inject.Singleton
 class ApiModule {
     @Provides
     @Singleton
-    internal fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder().build()
+    internal fun provideOkHttpClient(
+        flipperOkhttpInterceptor: FlipperOkhttpInterceptor
+    ): OkHttpClient {
+        return OkHttpClient
+            .Builder()
+            .addNetworkInterceptor(flipperOkhttpInterceptor)
+            .build()
     }
 
 //    need to enable multidex
@@ -33,9 +37,10 @@ class ApiModule {
 
     @Provides
     @Singleton
-    internal fun provideRetrofitInterface(): Retrofit {
+    internal fun provideRetrofitInterface(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }

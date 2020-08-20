@@ -105,6 +105,11 @@ dependencies {
     // Crashlytics
     implementation "com.google.firebase:firebase-crashlytics:$crashlytics_version"
 
+    // Flipper
+    debugImplementation "com.facebook.flipper:flipper:$flipper_version"
+    debugImplementation "com.facebook.flipper:flipper-network-plugin:$flipper_version"
+    debugImplementation "com.facebook.soloader:soloader:$soloader_version"
+
     // MockK
     testImplementation "io.mockk:mockk:$mockk_version"
 

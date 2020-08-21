@@ -10,6 +10,7 @@ apply plugin: 'com.google.firebase.crashlytics'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+    ndkVersion "20.1.5948944"
 
     defaultConfig {
         multiDexEnabled true

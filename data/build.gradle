@@ -69,6 +69,7 @@ dependencies {
     // Flipper
     debugImplementation "com.facebook.flipper:flipper:$flipper_version"
     debugImplementation "com.facebook.flipper:flipper-network-plugin:$flipper_version"
+    debugImplementation "com.facebook.soloader:soloader:$soloader_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

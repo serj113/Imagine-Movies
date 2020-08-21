@@ -1,6 +1,5 @@
 package com.serj113.data.di
 
-import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.serj113.data.BuildConfig
 import com.serj113.data.api.MovieApi
 import dagger.Module
@@ -15,26 +14,6 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 @Module
 class ApiModule {
-    @Provides
-    @Singleton
-    internal fun provideOkHttpClient(
-        flipperOkhttpInterceptor: FlipperOkhttpInterceptor
-    ): OkHttpClient {
-        return OkHttpClient
-            .Builder()
-            .addNetworkInterceptor(flipperOkhttpInterceptor)
-            .build()
-    }
-
-//    need to enable multidex
-//    @Provides
-//    @Singleton
-//    internal fun provideMoshi(): Moshi {
-//        return Moshi.Builder()
-//            .add(KotlinJsonAdapterFactory())
-//            .build()
-//    }
-
     @Provides
     @Singleton
     internal fun provideRetrofitInterface(okHttpClient: OkHttpClient): Retrofit {

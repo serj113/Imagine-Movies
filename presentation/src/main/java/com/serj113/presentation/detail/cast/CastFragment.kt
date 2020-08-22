@@ -1,4 +1,4 @@
-package com.serj113.presentation.detail
+package com.serj113.presentation.detail.cast
 
 import android.graphics.drawable.ClipDrawable
 import android.os.Bundle
@@ -11,11 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.serj113.presentation.databinding.FragmentCastBinding
+import com.serj113.presentation.detail.MovieDetailViewModel
 
 class CastFragment : Fragment() {
 
     private lateinit var binding: FragmentCastBinding
-    private val adapter = CastRecyclerViewAdapter()
+    private val adapter =
+        CastRecyclerViewAdapter()
     private val viewModel: MovieDetailViewModel by activityViewModels()
 
     override fun onCreateView(

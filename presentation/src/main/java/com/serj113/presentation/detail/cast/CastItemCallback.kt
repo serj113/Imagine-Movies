@@ -1,4 +1,4 @@
-package com.serj113.presentation.detail
+package com.serj113.presentation.detail.cast
 
 import androidx.recyclerview.widget.DiffUtil
 import com.serj113.domain.entity.Cast

@@ -1,4 +1,4 @@
-package com.serj113.presentation.detail
+package com.serj113.presentation.detail.cast
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

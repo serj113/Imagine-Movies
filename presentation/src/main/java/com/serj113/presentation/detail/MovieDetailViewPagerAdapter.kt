@@ -2,6 +2,9 @@ package com.serj113.presentation.detail
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.serj113.presentation.detail.cast.CastFragment
+import com.serj113.presentation.detail.info.InfoFragment
+import com.serj113.presentation.detail.review.ReviewFragment
 
 class MovieDetailViewPagerAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {

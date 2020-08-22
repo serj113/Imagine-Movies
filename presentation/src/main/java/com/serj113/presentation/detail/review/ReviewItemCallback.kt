@@ -1,4 +1,4 @@
-package com.serj113.presentation.detail
+package com.serj113.presentation.detail.review
 
 import androidx.recyclerview.widget.DiffUtil
 import com.serj113.domain.entity.Review

@@ -18,8 +18,10 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MovieListFragment : Fragment() {
 
-    private lateinit var binding: MovieListFragmentBinding
     private lateinit var adapter: MoviePagingAdapter
+    private var _binding: MovieListFragmentBinding? = null
+
+    private val binding get() = _binding
 
     private val viewModel: MovieListViewModel by viewModels()
 
@@ -27,10 +29,10 @@ class MovieListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = MovieListFragmentBinding.inflate(inflater, container, false)
+        _binding = MovieListFragmentBinding.inflate(inflater, container, false)
         initAdapter()
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,11 +57,18 @@ class MovieListFragment : Fragment() {
         })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun initAdapter() {
         adapter = MoviePagingAdapter(::onClick)
-        binding.recyclerView.adapter = adapter.withLoadStateFooter(
-            ListLoadStateAdapter(this@MovieListFragment::onClickRetry)
-        )
+        binding?.let {
+            it.recyclerView.adapter = adapter.withLoadStateFooter(
+                ListLoadStateAdapter(this@MovieListFragment::onClickRetry)
+            )
+        }
     }
 
     private fun navigateToMovieDetail(movie: Movie) {

@@ -111,6 +111,9 @@ dependencies {
     debugImplementation "com.facebook.flipper:flipper-network-plugin:$flipper_version"
     debugImplementation "com.facebook.soloader:soloader:$soloader_version"
 
+    // Leak Canary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
+
     // MockK
     testImplementation "io.mockk:mockk:$mockk_version"
 

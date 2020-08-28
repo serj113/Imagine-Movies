@@ -15,21 +15,21 @@ import com.serj113.presentation.detail.MovieDetailViewModel
 
 class CastFragment : Fragment() {
 
-    private lateinit var binding: FragmentCastBinding
-    private val adapter =
-        CastRecyclerViewAdapter()
+    private var _binding: FragmentCastBinding? = null
+    private val adapter = CastRecyclerViewAdapter()
     private val viewModel: MovieDetailViewModel by activityViewModels()
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCastBinding.inflate(inflater, container, false)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView
-            .addItemDecoration(DividerItemDecoration(context, ClipDrawable.HORIZONTAL))
-        binding.recyclerView.adapter = adapter
-        return binding.root
+        _binding = FragmentCastBinding.inflate(inflater, container, false)
+        binding?.recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        binding?.recyclerView
+            ?.addItemDecoration(DividerItemDecoration(context, ClipDrawable.HORIZONTAL))
+        binding?.recyclerView?.adapter = adapter
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,5 +38,10 @@ class CastFragment : Fragment() {
         viewModel.getListCast().observe(viewLifecycleOwner, Observer {
             adapter.set(it)
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

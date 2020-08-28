@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MovieListFragment : Fragment() {
 
-    private lateinit var adapter: MoviePagingAdapter
+    private var adapter: MoviePagingAdapter? = null
     private var _binding: MovieListFragmentBinding? = null
 
     private val binding get() = _binding
@@ -43,7 +43,7 @@ class MovieListFragment : Fragment() {
                 is MovieListViewState.Success -> {
                     it.data?.let { pagedList->
                         lifecycleScope.launch {
-                            adapter.submitData(pagedList)
+                            adapter?.submitData(pagedList)
                         }
                     }
                 }
@@ -58,14 +58,18 @@ class MovieListFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
+        adapter = null
+        binding?.let {
+            it.recyclerView.adapter = null
+        }
         _binding = null
+        super.onDestroy()
     }
 
     private fun initAdapter() {
         adapter = MoviePagingAdapter(::onClick)
         binding?.let {
-            it.recyclerView.adapter = adapter.withLoadStateFooter(
+            it.recyclerView.adapter = adapter?.withLoadStateFooter(
                 ListLoadStateAdapter(this@MovieListFragment::onClickRetry)
             )
         }
@@ -80,6 +84,6 @@ class MovieListFragment : Fragment() {
     }
 
     private fun onClickRetry() {
-        adapter.retry()
+        adapter?.retry()
     }
 }

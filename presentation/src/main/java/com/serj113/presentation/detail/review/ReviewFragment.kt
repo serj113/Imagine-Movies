@@ -19,23 +19,24 @@ import kotlinx.coroutines.launch
 
 class ReviewFragment : Fragment() {
 
-    private lateinit var binding: FragmentReviewBinding
-    private lateinit var adapter: ReviewPagingAdapter
+    private var _binding: FragmentReviewBinding? = null
+    private var adapter: ReviewPagingAdapter? = null
     private val viewModel: MovieDetailViewModel by activityViewModels()
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentReviewBinding.inflate(inflater, container, false)
+        _binding = FragmentReviewBinding.inflate(inflater, container, false)
         adapter = ReviewPagingAdapter()
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView
-            .addItemDecoration(DividerItemDecoration(context, ClipDrawable.HORIZONTAL))
-        binding.recyclerView.adapter = adapter.withLoadStateFooter(
+        binding?.recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        binding?.recyclerView
+            ?.addItemDecoration(DividerItemDecoration(context, ClipDrawable.HORIZONTAL))
+        binding?.recyclerView?.adapter = adapter?.withLoadStateFooter(
             ListLoadStateAdapter(this::onClickRetry)
         )
-        return binding.root
+        return binding?.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -45,7 +46,7 @@ class ReviewFragment : Fragment() {
             when (it) {
                 is Entity.Success -> {
                     lifecycleScope.launch {
-                        adapter.submitData(it.data)
+                        adapter?.submitData(it.data)
                     }
                 }
                 else -> { }
@@ -53,7 +54,13 @@ class ReviewFragment : Fragment() {
         })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+        adapter = null
+    }
+
     private fun onClickRetry() {
-        adapter.retry()
+        adapter?.retry()
     }
 }

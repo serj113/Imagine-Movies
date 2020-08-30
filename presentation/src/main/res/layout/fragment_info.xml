@@ -25,15 +25,15 @@
                     android:id="@+id/tv_overview_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="@string/info_synopsis" />
+                    android:text="@string/info_synopsis"
+                    style="@style/HeaderLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_overview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    tools:text="over view" />
+                    android:text="Somehitng Synopsis"
+                    style="@style/BasicLabelStyle"/>
 
             </LinearLayout>
 
@@ -51,11 +51,11 @@
                     android:id="@+id/tv_vote_average_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
                     android:text="@string/info_avg_rating"
                     app:layout_constraintBottom_toTopOf="@+id/iv_star"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/HeaderLabelStyle" />
 
                 <ImageView
                     android:id="@+id/iv_star"
@@ -139,8 +139,8 @@
                     android:id="@+id/tv_detail_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="@string/info_details" />
+                    android:text="@string/info_details"
+                    style="@style/HeaderLabelStyle"/>
 
                 <TextView
                     android:id="@+id/tv_original_title_label"
@@ -148,16 +148,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/info_original_title"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_label" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_label"
+                    style="@style/LighterBasicLabelStyle"/>
 
                 <TextView
                     android:id="@+id/tv_original_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_original_title_label"
                     app:layout_constraintStart_toEndOf="@+id/tv_release_date_label"
-                    tools:text="Deadpool 2" />
+                    tools:text="Deadpool 2"
+                    style="@style/BasicLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_release_date_label"
@@ -165,16 +166,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/info_release_date"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_original_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_original_title"
+                    style="@style/LighterBasicLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_release_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_release_date_label"
                     app:layout_constraintStart_toEndOf="@+id/tv_release_date_label"
-                    tools:text="2018-06-18" />
+                    tools:text="2018-06-18"
+                    style="@style/BasicLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_budget_label"
@@ -182,16 +184,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/info_budget"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_status_label" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_status_label"
+                    style="@style/LighterBasicLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_budget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_budget_label"
                     app:layout_constraintStart_toEndOf="@+id/tv_release_date_label"
-                    tools:text="$10,000,000" />
+                    tools:text="$10,000,000"
+                    style="@style/BasicLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_revenue_label"
@@ -199,16 +202,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/info_revenue"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_budget_label" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_budget_label"
+                    style="@style/LighterBasicLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_revenue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_revenue_label"
                     app:layout_constraintStart_toEndOf="@+id/tv_release_date_label"
-                    tools:text="$500,000,000" />
+                    tools:text="$500,000,000"
+                    style="@style/BasicLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_status_label"
@@ -216,16 +220,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/info_status"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_release_date_label" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_release_date_label"
+                    style="@style/LighterBasicLabelStyle" />
 
                 <TextView
                     android:id="@+id/tv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_status_label"
                     app:layout_constraintStart_toEndOf="@+id/tv_release_date_label"
-                    tools:text="Released" />
+                    tools:text="Released"
+                    style="@style/BasicLabelStyle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

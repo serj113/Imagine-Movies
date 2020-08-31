@@ -11,7 +11,7 @@ data class MovieDetailResponse(
     @field:Json(name = "belongs_to_collection")
     var belongsToCollection: Any? = null,
     @field:Json(name = "budget")
-    var budget: Int = 0,
+    var budget: Long = 0L,
     @field:Json(name = "credits")
     var credits: RemoteCredits = RemoteCredits(),
     @field:Json(name = "genres")
@@ -39,7 +39,7 @@ data class MovieDetailResponse(
     @field:Json(name = "release_date")
     var releaseDate: String = "",
     @field:Json(name = "revenue")
-    var revenue: Int = 0,
+    var revenue: Long = 0L,
     @field:Json(name = "runtime")
     var runtime: Int = 0,
     @field:Json(name = "spoken_languages")

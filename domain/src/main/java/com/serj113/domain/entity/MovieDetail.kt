@@ -3,7 +3,7 @@ package com.serj113.domain.entity
 data class MovieDetail(
     var adult: Boolean,
     var backdropPath: String,
-    var budget: Int,
+    var budget: Long,
     var credits: Credits,
     var genres: List<Genre>,
     var homepage: String,
@@ -15,7 +15,7 @@ data class MovieDetail(
     var popularity: Double,
     var posterPath: String,
     var releaseDate: String,
-    var revenue: Int,
+    var revenue: Long,
     var runtime: Int,
     var status: String,
     var tagline: String,

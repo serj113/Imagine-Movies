@@ -73,7 +73,6 @@
                     android:id="@+id/tv_vote_average"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -86,14 +85,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:text="10"
-                    android:textColor="@android:color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_vote_average"
                     app:layout_constraintEnd_toStartOf="@id/tv_vote_count"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/guideline"
                     app:layout_constraintTop_toTopOf="@+id/tv_vote_average"
-                    tools:text="/10" />
+                    android:text="/10" />
 
                 <ImageView
                     android:id="@+id/iv_person"
@@ -109,7 +106,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:textColor="@android:color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_person"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/iv_person"
@@ -140,6 +136,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/info_details"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     style="@style/HeaderLabelStyle"/>
 
                 <TextView

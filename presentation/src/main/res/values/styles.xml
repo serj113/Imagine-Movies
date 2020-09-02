@@ -28,4 +28,9 @@
         <item name="fontWeight">300</item>
     </style>
 
+    <style name="CardGreyBackground">
+        <item name="cardBackgroundColor">@color/light_gray</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="contentPadding">8dp</item>
+    </style>
 </resources>

@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CardGreyBackground"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/review_item_selector"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/tv_review_author"
-            android:drawableStart="@drawable/face"
-            android:drawableLeft="@drawable/face" />
-
-        <TextView
+            style="@style/HeaderLabelStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_review_content" />
+            android:drawableStart="@drawable/face"
+            android:drawableLeft="@drawable/face"
+            android:drawablePadding="8dp" />
+
+        <TextView
+            android:id="@+id/tv_review_content"
+            style="@style/BasicLabelStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

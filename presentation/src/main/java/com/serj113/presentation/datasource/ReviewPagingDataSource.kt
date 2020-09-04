@@ -18,20 +18,23 @@ class ReviewPagingDataSource constructor(
         return try {
             val mutableListReview = mutableListOf<Review>()
             val pageKey = params.key ?: 1L
+            var totalPages = 0
             useCase.invoke(FetchMovieReviewUseCase.Args(movieId, pageKey))
                 .onEach { entity ->
                     when (entity) {
                         is Success -> {
-                            mutableListReview.addAll(entity.data)
+                            totalPages = entity.data.totalPages
+                            mutableListReview.addAll(entity.data.results)
                         }
                     }
                 }
                 .collect()
 
+            val nextKey = if (pageKey + 1 > totalPages) null else pageKey + 1
             Page(
                 data = mutableListReview,
                 prevKey = null,
-                nextKey = pageKey + 1
+                nextKey = nextKey
             )
         } catch (exception: IOException) {
             return Error(exception)

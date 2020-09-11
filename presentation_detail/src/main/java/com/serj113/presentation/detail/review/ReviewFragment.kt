@@ -9,10 +9,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.serj113.common.presentation.adapter.ListLoadStateAdapter
 import com.serj113.domain.base.Entity
-import com.serj113.presentation.adapter.ListLoadStateAdapter
-import com.serj113.presentation.databinding.FragmentReviewBinding
 import com.serj113.presentation.detail.MovieDetailViewModel
+import com.serj113.presentation.detail.databinding.FragmentReviewBinding
 import kotlinx.coroutines.launch
 
 class ReviewFragment : Fragment() {

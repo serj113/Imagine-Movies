@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.serj113.presentation.databinding.FragmentInfoBinding
 import com.serj113.presentation.detail.MovieDetailViewModel
+import com.serj113.presentation.detail.databinding.FragmentInfoBinding
 
 class InfoFragment : Fragment() {
 

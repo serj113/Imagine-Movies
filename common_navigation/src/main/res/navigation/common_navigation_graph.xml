@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/presentation_list_navigation_graph"
+    android:id="@+id/common_navigation_graph"
     app:startDestination="@id/movieListFragment">
 
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.serj113.presentation.list.MovieListFragment"
-        android:label="movie_list_fragment"
-        tools:layout="@layout/movie_list_fragment" >
+        android:label="movie_list_fragment" >
         <action
             android:id="@+id/action_movieListFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -17,8 +15,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.serj113.presentation.detail.MovieDetailFragment"
-        android:label="detail_fragment"
-        tools:layout="@layout/movie_detail_fragment" >
+        android:label="detail_fragment" >
         <argument
             android:name="movie"
             app:argType="com.serj113.domain.entity.Movie" />

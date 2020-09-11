@@ -1,9 +1,16 @@
 package com.serj113.presentation.detail
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
+import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.serj113.common.presentation.util.DateUtils
 import com.serj113.common.presentation.util.NumberUtils
 import com.serj113.domain.base.Entity
@@ -14,6 +21,7 @@ import com.serj113.domain.interactor.FetchMovieDetailUseCase
 import com.serj113.domain.interactor.FetchMovieReviewUseCase
 import com.serj113.presentation.detail.datasource.ReviewPagingDataSource
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
@@ -76,10 +84,6 @@ class MovieDetailViewModel @ViewModelInject constructor(
                 postValue(Entity.Success(it))
             }
         }
-    }
-
-    private fun Pager(config: PagingConfig, pagingSourceFactory: () -> Unit): Any {
-
     }
 
     fun getMovieBackdrop(): LiveData<String> = movieBackdrop

@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.serj113.domain.entity.Review
-import com.serj113.presentation.databinding.ReviewListItemBinding
+import com.serj113.presentation.detail.databinding.ReviewListItemBinding
 
 class ReviewPagingAdapter :
-    PagingDataAdapter<Review, ReviewPagingAdapter.ReviewItemViewHolder>(com.serj113.presentation.detail.review.ReviewItemCallback) {
+    PagingDataAdapter<Review, ReviewPagingAdapter.ReviewItemViewHolder>(ReviewItemCallback) {
 
     override fun onBindViewHolder(holder: ReviewItemViewHolder, position: Int) {
         getItem(position)?.let { review ->

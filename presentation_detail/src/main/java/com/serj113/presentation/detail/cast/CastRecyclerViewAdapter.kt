@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.serj113.domain.entity.Cast
-import com.serj113.presentation.BuildConfig
-import com.serj113.presentation.databinding.CastListItemBinding
+import com.serj113.presentation.detail.BuildConfig
+import com.serj113.presentation.detail.databinding.CastListItemBinding
 
 class CastRecyclerViewAdapter :
     RecyclerView.Adapter<CastRecyclerViewAdapter.CastItemViewHolder>() {

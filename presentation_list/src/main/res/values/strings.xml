@@ -4,21 +4,4 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="button_retry_text">Retry</string>
-
-    <!-- info -->
-    <string name="info_synopsis">Synopsis</string>
-    <string name="info_avg_rating">Avg rating</string>
-    <string name="info_details">Details</string>
-    <string name="info_original_title">Original Title</string>
-    <string name="info_release_date">Release Date</string>
-    <string name="info_budget">Budget</string>
-    <string name="info_revenue">Revenue</string>
-    <string name="info_status">Status</string>
-
-    <!-- review -->
-    <string name="review_empty">No reviews found.\n\nSorry, we couldn\'t find any reviews,
-        please check back later.</string>
 </resources>

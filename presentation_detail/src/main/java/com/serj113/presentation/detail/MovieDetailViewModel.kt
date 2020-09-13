@@ -14,11 +14,11 @@ import androidx.paging.liveData
 import com.serj113.common.presentation.util.DateUtils
 import com.serj113.common.presentation.util.NumberUtils
 import com.serj113.domain.base.Entity
-import com.serj113.domain.entity.Cast
-import com.serj113.domain.entity.Movie
-import com.serj113.domain.entity.Review
 import com.serj113.domain.interactor.FetchMovieDetailUseCase
 import com.serj113.domain.interactor.FetchMovieReviewUseCase
+import com.serj113.model.Cast
+import com.serj113.model.Movie
+import com.serj113.model.Review
 import com.serj113.presentation.detail.datasource.ReviewPagingDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -78,7 +78,7 @@ class MovieDetailViewModel @ViewModelInject constructor(
                 pagingSourceFactory = { ReviewPagingDataSource(movieId, fetchMoviewReviewUseCase) }
             ).liveData.cachedIn(viewModelScope)
 
-            postValue(Entity.Idle())
+            postValue(Entity.Idle)
 
             addSource(listReview) {
                 postValue(Entity.Success(it))

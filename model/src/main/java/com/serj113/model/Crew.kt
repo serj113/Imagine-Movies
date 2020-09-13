@@ -1,9 +1,10 @@
-package com.serj113.data.model
+package com.serj113.model
 
-import com.serj113.domain.entity.Crew
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-data class RemoteCrew(
+@JsonClass(generateAdapter = true)
+data class Crew(
     @field:Json(name = "credit_id")
     var creditId: String = "",
     @field:Json(name = "department")
@@ -19,7 +20,3 @@ data class RemoteCrew(
     @field:Json(name = "profile_path")
     var profilePath: String? = null
 )
-
-fun RemoteCrew.toCrewEntity() = Crew(creditId, department, gender, id, job, name, profilePath ?: "")
-
-fun List<RemoteCrew>.toCrewEntities(): List<Crew> = map { it.toCrewEntity() }

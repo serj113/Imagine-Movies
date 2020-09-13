@@ -1,3 +1,4 @@
+include ':model'
 include ':common_navigation'
 rootProject.name='Imagine-Movies'
 include ':app'

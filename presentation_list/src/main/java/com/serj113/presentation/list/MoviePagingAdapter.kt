@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.serj113.domain.entity.Movie
+import com.serj113.model.Movie
 import com.serj113.presentation.BuildConfig
 import com.serj113.presentation.databinding.MovieListItemBinding
 

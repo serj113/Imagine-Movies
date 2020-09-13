@@ -4,8 +4,8 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingSource.LoadResult.Page
 import androidx.paging.PagingSource.LoadResult.Error
 import com.serj113.domain.base.Entity.Success
-import com.serj113.domain.entity.Review
 import com.serj113.domain.interactor.FetchMovieReviewUseCase
+import com.serj113.model.Review
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import java.io.IOException

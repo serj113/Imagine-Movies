@@ -1,8 +1,10 @@
-package com.serj113.data.model
+package com.serj113.model
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-data class RemoteProductionCompany(
+@JsonClass(generateAdapter = true)
+data class ProductionCompany(
     @field:Json(name = "id")
     var id: Int,
     @field:Json(name = "logo_path")

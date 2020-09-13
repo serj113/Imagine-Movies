@@ -1,7 +1,7 @@
 package com.serj113.presentation.list
 
 import androidx.paging.PagingData
-import com.serj113.domain.entity.Movie
+import com.serj113.model.Movie
 
 sealed class MovieListViewState {
     data class Success(val data: PagingData<Movie>?) : MovieListViewState()

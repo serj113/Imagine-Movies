@@ -1,9 +1,13 @@
-package com.serj113.data.model
+package com.serj113.model
 
-import com.serj113.domain.entity.Movie
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
-data class RemoteMovie (
+@JsonClass(generateAdapter = true)
+@Parcelize
+data class Movie (
     @field:Json(name = "adult")
     var adult: Boolean = false,
     @field:Json(name = "backdrop_path")
@@ -32,23 +36,4 @@ data class RemoteMovie (
     var voteAverage: Double = 0.0,
     @field:Json(name = "vote_count")
     var voteCount: Int = 0
-)
-
-fun RemoteMovie.toMovieEntity() = Movie(
-    adult,
-    backdropPath ?: "",
-    genreIds,
-    id,
-    originalLanguage,
-    originalTitle,
-    overview,
-    popularity,
-    posterPath ?: "",
-    releaseDate,
-    title,
-    video,
-    voteAverage,
-    voteCount
-)
-
-fun List<RemoteMovie>.toMovieEntities(): List<Movie> = this.map { it.toMovieEntity() }
+) : Parcelable

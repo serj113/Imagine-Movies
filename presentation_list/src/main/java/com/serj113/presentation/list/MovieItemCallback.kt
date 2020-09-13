@@ -1,7 +1,7 @@
 package com.serj113.presentation.list
 
 import androidx.recyclerview.widget.DiffUtil
-import com.serj113.domain.entity.Movie
+import com.serj113.model.Movie
 
 object MovieItemCallback : DiffUtil.ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie) = oldItem.id == newItem.id

@@ -7,9 +7,8 @@ import com.serj113.domain.base.Entity
 import com.serj113.domain.base.Entity.Idle
 import com.serj113.domain.base.Entity.Success
 import com.serj113.domain.base.Entity.Error
-import com.serj113.domain.entity.Movie
 import com.serj113.domain.interactor.FetchMovieUseCase
-import com.serj113.presentation.list.datasource.MoviePagingDataSource
+import com.serj113.model.Movie
 
 class MovieListViewModel @ViewModelInject constructor(
     private val useCase: FetchMovieUseCase
@@ -19,10 +18,14 @@ class MovieListViewModel @ViewModelInject constructor(
     private val entityListMovie = MediatorLiveData<Entity<PagingData<Movie>>>().apply {
         val listMovie = Pager(
             config = config,
-            pagingSourceFactory = { MoviePagingDataSource(useCase) }
+            pagingSourceFactory = {
+                MoviePagingDataSource(
+                    useCase
+                )
+            }
         ).liveData.cachedIn(viewModelScope)
 
-        postValue(Idle())
+        postValue(Idle)
 
         addSource(listMovie) {
             postValue(Success(it))

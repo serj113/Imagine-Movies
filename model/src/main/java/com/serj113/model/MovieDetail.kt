@@ -1,9 +1,10 @@
-package com.serj113.data.model
+package com.serj113.model
 
-import com.serj113.domain.entity.MovieDetail
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-data class MovieDetailResponse(
+@JsonClass(generateAdapter = true)
+data class MovieDetail(
     @field:Json(name = "adult")
     var adult: Boolean = false,
     @field:Json(name = "backdrop_path")
@@ -13,9 +14,9 @@ data class MovieDetailResponse(
     @field:Json(name = "budget")
     var budget: Long = 0L,
     @field:Json(name = "credits")
-    var credits: RemoteCredits = RemoteCredits(),
+    var credits: Credits = Credits(),
     @field:Json(name = "genres")
-    var genres: List<RemoteGenre> = listOf(),
+    var genres: List<Genre> = listOf(),
     @field:Json(name = "homepage")
     var homepage: String = "",
     @field:Json(name = "id")
@@ -33,9 +34,9 @@ data class MovieDetailResponse(
     @field:Json(name = "poster_path")
     var posterPath: String = "",
     @field:Json(name = "production_companies")
-    var productionCompanies: List<RemoteProductionCompany> = listOf(),
+    var productionCompanies: List<ProductionCompany> = listOf(),
     @field:Json(name = "production_countries")
-    var productionCountries: List<RemoteProductionCountry> = listOf(),
+    var productionCountries: List<ProductionCountry> = listOf(),
     @field:Json(name = "release_date")
     var releaseDate: String = "",
     @field:Json(name = "revenue")
@@ -43,7 +44,7 @@ data class MovieDetailResponse(
     @field:Json(name = "runtime")
     var runtime: Int = 0,
     @field:Json(name = "spoken_languages")
-    var spokenLanguages: List<RemoteSpokenLanguage> = listOf(),
+    var spokenLanguages: List<SpokenLanguage> = listOf(),
     @field:Json(name = "status")
     var status: String = "",
     @field:Json(name = "tagline")
@@ -57,30 +58,3 @@ data class MovieDetailResponse(
     @field:Json(name = "vote_count")
     var voteCount: Int = 0
 )
-
-fun MovieDetailResponse.toMovieDetailEntity(): MovieDetail {
-    return MovieDetail(
-        adult,
-        backdropPath ?: "",
-        budget,
-        credits.toCreditsEntity(),
-        genres.toGenreEntities(),
-        homepage,
-        id,
-        imdbId,
-        originalLanguage,
-        originalTitle,
-        overview,
-        popularity,
-        posterPath,
-        releaseDate,
-        revenue,
-        runtime,
-        status,
-        tagline,
-        title,
-        video,
-        voteAverage,
-        voteCount
-    )
-}

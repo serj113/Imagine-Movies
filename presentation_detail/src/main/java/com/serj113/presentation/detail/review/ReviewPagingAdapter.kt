@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.serj113.domain.entity.Review
+import com.serj113.model.Review
 import com.serj113.presentation.detail.databinding.ReviewListItemBinding
 
 class ReviewPagingAdapter :

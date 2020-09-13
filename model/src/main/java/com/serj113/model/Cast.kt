@@ -1,9 +1,10 @@
-package com.serj113.data.model
+package com.serj113.model
 
-import com.serj113.domain.entity.Cast
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-data class RemoteCast(
+@JsonClass(generateAdapter = true)
+data class Cast(
     @field:Json(name = "cast_id")
     var castId: Int = 0,
     @field:Json(name = "character")
@@ -21,8 +22,3 @@ data class RemoteCast(
     @field:Json(name = "profile_path")
     var profilePath: String? = null
 )
-
-fun RemoteCast.toCastEntity() =
-    Cast(castId, character, creditId, gender, id, name, order, profilePath ?: "")
-
-fun List<RemoteCast>.toCastEntities() = map { it.toCastEntity() }

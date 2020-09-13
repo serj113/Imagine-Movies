@@ -1,9 +1,10 @@
 package com.serj113.data.api
 
 import com.serj113.data.BuildConfig
-import com.serj113.data.model.MovieDetailResponse
-import com.serj113.data.model.MovieResponse
-import com.serj113.data.model.ReviewResponse
+import com.serj113.model.MovieDetail
+import com.serj113.model.MovieList
+import com.serj113.model.ReviewList
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -16,7 +17,7 @@ interface MovieApi {
 
         @Query("page")
         page: Long
-    ): MovieResponse
+    ): Response<MovieList>
 
     @GET("movie/popular")
     suspend fun getPopularMovie(
@@ -25,13 +26,13 @@ interface MovieApi {
 
         @Query("page")
         page: Long
-    ): MovieResponse
+    ): Response<MovieList>
 
     @GET("movie/latest")
     suspend fun getLatestMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
-    ): MovieResponse
+    ): Response<MovieList>
 
     @GET("movie/{id}")
     suspend fun getMovieDetail(
@@ -41,7 +42,7 @@ interface MovieApi {
         appendToResponse: String = "credits",
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
-    ): MovieDetailResponse
+    ): Response<MovieDetail>
 
     @GET("movie/{id}/reviews")
     suspend fun getMovieReviews(
@@ -51,5 +52,5 @@ interface MovieApi {
         page: Long,
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY
-    ): ReviewResponse
+    ): Response<ReviewList>
 }

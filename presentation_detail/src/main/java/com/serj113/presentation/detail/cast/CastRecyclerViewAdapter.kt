@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.serj113.domain.entity.Cast
+import com.serj113.model.Cast
 import com.serj113.presentation.detail.BuildConfig
 import com.serj113.presentation.detail.databinding.CastListItemBinding
 
@@ -40,7 +40,7 @@ class CastRecyclerViewAdapter :
         private val binding: CastListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(cast: Cast) {
-            if (cast.profilePath.isNotEmpty()) {
+            if (cast.profilePath?.isNotEmpty() == true) {
                 Glide.with(binding.ivCast)
                     .load(BuildConfig.IMAGE_URL + cast.profilePath)
                     .into(binding.ivCast)

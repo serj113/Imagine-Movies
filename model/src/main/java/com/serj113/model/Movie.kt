@@ -1,7 +1,12 @@
 package com.serj113.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
+@JsonClass(generateAdapter = true)
+@Parcelize
 data class Movie (
     @field:Json(name = "adult")
     var adult: Boolean = false,
@@ -31,4 +36,4 @@ data class Movie (
     var voteAverage: Double = 0.0,
     @field:Json(name = "vote_count")
     var voteCount: Int = 0
-)
+) : Parcelable

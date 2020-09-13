@@ -18,6 +18,6 @@
         android:label="detail_fragment" >
         <argument
             android:name="movie"
-            app:argType="com.serj113.domain.entity.Movie" />
+            app:argType="com.serj113.model.Movie" />
     </fragment>
 </navigation>

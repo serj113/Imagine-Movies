@@ -24,7 +24,7 @@ class MovieRepositoryImpl @Inject constructor(
 ) : MovieRepository {
     override fun fetchMovies(page: Long): Flow<Entity<List<Movie>>> {
         return flow {
-            emit(Loading<List<Movie>>())
+            emit(Loading)
             val movies: List<Movie> = movieApi.getDiscoverMovie(page = page)
                 .results.toMovieEntities()
             emit(Success(movies))
@@ -33,7 +33,7 @@ class MovieRepositoryImpl @Inject constructor(
 
     override fun fetchMovieReviews(movieId: Long, page: Long): Flow<Entity<MovieReview>> {
         return flow {
-            emit(Loading<MovieReview>())
+            emit(Loading)
             val reviews: MovieReview = movieApi.getMovieReviews(id = movieId, page = page)
                 .toReviewEntity()
             emit(Success(reviews))
@@ -42,7 +42,7 @@ class MovieRepositoryImpl @Inject constructor(
 
     override fun fetchMovieDetail(movieId: Long): Flow<Entity<MovieDetail>> {
         return flow {
-            emit(Loading<MovieDetail>())
+            emit(Loading)
             val response = movieApi.getMovieDetail(id = movieId)
             val movieDetail: MovieDetail = response.toMovieDetailEntity()
             emit(Success(movieDetail))

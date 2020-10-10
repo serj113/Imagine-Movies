@@ -67,6 +67,11 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:1.0.0-alpha01"
     annotationProcessor "androidx.hilt:hilt-compiler:1.0.0-alpha01"
 
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
     // Flipper
     debugImplementation "com.facebook.flipper:flipper:$flipper_version"
     debugImplementation "com.facebook.flipper:flipper-network-plugin:$flipper_version"

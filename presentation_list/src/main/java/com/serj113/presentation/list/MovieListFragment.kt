@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.serj113.common.presentation.adapter.ListLoadStateAdapter
-import com.serj113.presentation.databinding.MovieListFragmentBinding
+import com.serj113.presentation.list.databinding.MovieListFragmentBinding
 import com.serj113.common.presentation.util.navigateTo
 import com.serj113.model.Movie
 import com.serj113.presentation.list.MovieListFragmentDirections.actionMovieListFragmentToDetailFragment

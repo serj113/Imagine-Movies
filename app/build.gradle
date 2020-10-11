@@ -51,6 +51,7 @@ dependencies {
     implementation project(path: ':common_navigation')
     implementation project(path: ':presentation_detail')
     implementation project(path: ':presentation_list')
+    implementation project(path: ':presentation_login')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

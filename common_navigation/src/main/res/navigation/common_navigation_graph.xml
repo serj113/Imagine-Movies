@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.serj113.presentation.list.MovieListFragment"
-        android:label="movie_list_fragment" >
+        android:label="movie_list_fragment">
         <action
             android:id="@+id/action_movieListFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -15,9 +15,14 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.serj113.presentation.detail.MovieDetailFragment"
-        android:label="detail_fragment" >
+        android:label="detail_fragment">
         <argument
             android:name="movie"
             app:argType="com.serj113.model.Movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.serj113.presentation.login.LoginFragment"
+        android:label="login_fragment" >
     </fragment>
 </navigation>

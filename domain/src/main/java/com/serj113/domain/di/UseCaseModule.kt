@@ -3,9 +3,11 @@ package com.serj113.domain.di
 import com.serj113.domain.interactor.FetchMovieDetailUseCase
 import com.serj113.domain.interactor.FetchMovieReviewUseCase
 import com.serj113.domain.interactor.FetchMovieUseCase
+import com.serj113.domain.interactor.LoginUseCase
 import com.serj113.domain.usecase.FetchMovieDetailUseCaseImpl
 import com.serj113.domain.usecase.FetchMovieReviewUseCaseImpl
 import com.serj113.domain.usecase.FetchMovieUseCaseImpl
+import com.serj113.domain.usecase.LoginUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -32,4 +34,10 @@ abstract class UseCaseModule {
     internal abstract fun provideFetchMovieDetailUseCase(
         fetchMovieDetailUseCaseImpl: FetchMovieDetailUseCaseImpl
     ): FetchMovieDetailUseCase
+
+    @Binds
+    @Singleton
+    internal abstract fun provideLoginUseCase(
+        loginUseCaseImpl: LoginUseCaseImpl
+    ): LoginUseCase
 }

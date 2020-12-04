@@ -1,68 +1,52 @@
 package com.serj113.presentation.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
 import androidx.hilt.lifecycle.ViewModelInject
-import com.firebase.ui.auth.AuthUI
-import com.serj113.domain.interactor.FetchMovieUseCase
+import androidx.lifecycle.viewModelScope
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.serj113.domain.interactor.LoginUseCase
-import com.serj113.domain.repository.UserRepository
-import com.serj113.presentation.login.data.LoginRepository
-import com.serj113.presentation.login.data.Result
-import java.util.*
+import com.serj113.model.Account
+import com.serj113.model.AuthToken
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class LoginViewModel @ViewModelInject constructor(
+    private val useCase: LoginUseCase
 ) : ViewModel() {
 
-    private val _loginForm = MutableLiveData<LoginFormState>()
-    val loginFormState: LiveData<LoginFormState> = _loginForm
+    private lateinit var auth: FirebaseAuth
 
-    private val _loginResult = MutableLiveData<LoginResult>()
-    val loginResult: LiveData<LoginResult> = _loginResult
-
-    fun login() {
-        val providerList = listOf(
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
-        val intent = AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setIsSmartLockEnabled(!BuildConfig.DEBUG, true)
-            .setAvailableProviders(providerList)
-            .build()
-    }
-
-    fun loginDataChanged(username: String, password: String) {
-        if (!isUserNameValid(username)) {
-            _loginForm.value =
-                LoginFormState(
-                    usernameError = R.string.invalid_username
-                )
-        } else if (!isPasswordValid(password)) {
-            _loginForm.value =
-                LoginFormState(
-                    passwordError = R.string.invalid_password
-                )
-        } else {
-            _loginForm.value =
-                LoginFormState(
-                    isDataValid = true
-                )
+    fun signInFirebaseAuth(task: Task<GoogleSignInAccount>) {
+        val account = task.getResult(ApiException::class.java)
+        account?.idToken?.let {
+            firebaseAuthWithGoogle(it)
         }
     }
 
-    // A placeholder username validation check
-    private fun isUserNameValid(username: String): Boolean {
-        return if (username.contains("@")) {
-            Patterns.EMAIL_ADDRESS.matcher(username).matches()
-        } else {
-            username.isNotBlank()
-        }
+    fun setupAuth() {
+        auth = Firebase.auth
     }
 
-    // A placeholder password validation check
-    private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5
+    private fun firebaseAuthWithGoogle(idToken: String) = viewModelScope.launch {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        val task = auth.signInWithCredential(credential).await()
+        task?.let { authResult ->
+            authResult.user?.getIdToken(true)?.await()?.token?.let { token ->
+                val account = Account(
+                    authResult.user?.uid ?: "",
+                    authResult.user?.displayName ?: "",
+                    authResult.user?.email ?: ""
+                )
+                val authToken = AuthToken(token)
+                useCase.invoke(LoginUseCase.Args(account, authToken)).collect()
+            }
+        }
     }
 }

@@ -1,12 +1,12 @@
 package com.serj113.domain.interactor
 
-import com.serj113.domain.base.Entity
 import com.serj113.domain.base.FlowUseCase
-import com.serj113.model.MovieList
+import com.serj113.model.Account
+import com.serj113.model.AuthToken
 
-abstract class LoginUseCase : FlowUseCase<LoginUseCase.Args, Entity<MovieList>>() {
-
+abstract class LoginUseCase : FlowUseCase<LoginUseCase.Args, Boolean>() {
     data class Args(
-        val username: String
+        val account: Account,
+        val authToken: AuthToken
     )
 }

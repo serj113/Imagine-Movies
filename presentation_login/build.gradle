@@ -58,6 +58,18 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
+    // Firebase UI
+    implementation "com.firebaseui:firebase-ui-auth:6.3.0"
+
+    // Firebase Auth
+    implementation "com.google.firebase:firebase-auth-ktx:19.4.0"
+
+    // Google Play Services
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.6"
+
+    // Google Auth
+    implementation "com.google.android.gms:play-services-auth:$google_auth_version"
+
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_app_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_app_version"

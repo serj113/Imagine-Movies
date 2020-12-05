@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
     app:spanCount="2"
-    tools:context=".list.MovieListFragment"
+    tools:context=".MovieListFragment"
     tools:listitem="@layout/movie_list_item" />

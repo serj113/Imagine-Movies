@@ -1,8 +1,8 @@
-package com.serj113.data.local
+package com.serj113.data.local.database
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.serj113.data.local.entity.MovieLocal
+import com.serj113.data.local.database.entity.MovieLocal
 import kotlinx.coroutines.flow.Flow
 
 @Dao

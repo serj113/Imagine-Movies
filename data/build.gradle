@@ -67,15 +67,6 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:1.0.0-alpha01"
     annotationProcessor "androidx.hilt:hilt-compiler:1.0.0-alpha01"
 
-    // Firebase UI
-    implementation "com.firebaseui:firebase-ui-auth:6.3.0"
-
-    // Firebase Auth
-    implementation "com.google.firebase:firebase-auth-ktx:19.4.0"
-
-    // Google Auth
-    implementation "com.google.android.gms:play-services-auth:$google_auth_version"
-
     // Room
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"

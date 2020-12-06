@@ -2,8 +2,8 @@ package com.serj113.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.serj113.data.local.MovieDao
-import com.serj113.data.local.MovieDatabase
+import com.serj113.data.local.database.MovieDao
+import com.serj113.data.local.database.MovieDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.serj113.data.local.entity
+package com.serj113.data.local.database.entity
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

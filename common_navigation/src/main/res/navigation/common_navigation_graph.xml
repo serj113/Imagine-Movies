@@ -23,6 +23,12 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.serj113.presentation.login.LoginFragment"
-        android:label="login_fragment" >
+        android:label="login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/common_navigation_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

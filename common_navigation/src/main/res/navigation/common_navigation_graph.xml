@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/common_navigation_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/movieListFragment"
@@ -26,6 +26,23 @@
         android:label="login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/common_navigation_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.serj113.presentation.splash.SplashFragment"
+        android:label="splash_fragment">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@+id/loginFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/common_navigation_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_movieListFragment"
             app:destination="@id/movieListFragment"
             app:launchSingleTop="true"
             app:popUpTo="@+id/common_navigation_graph"

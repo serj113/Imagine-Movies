@@ -8,7 +8,5 @@ import javax.inject.Inject
 class IsLoginUseCaseImpl @Inject constructor(
     private val userRepository: UserRepository
 ) : IsLoginUseCase() {
-    override fun invoke(args: Nothing): Flow<Boolean> {
-        TODO("Not yet implemented")
-    }
+    override fun invoke(args: Unit): Flow<Boolean> = userRepository.isLogin()
 }

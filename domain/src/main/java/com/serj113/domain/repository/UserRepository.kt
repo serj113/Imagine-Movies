@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
     fun saveLoginData(account: Account, authToken: AuthToken): Flow<Boolean>
+    fun isLogin(): Flow<Boolean>
 }

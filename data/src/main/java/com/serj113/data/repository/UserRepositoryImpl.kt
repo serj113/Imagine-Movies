@@ -23,6 +23,12 @@ class UserRepositoryImpl @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
+    override fun isLogin(): Flow<Boolean> {
+        return flow {
+            emit(sharedPrefManager.getText("auth_token").isNotBlank())
+        }.flowOn(Dispatchers.IO)
+    }
+
     fun saveAccountToSharedPreferences(account: Account) = GlobalScope.launch {
         with(sharedPrefManager) {
             saveText("uid", account.uid)

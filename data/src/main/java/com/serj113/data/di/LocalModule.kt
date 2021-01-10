@@ -1,6 +1,7 @@
 package com.serj113.data.di
 
 import android.content.Context
+import androidx.annotation.NonNull
 import androidx.room.Room
 import com.serj113.data.local.database.MovieDao
 import com.serj113.data.local.database.MovieDatabase
@@ -14,19 +15,23 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 @Module
 class LocalModule {
+
+    private lateinit var movieDatabase: MovieDatabase
+
     @Provides
     @Singleton
     internal fun provideMovieDatabase(@ApplicationContext appContext: Context): MovieDatabase {
-        return Room.databaseBuilder(
+        movieDatabase = Room.databaseBuilder(
             appContext,
             MovieDatabase::class.java,
             MovieDatabase.DATABASE_NAME
-        ).build()
+        ).fallbackToDestructiveMigration().build()
+        return movieDatabase
     }
 
     @Provides
     @Singleton
-    internal fun provideMovieDao(movieDatabase: MovieDatabase): MovieDao {
+    internal fun provideMovieDao(db: MovieDatabase): MovieDao {
         return movieDatabase.movieDao()
     }
 }

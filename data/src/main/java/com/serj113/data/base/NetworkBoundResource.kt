@@ -10,13 +10,7 @@ import kotlinx.coroutines.flow.map
 
 abstract class NetworkBoundResource<ResultType : Any, RequestType : Any> {
 
-    protected abstract fun shouldFetch(data: ResultType?): Boolean
-
-    protected abstract fun fetchRemote(): Flow<Entity<ResultType>>
-
-    protected abstract fun loadLocal(): Flow<ResultType>
-
-    fun getData(): Flow<Entity<ResultType>> = flow {
+    private var result: Flow<Entity<ResultType>> = flow {
         emit(Entity.Loading)
         val localResult = loadLocal().firstOrNull()
         if (shouldFetch(localResult)) {
@@ -29,4 +23,16 @@ abstract class NetworkBoundResource<ResultType : Any, RequestType : Any> {
             )
         }
     }
+
+    protected abstract fun shouldFetch(data: ResultType?): Boolean
+
+    protected abstract suspend fun fetchRemote(): Flow<Entity<ResultType>>
+
+    protected abstract suspend fun loadLocal(): Flow<ResultType>
+
+    protected open fun onFetchFailed() {}
+
+    protected open suspend fun saveCallResult(data: RequestType) {}
+
+    fun getData(): Flow<Entity<ResultType>> = result
 }

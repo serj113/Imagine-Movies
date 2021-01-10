@@ -116,6 +116,11 @@ dependencies {
     // MockK
     testImplementation "io.mockk:mockk:$mockk_version"
 
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
     // Hamkrest
     testImplementation "com.natpryce:hamkrest:$hamkrest_version"
 

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.serj113.model.Movie
+import com.serj113.model.MovieList
 
 @Entity(tableName = "movie")
 data class MovieLocal(
@@ -38,3 +40,27 @@ data class MovieLocal(
     @ColumnInfo(name = "is_favorite")
     val isFavorite: Boolean
 )
+
+fun MovieLocal.toEntity(): Movie {
+    return Movie(
+        adult,
+        backdropPath,
+        listOf(),
+        id,
+        originalLanguage,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
+        releaseDate,
+        title,
+        video,
+        voteAverage,
+        voteCount
+    )
+}
+
+fun List<MovieLocal>.toEntity(): MovieList {
+    val movieList = map { it.toEntity() }
+    return MovieList(0,  movieList, 0, movieList.size)
+}

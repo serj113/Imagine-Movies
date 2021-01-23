@@ -17,11 +17,15 @@ class SplashViewModel @ViewModelInject constructor(
     private val _viewState = MutableLiveData<Event<SplashViewState>>()
     val viewState: LiveData<Event<SplashViewState>> = _viewState
 
-    fun loadInitialData() = viewModelScope.launch {
-        useCase.invoke(Unit).collect {
-            _viewState.value = Event(
-                if (it)SplashViewState.GoToMovieList else SplashViewState.GoToLogin
-            )
-        }
+//    fun loadInitialData() = viewModelScope.launch {
+//        useCase.invoke(Unit).collect {
+//            _viewState.value = Event(
+//                if (it)SplashViewState.GoToMovieList else SplashViewState.GoToLogin
+//            )
+//        }
+//    }
+
+    fun loadInitialData() {
+        _viewState.value = Event(SplashViewState.GoToLogin)
     }
 }

@@ -4,20 +4,16 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.serj113.common.presentation.base.BaseViewModel
-import com.serj113.common.presentation.util.Event
+import com.serj113.base_presentation.BaseViewModel
+import com.serj113.base_presentation.util.Event
 import com.serj113.domain.interactor.IsLoginUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class SplashViewModel @ViewModelInject constructor(
     private val useCase: IsLoginUseCase
-) : ViewModel() {
+) : BaseViewModel<SplashViewState>() {
 
-    private val _viewState = MutableLiveData<Event<SplashViewState>>()
-    val viewState: LiveData<Event<SplashViewState>> = _viewState
+//    private val _viewState = MutableLiveData<com.serj113.base_presentation.Event<SplashViewState>>()
+//    val viewState: LiveData<Event<SplashViewState>> = _viewState
 
 //    fun loadInitialData() = viewModelScope.launch {
 //        useCase.invoke(Unit).collect {

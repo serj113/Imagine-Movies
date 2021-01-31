@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.serj113.common.presentation.util.Event
+import com.serj113.base_presentation.util.Event
 import com.serj113.domain.interactor.LoginUseCase
 import com.serj113.model.Account
 import com.serj113.model.AuthToken
@@ -51,7 +51,8 @@ class LoginViewModel @ViewModelInject constructor(
                 )
                 val authToken = AuthToken(token)
                 useCase.invoke(LoginUseCase.Args(account, authToken)).collect {
-                    _viewState.value = Event(LoginViewState.GoToMovieList)
+                    _viewState.value =
+                        Event(LoginViewState.GoToMovieList)
                 }
             }
         }

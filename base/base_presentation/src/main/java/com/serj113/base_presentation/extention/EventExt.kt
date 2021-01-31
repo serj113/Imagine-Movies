@@ -1,6 +1,8 @@
-package com.serj113.common.presentation.util
+package com.serj113.base_presentation.extention
 
-fun com.serj113.common.presentation.util.Event<Boolean>.isTrue(): Boolean {
+import com.serj113.base_presentation.util.Event
+
+fun Event<Boolean>.isTrue(): Boolean {
     return if (hasBeenHandled) {
         false
     } else {

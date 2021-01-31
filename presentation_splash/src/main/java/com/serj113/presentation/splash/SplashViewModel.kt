@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.serj113.common.presentation.base.BaseViewModel
 import com.serj113.common.presentation.util.Event
 import com.serj113.domain.interactor.IsLoginUseCase
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
 class SplashViewModel @ViewModelInject constructor(
     private val useCase: IsLoginUseCase
 ) : ViewModel() {
+
     private val _viewState = MutableLiveData<Event<SplashViewState>>()
     val viewState: LiveData<Event<SplashViewState>> = _viewState
 
@@ -26,6 +28,6 @@ class SplashViewModel @ViewModelInject constructor(
 //    }
 
     fun loadInitialData() {
-        _viewState.value = Event(SplashViewState.GoToLogin)
+        _viewState.value = Event(SplashViewState.GoToMovieList)
     }
 }

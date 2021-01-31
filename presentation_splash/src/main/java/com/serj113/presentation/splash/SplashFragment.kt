@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.serj113.common.presentation.base.BaseFragment
 import com.serj113.common.presentation.util.navigateTo
 import com.serj113.presentation.splash.SplashFragmentDirections.actionSplashFragmentToLoginFragment
 import com.serj113.presentation.splash.SplashFragmentDirections.actionSplashFragmentToMovieListFragment
@@ -14,11 +15,18 @@ import com.serj113.presentation.splash.databinding.SplashFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment<SplashFragmentBinding>() {
 
     private val viewModel: SplashViewModel by viewModels()
-    private var _binding: SplashFragmentBinding? = null
-    private val binding get() = _binding
+//    private var _binding: SplashFragmentBinding? = null
+//    private val binding get() = _binding
+
+    override fun initBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): SplashFragmentBinding {
+        return SplashFragmentBinding.inflate(inflater, container, false)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +34,13 @@ class SplashFragment : Fragment() {
         viewModel.loadInitialData()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = SplashFragmentBinding.inflate(inflater, container, false)
-        return binding?.root
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        _binding = SplashFragmentBinding.inflate(inflater, container, false)
+//        return binding?.root
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

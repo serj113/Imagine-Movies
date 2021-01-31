@@ -1,11 +1,24 @@
-include ':presentation_splash'
 rootProject.name='Imagine-Movies'
+
 include ':app'
+
 include ':model'
+
 include ':data'
+
 include ':domain'
+
+include ':base_presentation'
+project(':base_presentation').projectDir = new File("./base/base_presentation")
+
 include ':common_navigation'
+
 include ':common_presentation'
+
 include ':presentation_detail'
+
 include ':presentation_list'
+
 include ':presentation_login'
+
+include ':presentation_splash'

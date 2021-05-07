@@ -1,0 +1,323 @@
+ext {
+    // Build Tools
+    buildConfigs = [
+        compileSdk : 30,
+        buildTools : '29.0.3',
+        minSdk     : 16,
+        targetSdk  : 30,
+        versionCode: 1,
+        versionName: "1.0"
+    ]
+    jacocoVersions = [
+        tools  : '0.8.6',
+        android: '0.1.4'
+    ]
+    // Library Versions
+    versions = [
+        androidGradle                : '4.1.2',
+        kotlin                       : '1.4.31',
+        kotlinCoroutines             : '1.4.3',
+        navigation                   : '2.3.0',
+        hilt                         : '2.28-alpha',
+        firebaseCrashlytics          : '2.5.2',
+        firebasePerf                 : '1.3.5',
+        googleServices               : '4.3.5',
+        detekt                       : '1.15.0',
+        javaPoet                     : '1.10.0',
+
+        multidex                     : '2.0.1',
+        coreKtx                      : '1.3.0',
+        appcompat                    : '1.1.0',
+        legacySupport                : '1.0.0',
+
+        activityKtx                  : '1.1.0',
+        fragmentKtx                  : '1.3.2',
+
+        constraintLayout             : '2.0.4',
+        recyclerView                 : '1.1.0',
+        material                     : '1.3.0',
+        cardView                     : '1.0.0',
+        paging                       : '3.0.0-beta03',
+        viewpage                     : '1.0.0',
+        circleImageView              : '3.1.0',
+
+        hiltAndroidx                 : '1.0.0-alpha01',
+
+        lifecycle                    : '2.3.1',
+
+        retrofit                     : '2.7.0',
+        okhttp                       : '4.2.2',
+        moshi                        : '1.9.3',
+
+        room                         : '2.2.6',
+
+        flipper                      : '0.52.1',
+
+        glide                        : '4.11.0',
+
+        firebaseUiAuth               : '6.4.0',
+        firebaseBom                  : '27.0.0',
+
+        playBasement                 : '17.1.1',
+        playGcm                      : '17.0.0',
+        playIdentity                 : '17.0.0',
+        playAnalytics                : '17.0.0',
+        playBase                     : '17.1.0',
+        playAuth                     : '18.1.0',
+        playMaps                     : '17.0.0',
+        playPlaces                   : '17.0.0',
+        playLocation                 : '17.0.0',
+        playCore                     : '1.7.2',
+        playAdsIdentifier            : '17.0.0',
+        playAdsLite                  : '18.1.1',
+        playAuthApiPhone             : '17.3.0',
+        placesApi                    : '2.1.0',
+
+        facebook                     : '9.0.0-bl',
+        shimmer                      : '2.1.0',
+        bolts                        : '1.4.0',
+
+        braze                        : '12.0.0',
+        brazeMitra                   : '12.0.0',
+
+        adjust                       : '4.20.0',
+        adjustMitra                  : '4.17.0',
+
+        androidxTransition           : '1.3.1',
+        supportLibrary               : '1.0.0',
+        appcompat                    : '1.0.0',
+        exifInterface                : '1.1.0',
+
+        lifecycle                    : '2.2.0',
+        lifecycleKtx                 : '2.2.0',
+        arch                         : '2.1.0',
+        paging                       : '2.1.2',
+        guavaListenable              : '1.0',
+        androidAnnotation            : '1.1.0',
+        androidxCore                 : '1.2.0',
+        workManager                  : '2.2.0',
+
+        fastAdapterCommon            : '2.6.0',
+
+        lottie                       : '2.8.0',
+        gson                         : '2.8.6',
+        topsnackbar                  : '1.1.1',
+        smoothprogressbar            : '1.1.0',
+        eventbus                     : '3.2.0',
+        avIndicator                  : '2.1.3',
+        sublimePicker                : '1.1',
+        autonomousDialog             : '1.1.0',
+        hawk                         : '2.0.0',
+        viewPagerIndicator           : '2.4.1',
+        ticker                       : '2.0.2',
+        exoPlayer                    : '2.8.1',
+        sectionedRv                  : '0.2.3',
+        apmemLayouts                 : '1.10@aar',
+        junit                        : '4.13',
+        hamcrest                     : '1.3',
+//            mockk                 : '1.10.2', // will uncomment when all modules refactored
+        mockk                        : '1.9.3',
+        mockkMitra                   : '1.10.5',
+        fragmentTest                 : '1.1.0',
+        autoService                  : '1.0-rc4',
+        urlRouter                    : '1.2.4',
+//            robolectric           : '4.4',  // will uncomment when all modules refactored
+        robolectric                  : '4.3.1',
+        robolectricMitra             : '4.5.1',
+        androidxtest                 : '1.3.0',
+        testRunner                   : '1.3.0',
+        testRules                    : '1.3.0',
+        androidxJunit                : '1.1.2',
+        espresso                     : '3.3.0',
+        espressoIntent               : '3.3.0',
+        orchestrator                 : '1.3.0',
+        retrofitCoroutine            : '0.9.2',
+        scalars                      : '2.2.0',
+        neuro                        : '2.3.1',
+        androidx_webkit              : '1.2.0',
+        advancedWebView              : 'v3.2.0-androidx',
+        hamkrest                     : '1.7.1',
+        elmyr                        : '1.0.0',
+        jsonAssert                   : '1.5.0', // org.skyscreamer:jsonassert:1.5.0:$versions.jsonAssert
+        customtabs                   : '1.2.0',
+        htmlTextView                 : '3.9',
+        mpAndroidChart               : 'v3.0.2',
+        signaturePad                 : '1.3.1',
+        crashwoodpecker              : '3.0.0',
+        zxing                        : '4.1.0',
+        zxingCore                    : '3.3.3',
+        flexbox                      : '1.1.1',
+        circleImageView              : '2.1.0',
+        websocketClient              : '2.3',
+        phoenixChannel               : '2.0.1',
+        androidCrop                  : '1.0.1@aar',
+        leakcanary                   : '2.4',
+        pagerslidingtabstrip         : '1.0.1',
+        photoview                    : '1.3.1',
+        branch                       : '3.2.0',
+        switchbutton                 : '2.0.2',
+        autofittextview              : '0.2.1',
+        androidSimpleTooltip         : '0.2.0',
+        truth                        : '0.42',
+        // OkHttp v3.12.0 and up requires API 21+
+        mavenTask                    : '2.1.3',
+        soloader                     : '0.5.1',
+        installReferrer              : '1.1.1',
+        livedata                     : '2.1.0',
+        junit5                       : '5.6.2',
+        permissionDispatcher         : '3.2.0',
+        permissionDispatcherProcessor: '3.3.1',
+        ronmamoReflections           : '0.9.12',
+        objenesis                    : '2.6',
+        koin                         : '2.1.5',
+        awsSdk                       : '2.16.13',
+        timber                       : '4.7.1',
+        stetho                       : '1.5.1',
+        deeplinkDispatch             : '5.3.0'
+    ]
+
+    gradlePlugins = [
+        androidGradle      : "com.android.tools.build:gradle:$versions.androidGradle",
+        kotlin             : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        googleServices     : "com.google.gms:google-services:$versions.googleServices",
+        navigation         : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation",
+        hilt               : "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt",
+        firebaseCrashlytics: "com.google.firebase:firebase-crashlytics-gradle:$versions.firebaseCrashlytics",
+        firebasePerf       : "com.google.firebase:perf-plugin:$versions.firebasePerf",
+        buildScan          : '2.3',
+        firebasePlugins    : '1.3.4',
+        gms                : '4.3.5',
+        gmsMitra           : '4.3.3',
+        ndk                : '22.0.7026061'
+    ]
+
+    buildDependencies = [
+        kotlinStdlib          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
+        multidex              : "androidx.multidex:multidex:$versions.multidex",
+        coreKtx               : "androidx.core:core-ktx:$versions.coreKtx",
+        appcompat             : "androidx.appcompat:appcompat:$versions.appcompat",
+        legacySupport         : "androidx.legacy:legacy-support-v4:$versions.legacySupport",
+
+        activityKtx           : "androidx.activity:activity-ktx:$versions.activityKtx",
+        fragmentKtx           : "androidx.fragment:fragment-ktx:$versions.fragmentKtx",
+
+        // layout
+        constraintLayout      : "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
+        recyclerView          : "androidx.recyclerview:recyclerview:$versions.recyclerView",
+        cardView              : "androidx.cardview:cardview:$versions.cardView",
+        paging                : "androidx.paging:paging-runtime-ktx:$versions.paging",
+        viewpager             : "androidx.viewpager2:viewpager2:$versions.viewpager",
+        circleImageView       : "de.hdodenhof:circleimageview:$versions.circleImageView",
+        material              : "com.google.android.material:material:$versions.material",
+
+        // navigation
+        navigationFragment    : "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+        navigationUi          : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
+
+        // hilt
+        hilt                  : "com.google.dagger:hilt-android:$versions.hilt",
+        hiltKapt              : "com.google.dagger:hilt-android-compiler:$versions.hilt",
+
+        // hilt androidx
+        hiltAndroidxViewmodel : "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltAndroidx",
+        hiltAndroidxKapt      : "androidx.hilt:hilt-compiler:$versionns.hiltAndroidx",
+
+        // lifecycle
+        lifecycleExtensions   : "androidx.lifecycle:lifecycle-extensions.$versions.lifecycle",
+        lifecycleViewmodel    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+        lifecycleLivedata     : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
+        lifecycleRuntime      : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
+
+        // retrofit
+        retrofit              : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        moshiConverter        : "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
+        okhttp                : "com.squareup.okhttp3:okhttp:$versions.okhttp",
+        moshi                 : "com.squareup.moshi:moshi-kotlin:$versions.moshi",
+        moshiCodegenKapt      : "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",
+
+        // room
+        room                  : "androidx.room:room-ktx:$versions.room",
+        roomRuntime           : "androidx.room:room-runtime:$versions.room",
+        roomKapt              : "androidx.room:room-compiler:$versions.room",
+
+        // glide
+        glide                 : "com.github.bumptech.glide:glide:$versions.glide",
+        glideAnnotation       : "com.github.bumptech.glide:compiler:$versions.glide",
+
+        // firebase
+        firebaseUiAuth        : "com.firebaseui:firebase-ui-auth:$versions.firebaseUiAuth",
+        firebaseBom           : "com.google.firebase:firebase-bom:$versions.firebaseBom",
+        firebaseAnalytics     : "com.google.firebase:firebase-analytics-ktx",
+        firebaseCrashlytics   : "com.google.firebase:firebase-crashlytics-ktx",
+        firebasePerf          : "com.google.firebase:firebase-perf-ktx",
+        firebaseAuth          : "com.google.firebase:firebase-auth-ktx",
+
+        // kotlin coroutines
+        coroutinesCore        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinCoroutines",
+        coroutinesPlayServices: "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.kotlinCoroutines",
+
+        // playservice
+        playAuth              : "com.google.android.gms:play-services-auth:$versions.playAuth"
+    ]
+
+    testDependencies = [
+        xTestCore      : "androidx.test:core:$versions.androidxtest",
+        xfragment      : "androidx.fragment:fragment-testing:$versions.fragmentTest",
+        xjunit         : "androidx.test.ext:junit:$versions.androidxJunit",
+        espresso       : "androidx.test.espresso:espresso-core:$versions.espresso",
+        espressoContrib: "androidx.test.espresso:espresso-contrib:$versions.espresso",
+        room           : "androidx.room:room-testing:$versions.room",
+        testRunner     : "androidx.test:runner:$versions.testRunner",
+        testRules      : "androidx.test:rules:$versions.testRules",
+        hamkrest       : "com.github.esafirm:hamkrest:$versions.hamkrest",
+        mockk          : "io.mockk:mockk:$versions.mockk",
+        junit          : "junit:junit:$versions.junit",
+        hamcrestLibrary: "org.hamcrest:hamcrest-library:$versions.hamcrest",
+        robolectric    : "org.robolectric:robolectric:$versions.robolectric",
+        truth          : "com.google.truth:truth:$versions.truth",
+        coroutineTest  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.kotlinCoroutines",
+        mavenTask      : "org.apache.maven:maven-ant-tasks:$versions.mavenTask",
+        junit5         : "org.junit.jupiter:junit-jupiter-api:$versions.junit5",
+        junit5Params   : "org.junit.jupiter:junit-jupiter-params:$versions.junit5"
+    ]
+
+    junit5RuntimeDependencies = [
+        junit5       : "org.junit.jupiter:junit-jupiter-engine:$versions.junit5",
+        junit5Vintage: "org.junit.vintage:junit-vintage-engine:$versions.junit5"
+    ]
+
+    elymyrDependencies = [
+        elmyrCore  : "com.github.xgouchet.Elmyr:core:$versions.elmyr",
+        elmyrJunit4: "com.github.xgouchet.Elmyr:junit4:$versions.elmyr",
+        elmyrJunit5: "com.github.xgouchet.Elmyr:junit5:$versions.elmyr",
+        elmyrJVM   : "com.github.xgouchet.Elmyr:jvm:$versions.elmyr"
+    ]
+
+    androidTestDependencies = [
+        xTestCore      : "androidx.test:core:$versions.androidxtest",
+        xfragment      : "androidx.fragment:fragment-testing:$versions.fragmentTest",
+        xjunit         : "androidx.test.ext:junit:$versions.androidxJunit",
+        testRunner     : "androidx.test:runner:$versions.testRunner",
+        testRules      : "androidx.test:rules:$versions.testRules",
+        junit          : "junit:junit:$versions.junit",
+        espresso       : "androidx.test.espresso:espresso-core:$versions.espresso",
+        espressoIntent : "androidx.test.espresso:espresso-intents:$versions.espressoIntent",
+        mockk          : "io.mockk:mockk:$versions.mockk",
+        robolectric    : "org.robolectric:robolectric:$versions.robolectric",
+        hamkrest       : "com.github.esafirm:hamkrest:$versions.hamkrest",
+        truth          : "com.google.truth:truth:$versions.truth",
+        espressoContrib: "androidx.test.espresso:espresso-contrib:$versions.espresso",
+        mockkAndroid   : "io.mockk:mockk-android:$versions.mockk",
+        orchestrator   : "androidx.test:orchestrator:$versions.orchestrator"
+    ]
+
+    debugBuildDependencies = [
+        flipper        : "com.facebook.flipper:flipper:$versions.flipper",
+        flipperNetwork : "com.facebook.flipper:flipper-network-plugin:$versions.flipper",
+        soloader       : "com.facebook.soloader:soloader:$versions.soloader",
+
+        leakcanary     : "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary",
+        crashwoodpecker: "com.github.bl-core-vitals:CrashWoodpecker:$versions.crashwoodpecker"
+    ]
+}
+

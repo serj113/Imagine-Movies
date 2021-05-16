@@ -3,6 +3,7 @@ package com.serj113.presentation.detail.datasource
 import androidx.paging.PagingSource
 import androidx.paging.PagingSource.LoadResult.Page
 import androidx.paging.PagingSource.LoadResult.Error
+import androidx.paging.PagingState
 import com.serj113.domain.base.Entity.Success
 import com.serj113.domain.interactor.FetchMovieReviewUseCase
 import com.serj113.model.Review
@@ -39,5 +40,9 @@ class ReviewPagingDataSource constructor(
         } catch (exception: IOException) {
             return Error(exception)
         }
+    }
+
+    override fun getRefreshKey(state: PagingState<Long, Review>): Long? {
+        return state.anchorPosition?.toLong()
     }
 }

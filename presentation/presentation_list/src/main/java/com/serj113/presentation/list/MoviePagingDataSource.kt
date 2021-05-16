@@ -3,6 +3,7 @@ package com.serj113.presentation.list
 import androidx.paging.PagingSource
 import androidx.paging.PagingSource.LoadResult.Page
 import androidx.paging.PagingSource.LoadResult.Error
+import androidx.paging.PagingState
 import com.serj113.domain.base.Entity
 import com.serj113.domain.interactor.FetchMovieUseCase
 import com.serj113.model.Movie
@@ -35,5 +36,9 @@ class MoviePagingDataSource constructor(
         } catch (exception: IOException) {
             return Error(exception)
         }
+    }
+
+    override fun getRefreshKey(state: PagingState<Long, Movie>): Long? {
+        return state.anchorPosition?.toLong()
     }
 }

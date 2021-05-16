@@ -1,16 +1,18 @@
-apply plugin: 'kotlin-kapt'
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion buildConfigs.compileSdk
+    buildToolsVersion buildConfigs.buildTools
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion buildConfigs.minSdk
+        targetSdkVersion buildConfigs.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -25,6 +27,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     lintOptions {
@@ -52,30 +63,27 @@ dependencies {
     implementation project(path: ':domain')
     implementation project(path: ':model')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation buildDependencies.kotlinStdlib
+    implementation buildDependencies.coreKtx
+    implementation buildDependencies.appcompat
 
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation buildDependencies.retrofit
+    implementation buildDependencies.moshiConverter
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation buildDependencies.coroutinesCore
 
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation buildDependencies.hilt
+    kapt buildDependencies.hiltKapt
 
-    kapt "androidx.hilt:hilt-compiler:1.0.0-alpha01"
-    annotationProcessor "androidx.hilt:hilt-compiler:1.0.0-alpha01"
+    kapt buildDependencies.hiltAndroidxKapt
 
-    // Room
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation buildDependencies.room
+    implementation buildDependencies.roomRuntime
+    kapt buildDependencies.roomKapt
 
-    // Flipper
-    debugImplementation "com.facebook.flipper:flipper:$flipper_version"
-    debugImplementation "com.facebook.flipper:flipper-network-plugin:$flipper_version"
-    debugImplementation "com.facebook.soloader:soloader:$soloader_version"
+    debugImplementation debugBuildDependencies.flipper
+    debugImplementation debugBuildDependencies.flipperNetwork
+    debugImplementation debugBuildDependencies.soloader
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

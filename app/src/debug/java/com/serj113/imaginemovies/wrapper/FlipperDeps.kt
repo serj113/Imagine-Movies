@@ -11,11 +11,11 @@ import com.serj113.imaginemovies.BuildConfig
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 
 object FlipperDeps {
 
-    @InstallIn(ApplicationComponent::class)
+    @InstallIn(SingletonComponent::class)
     @EntryPoint
     interface FlipperDepsEntryPoint {
         fun networkFlipperPlugin(): NetworkFlipperPlugin

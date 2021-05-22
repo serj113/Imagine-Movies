@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
@@ -28,8 +27,8 @@ android {
         }
     }
 
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
@@ -61,9 +60,6 @@ dependencies {
 
     implementation buildDependencies.hilt
     kapt buildDependencies.hiltKapt
-
-    implementation buildDependencies.hiltAndroidxViewmodel
-    kapt buildDependencies.hiltAndroidxKapt
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

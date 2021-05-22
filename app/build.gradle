@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
@@ -35,8 +34,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding = true
     }
 
     lintOptions {
@@ -74,9 +73,6 @@ dependencies {
 
     implementation buildDependencies.hilt
     kapt buildDependencies.hiltKapt
-
-    implementation buildDependencies.hiltAndroidxViewmodel
-    kapt buildDependencies.hiltAndroidxKapt
 
     implementation buildDependencies.retrofit
     implementation buildDependencies.moshiConverter

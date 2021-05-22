@@ -5,11 +5,11 @@ import com.serj113.imaginemovies.wrapper.ApplicationWrapper
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 
 object ApplicationWrapperRunner {
 
-    @InstallIn(ApplicationComponent::class)
+    @InstallIn(SingletonComponent::class)
     @EntryPoint
     interface ApplicationWrapperRunnerEntryPoint {
         fun applicationWrapper(): ApplicationWrapper

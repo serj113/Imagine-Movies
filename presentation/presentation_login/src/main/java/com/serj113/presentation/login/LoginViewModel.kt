@@ -1,9 +1,8 @@
 package com.serj113.presentation.login
 
-import androidx.lifecycle.ViewModel
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
@@ -16,11 +15,14 @@ import com.serj113.base_presentation.util.Event
 import com.serj113.domain.interactor.LoginUseCase
 import com.serj113.model.Account
 import com.serj113.model.AuthToken
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class LoginViewModel @ViewModelInject constructor(
+@HiltViewModel
+class LoginViewModel @Inject constructor(
     private val useCase: LoginUseCase
 ) : ViewModel() {
 

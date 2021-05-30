@@ -5,6 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
 }
+apply from: "$rootDir/build_configs.gradle"
 
 android {
     compileSdkVersion buildConfigs.compileSdk
@@ -13,8 +14,8 @@ android {
     defaultConfig {
         minSdkVersion buildConfigs.minSdk
         targetSdkVersion buildConfigs.targetSdk
-        versionCode 1
-        versionName "1.0"
+        versionCode buildConfigs.appVersionCode
+        versionName buildConfigs.appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

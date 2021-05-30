@@ -1,60 +1,6 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
-apply plugin: 'dagger.hilt.android.plugin'
-
-android {
-    compileSdkVersion buildConfigs.compileSdk
-    buildToolsVersion buildConfigs.buildTools
-
-    defaultConfig {
-        minSdkVersion buildConfigs.minSdk
-        targetSdkVersion buildConfigs.targetSdk
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
-    lintOptions {
-        abortOnError false
-    }
-}
+apply from: "$rootDir/presentation.gradle"
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(path: ':model')
-    implementation project(path: ':domain')
-    implementation project(path: ':base_presentation')
-    implementation project(path: ':common_navigation')
-    implementation project(path: ':common_presentation')
-
-    implementation buildDependencies.kotlinStdlib
-    implementation buildDependencies.coreKtx
-    implementation buildDependencies.appcompat
-    implementation 'androidx.annotation:annotation:1.1.0'
     implementation buildDependencies.material
     implementation buildDependencies.constraintLayout
 
@@ -68,10 +14,6 @@ dependencies {
 
     implementation buildDependencies.playAuth
 
-    implementation buildDependencies.navigationFragment
-    implementation buildDependencies.navigationUi
-
-    implementation buildDependencies.hilt
     kapt buildDependencies.hiltKapt
 
     testImplementation 'junit:junit:4.12'

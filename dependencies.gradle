@@ -1,13 +1,4 @@
 ext {
-    // Build Tools
-    buildConfigs = [
-        compileSdk : 30,
-        buildTools : '29.0.3',
-        minSdk     : 16,
-        targetSdk  : 30,
-        versionCode: 1,
-        versionName: "1.0"
-    ]
     jacocoVersions = [
         tools  : '0.8.6',
         android: '0.1.4'
@@ -258,7 +249,6 @@ ext {
         soloader       : "com.facebook.soloader:soloader:$versions.soloader",
 
         leakcanary     : "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary",
-        crashwoodpecker: "com.github.bl-core-vitals:CrashWoodpecker:$versions.crashwoodpecker"
     ]
 }
 

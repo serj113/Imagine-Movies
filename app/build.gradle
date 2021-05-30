@@ -5,19 +5,20 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+apply from: "$rootDir/build_configs.gradle"
 
 android {
     compileSdkVersion buildConfigs.compileSdk
     buildToolsVersion buildConfigs.buildTools
-    ndkVersion "20.1.5948944"
+    ndkVersion buildConfigs.ndkVersion
 
     defaultConfig {
         multiDexEnabled true
         applicationId "com.serj113.imaginemovies"
         minSdkVersion buildConfigs.minSdk
         targetSdkVersion buildConfigs.targetSdk
-        versionCode 1
-        versionName "1.0"
+        versionCode buildConfigs.appVersionCode
+        versionName buildConfigs.appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

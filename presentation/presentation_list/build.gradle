@@ -1,61 +1,12 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
-apply plugin: 'dagger.hilt.android.plugin'
+apply from: "$rootDir/presentation.gradle"
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
         buildConfigField 'String', 'IMAGE_URL', '"https://image.tmdb.org/t/p/original"'
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
-    lintOptions {
-        abortOnError false
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':model')
-    implementation project(path: ':domain')
-    implementation project(path: ':base_presentation')
-    implementation project(path: ':common_navigation')
-    implementation project(path: ':common_presentation')
-
-    implementation buildDependencies.kotlinStdlib
-    implementation buildDependencies.coreKtx
-    implementation buildDependencies.appcompat
-
     implementation buildDependencies.paging
 
     implementation buildDependencies.material
@@ -65,10 +16,6 @@ dependencies {
     implementation buildDependencies.viewpager
     implementation buildDependencies.circleImageView
 
-    // Navigation
-    implementation buildDependencies.navigationFragment
-    implementation buildDependencies.navigationUi
-
     implementation buildDependencies.fragmentKtx
 
     implementation buildDependencies.lifecycleExtensions
@@ -76,8 +23,6 @@ dependencies {
     implementation buildDependencies.lifecycleLivedata
     implementation buildDependencies.lifecycleRuntime
 
-    // Hilt
-    implementation buildDependencies.hilt
     kapt buildDependencies.hiltKapt
 
     implementation buildDependencies.glide

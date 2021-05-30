@@ -2,16 +2,17 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
 }
+apply from: "$rootDir/build_configs.gradle"
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion buildConfigs.compileSdk
+    buildToolsVersion buildConfigs.buildTools
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion buildConfigs.minSdk
+        targetSdkVersion buildConfigs.targetSdk
+        versionCode buildConfigs.appVersionCode
+        versionName buildConfigs.appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -34,7 +35,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 

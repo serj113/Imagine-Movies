@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-        applicationId "com.serj113.imaginemovies"
+        applicationId buildConfigs.applicationId
         minSdkVersion buildConfigs.minSdk
         targetSdkVersion buildConfigs.targetSdk
         versionCode buildConfigs.appVersionCode

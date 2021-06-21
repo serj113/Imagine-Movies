@@ -1,7 +1,5 @@
 package com.serj113.domain.interactor
 
-import com.serj113.domain.base.FlowUseCase
+import com.serj113.domain.base.FlowUseCaseWithArgs
 
-abstract class LogoutUseCase : FlowUseCase<Nothing, Boolean>() {
-
-}
+abstract class LogoutUseCase : FlowUseCaseWithArgs<Nothing, Boolean>()

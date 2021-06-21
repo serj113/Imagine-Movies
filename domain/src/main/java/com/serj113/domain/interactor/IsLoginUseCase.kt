@@ -1,5 +1,5 @@
 package com.serj113.domain.interactor
 
-import com.serj113.domain.base.FlowUseCase
+import com.serj113.domain.base.FlowUseCaseWithArgs
 
-abstract class IsLoginUseCase : FlowUseCase<Unit, Boolean>()
+abstract class IsLoginUseCase : FlowUseCaseWithArgs<Unit, Boolean>()

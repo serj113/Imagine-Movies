@@ -66,10 +66,8 @@ ext {
         bolts                        : '1.4.0',
 
         braze                        : '12.0.0',
-        brazeMitra                   : '12.0.0',
 
         adjust                       : '4.20.0',
-        adjustMitra                  : '4.17.0',
 
         androidxTransition           : '1.3.1',
         supportLibrary               : '1.0.0',
@@ -102,12 +100,10 @@ ext {
         junit                        : '4.13',
         hamcrest                     : '1.3',
         mockk                        : '1.9.3',
-        mockkMitra                   : '1.10.5',
         fragmentTest                 : '1.1.0',
         autoService                  : '1.0-rc4',
         urlRouter                    : '1.2.4',
         robolectric                  : '4.3.1',
-        robolectricMitra             : '4.5.1',
         androidxtest                 : '1.3.0',
         testRunner                   : '1.3.0',
         testRules                    : '1.3.0',
@@ -166,12 +162,7 @@ ext {
         navigation         : "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation",
         hilt               : "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt",
         firebaseCrashlytics: "com.google.firebase:firebase-crashlytics-gradle:$versions.firebaseCrashlytics",
-        firebasePerf       : "com.google.firebase:perf-plugin:$versions.firebasePerf",
-        buildScan          : '2.3',
-        firebasePlugins    : '1.3.4',
-        gms                : '4.3.5',
-        gmsMitra           : '4.3.3',
-        ndk                : '22.0.7026061'
+        firebasePerf       : "com.google.firebase:perf-plugin:$versions.firebasePerf"
     ]
 
     buildDependencies = [

@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import com.serj113.base_presentation.BaseFragment
-import com.serj113.common.presentation.adapter.ListLoadStateAdapter
-import com.serj113.presentation.list.databinding.MovieListFragmentBinding
 import com.serj113.common.presentation.util.navigateTo
 import com.serj113.model.Movie
 import com.serj113.presentation.list.MovieListFragmentDirections.actionMovieListFragmentToDetailFragment
+import com.serj113.presentation.list.databinding.MovieListFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
 
     private val viewModel: MovieListViewModel by viewModels()
-    private var adapter: MoviePagingAdapter? = null
+    private var movieAdapter: MovieRecyclerViewAdapter? = null
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -35,12 +35,12 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.listViewState.observe(viewLifecycleOwner, Observer {
-            when(it) {
+        viewModel.movieListViewState.observe(viewLifecycleOwner, Observer {
+            when (it) {
                 is MovieListViewState.Success -> {
-                    it.data?.let { pagedList->
+                    it.data.let { list ->
                         lifecycleScope.launch {
-                            adapter?.submitData(pagedList)
+                            movieAdapter?.addItems(list)
                         }
                     }
                 }
@@ -52,10 +52,12 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
                 }
             }
         })
+
+        viewModel.fetchMovieList()
     }
 
     override fun onDestroy() {
-        adapter = null
+        movieAdapter = null
         binding?.let {
             it.recyclerView.adapter = null
         }
@@ -64,11 +66,17 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
     }
 
     private fun initAdapter() {
-        adapter = MoviePagingAdapter(::onClick)
+        movieAdapter = MovieRecyclerViewAdapter(::onClick)
         binding?.let {
-            it.recyclerView.adapter = adapter?.withLoadStateFooter(
-                ListLoadStateAdapter(this@MovieListFragment::onClickRetry)
-            )
+            it.recyclerView.adapter = movieAdapter
+            it.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (!it.recyclerView.canScrollVertically(300)) {
+                        viewModel.fetchMovieList()
+                    }
+                }
+            })
         }
     }
 
@@ -78,9 +86,5 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
 
     private fun onClick(movie: Movie) {
         navigateToMovieDetail(movie)
-    }
-
-    private fun onClickRetry() {
-        adapter?.retry()
     }
 }

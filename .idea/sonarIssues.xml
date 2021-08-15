@@ -3,6 +3,11 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="$PROJECT_DIR$/app/src/debug/java/com/serj113/imaginemovies/wrapper/FlipperDeps.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/data/src/main/java/com/serj113/data/local/database/entity/MovieLocal.kt">
           <value>
             <set />
@@ -19,6 +24,41 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/domain/src/main/java/com/serj113/domain/repository/MovieRepository.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/presentation/presentation_list/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/presentation/presentation_list/src/main/java/com/serj113/presentation/list/MovieListAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/presentation/presentation_list/src/main/java/com/serj113/presentation/list/MovieListFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/presentation/presentation_list/src/main/java/com/serj113/presentation/list/MovieListViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/presentation/presentation_list/src/main/java/com/serj113/presentation/list/MovieListViewState.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/presentation/presentation_list/src/main/java/com/serj113/presentation/list/MovieRecyclerViewAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/fragment.kt">
           <value>
             <set />
           </value>

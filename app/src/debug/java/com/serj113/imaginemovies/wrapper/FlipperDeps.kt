@@ -23,6 +23,7 @@ object FlipperDeps {
 
     fun setup(application: Application) {
         if (!BuildConfig.DEBUG || !FlipperUtils.shouldEnableFlipper(application)) return
+        
         SoLoader.init(application, false)
         val networkFlipperPlugin = getNetworkFlipperPlugin(application)
         val sharedPrefPlugin = SharedPreferencesFlipperPlugin(application, SHARED_PREF_NAME)

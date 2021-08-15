@@ -1,47 +1,43 @@
 package com.serj113.presentation.list
 
-import androidx.lifecycle.*
-import androidx.paging.*
-import com.serj113.domain.base.Entity
-import com.serj113.domain.base.Entity.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.serj113.domain.base.Entity.Success
 import com.serj113.domain.interactor.FetchMovieUseCase
-import com.serj113.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieListViewModel @Inject constructor(
     private val useCase: FetchMovieUseCase
 ) : ViewModel() {
-    private val config = PagingConfig(pageSize = 20, enablePlaceholders = false)
+    private var page = 1L
 
-    private val entityListMovie = MediatorLiveData<Entity<PagingData<Movie>>>().apply {
-        val listMovie = Pager(
-            config = config,
-            pagingSourceFactory = {
-                MoviePagingDataSource(
-                    useCase
-                )
-            }
-        ).liveData.cachedIn(viewModelScope)
+    private val _movieListViewState: MutableLiveData<MovieListViewState> =
+        MutableLiveData(MovieListViewState.Loading)
+    val movieListViewState: LiveData<MovieListViewState> = _movieListViewState
 
-        postValue(Idle)
-
-        addSource(listMovie) {
-            postValue(Success(it))
+    fun fetchMovieList() {
+        viewModelScope.launch(Dispatchers.Default) {
+            useCase
+                .invoke(FetchMovieUseCase.Args(page))
+                .onEach {
+                    when (it) {
+                        is Success -> {
+                            page += 1
+                            _movieListViewState.postValue(
+                                MovieListViewState.Success(it.data.results)
+                            )
+                        }
+                    }
+                }
+                .collect()
         }
     }
-
-    val listViewState: LiveData<MovieListViewState> =
-        Transformations.map(entityListMovie) { entity ->
-            when (entity) {
-                is Error -> MovieListViewState.Error(
-                    entity.t
-                )
-                is Success -> MovieListViewState.Success(
-                    entity.data
-                )
-                else -> MovieListViewState.Loading
-            }
-        }
 }

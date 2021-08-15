@@ -7,8 +7,6 @@ android {
 }
 
 dependencies {
-    implementation buildDependencies.paging
-
     implementation buildDependencies.material
     implementation buildDependencies.constraintLayout
     implementation buildDependencies.recyclerView

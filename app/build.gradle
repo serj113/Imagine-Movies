@@ -17,15 +17,15 @@ android {
         applicationId buildConfigs.applicationId
         minSdkVersion buildConfigs.minSdk
         targetSdkVersion buildConfigs.targetSdk
-        versionCode buildConfigs.appVersionCode
-        versionName buildConfigs.appVersionName
+        versionCode buildConfigs.versionCode
+        versionName buildConfigs.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

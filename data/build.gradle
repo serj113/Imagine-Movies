@@ -13,8 +13,8 @@ android {
     defaultConfig {
         minSdkVersion buildConfigs.minSdk
         targetSdkVersion buildConfigs.targetSdk
-        versionCode buildConfigs.appVersionCode
-        versionName buildConfigs.appVersionName
+        versionCode buildConfigs.versionCode
+        versionName buildConfigs.versionName
 
         buildConfigField 'String', 'API_KEY', "${getProperty("local.properties", "api_key")}"
         buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/"'

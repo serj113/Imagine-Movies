@@ -88,6 +88,7 @@ dependencies {
     implementation platform(buildDependencies.firebaseBom)
     implementation buildDependencies.firebaseAnalytics
     implementation buildDependencies.firebaseCrashlytics
+    implementation buildDependencies.firebasePerf
 
     debugImplementation debugBuildDependencies.flipper
     debugImplementation debugBuildDependencies.flipperNetwork

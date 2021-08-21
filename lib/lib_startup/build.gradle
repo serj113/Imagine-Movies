@@ -36,4 +36,7 @@ android {
 dependencies {
     implementation buildDependencies.kotlinStdlib
     implementation buildDependencies.coreKtx
+
+    implementation platform(buildDependencies.firebaseBom)
+    implementation buildDependencies.firebasePerf
 }

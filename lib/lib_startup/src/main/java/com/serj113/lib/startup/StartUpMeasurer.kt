@@ -1,17 +1,20 @@
 package com.serj113.lib.startup
 
-import android.util.Log
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.perf.ktx.performance
+import com.google.firebase.perf.metrics.Trace
 
 object StartUpMeasurer {
-    var startTime = 0L
-    var delta = 0L
+    private const val TRACE_NAME = "cold_start"
+    private var trace: Trace? = null
 
     fun start() {
-        startTime = System.currentTimeMillis()
+        trace = Firebase.performance.newTrace(TRACE_NAME)
+        trace?.start()
     }
 
     fun stop() {
-        delta = System.currentTimeMillis() - startTime
-        Log.d("StartUpMeasurer", delta.toString())
+        trace?.stop()
+        trace = null
     }
 }

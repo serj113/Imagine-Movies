@@ -17,6 +17,9 @@ project(':common_navigation').projectDir = new File("./common/common_navigation"
 include ':common_presentation'
 project(':common_presentation').projectDir = new File("./common/common_presentation")
 
+include ':lib_startup'
+project(':lib_startup').projectDir = new File("./lib/lib_startup")
+
 include ':presentation_detail'
 project(':presentation_detail').projectDir = new File("./presentation/presentation_detail")
 

@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.serj113.base_presentation.BaseFragment
 import com.serj113.common.presentation.util.navigateTo
+import com.serj113.lib.startup.StartUpMeasurer
 import com.serj113.model.Movie
 import com.serj113.presentation.list.MovieListFragmentDirections.actionMovieListFragmentToDetailFragment
 import com.serj113.presentation.list.databinding.MovieListFragmentBinding
@@ -29,6 +30,12 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var runnable: Runnable? = null
+        runnable = Runnable {
+            view.removeCallbacks(runnable)
+            StartUpMeasurer.stop()
+        }
+        view.post(runnable)
         initAdapter()
     }
 

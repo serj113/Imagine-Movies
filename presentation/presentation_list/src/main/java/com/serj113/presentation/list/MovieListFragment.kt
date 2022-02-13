@@ -14,6 +14,7 @@ import com.serj113.lib.startup.StartUpMeasurer
 import com.serj113.model.Movie
 import com.serj113.presentation.list.MovieListFragmentDirections.actionMovieListFragmentToDetailFragment
 import com.serj113.presentation.list.databinding.MovieListFragmentBinding
+import com.serj113.presentation.list.itemviews.GridMovieItemView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,6 +23,7 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
 
     private val viewModel: MovieListViewModel by viewModels()
     private var movieAdapter: MovieRecyclerViewAdapter? = null
+    private var itemViewAdapter: ItemViewAdapter? = null
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -46,8 +48,18 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
             when (it) {
                 is MovieListViewState.Success -> {
                     it.data.let { list ->
+                        val gridMovieItemViews = list.map {
+                            GridMovieItemView().apply {
+                                state.movieTitle = it.title
+                                state.movieRating = it.voteAverage.toString()
+                                state.movieImageUrl = "${BuildConfig.IMAGE_URL}/${it.posterPath}"
+                                state.onClick = {
+                                    onClick(it)
+                                }
+                            }
+                        }
                         lifecycleScope.launch {
-                            movieAdapter?.addItems(list)
+                            itemViewAdapter?.addItems(gridMovieItemViews)
                         }
                     }
                 }
@@ -64,18 +76,19 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
     }
 
     override fun onDestroy() {
-        movieAdapter = null
         binding?.let {
             it.recyclerView.adapter = null
         }
+        movieAdapter = null
+        itemViewAdapter = null
         _binding = null
         super.onDestroy()
     }
 
     private fun initAdapter() {
-        movieAdapter = MovieRecyclerViewAdapter(::onClick)
+        itemViewAdapter = ItemViewAdapter()
         binding?.let {
-            it.recyclerView.adapter = movieAdapter
+            it.recyclerView.adapter = itemViewAdapter
             it.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)

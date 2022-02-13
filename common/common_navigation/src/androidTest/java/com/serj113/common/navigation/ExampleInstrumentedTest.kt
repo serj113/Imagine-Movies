@@ -1,4 +1,4 @@
-package com.serj113.common_navigation
+package com.serj113.common.navigation
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.serj113.common_navigation.test", appContext.packageName)
+        assertEquals("com.serj113.common.navigation.test", appContext.packageName)
     }
 }

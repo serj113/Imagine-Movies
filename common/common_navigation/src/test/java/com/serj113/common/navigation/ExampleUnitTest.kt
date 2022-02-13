@@ -1,4 +1,4 @@
-package com.serj113.common_navigation
+package com.serj113.common.navigation
 
 import org.junit.Test
 

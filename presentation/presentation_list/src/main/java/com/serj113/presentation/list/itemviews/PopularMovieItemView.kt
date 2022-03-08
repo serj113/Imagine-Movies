@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.presentation.list.databinding.MovieListItemBinding
+import com.serj113.presentation.list.databinding.PopularMovieItemViewBinding
 
-class GridMovieItemView :
-    BindableItemView<MovieListItemBinding, GridMovieItemView.State>() {
-    override val viewType: Int = GridMovieItemView::class.java.hashCode()
+class PopularMovieItemView :
+    BindableItemView<PopularMovieItemViewBinding, PopularMovieItemView.State>() {
 
-    override val state: State = State()
+    override val viewType: Int = PopularMovieItemView::javaClass.hashCode()
+    override val state = State()
 
-    override fun bind(binding: MovieListItemBinding, state: State) {
+    override fun bind(binding: PopularMovieItemViewBinding, state: State) {
         binding.tvTitle.text = state.movieTitle
         binding.tvRate.text = state.movieRating
         Glide
@@ -24,9 +24,11 @@ class GridMovieItemView :
         }
     }
 
-    override fun createBinding(parent: ViewGroup): MovieListItemBinding {
-        return MovieListItemBinding.inflate(
-            LayoutInflater.from(parent.context)
+    override fun createBinding(parent: ViewGroup): PopularMovieItemViewBinding {
+        return PopularMovieItemViewBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
     }
 

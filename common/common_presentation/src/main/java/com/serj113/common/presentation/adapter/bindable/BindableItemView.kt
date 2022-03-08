@@ -1,4 +1,4 @@
-package com.serj113.presentation.list
+package com.serj113.common.presentation.adapter.bindable
 
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding

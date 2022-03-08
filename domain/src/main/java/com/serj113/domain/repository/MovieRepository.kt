@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.Flow
 interface MovieRepository {
     fun fetchMovies(page: Long): Flow<Entity<MovieList>>
 
+    fun fetchPopularMovies(page: Long): Flow<Entity<MovieList>>
+
     fun fetchMovieReviews(movieId: Long, page: Long): Flow<Entity<ReviewList>>
 
     fun fetchMovieDetail(movieId: Long): Flow<Entity<MovieDetail>>

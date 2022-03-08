@@ -22,6 +22,12 @@ abstract class UseCaseModule {
 
     @Binds
     @Singleton
+    internal abstract fun provideFetchPopularMovieUseCase(
+        fetchPopularMovieUseCaseImpl: FetchPopularMovieUseCaseImpl
+    ): FetchPopularMovieUseCase
+
+    @Binds
+    @Singleton
     internal abstract fun provideFetchMovieReviewUseCase(
         fetchMovieReviewUseCaseImpl: FetchMovieReviewUseCaseImpl
     ): FetchMovieReviewUseCase

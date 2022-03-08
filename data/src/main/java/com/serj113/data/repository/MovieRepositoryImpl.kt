@@ -52,6 +52,34 @@ class MovieRepositoryImpl @Inject constructor(
         }.getData()
     }
 
+    override fun fetchPopularMovies(page: Long): Flow<Entity<MovieList>> {
+        return object : NetworkBoundResource<MovieList, List<MovieLocal>>() {
+            override fun shouldFetch(data: MovieList?): Boolean {
+                return data == null || data.results.isEmpty()
+            }
+
+            override suspend fun fetchRemote(): Flow<Entity<MovieList>> {
+                return flow {
+                    val response = movieApi.getPopularMovie(page = page)
+                    if (response.isSuccessful) {
+                        try {
+                            emit(Success(response.body()!!))
+                        } catch (e: Throwable) {
+                            emit(Error(e))
+                        }
+                    }
+                }.flowOn(Dispatchers.IO)
+            }
+
+            override suspend fun loadLocal(): Flow<MovieList> {
+                val movies = movieDao.getAllMovie()
+                return movies.map {
+                    it.toEntity()
+                }.flowOn(Dispatchers.IO)
+            }
+        }.getData()
+    }
+
     override fun fetchMovieReviews(movieId: Long, page: Long): Flow<Entity<ReviewList>> {
         return flow {
             emit(Loading)

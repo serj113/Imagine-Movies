@@ -1,8 +1,10 @@
-package com.serj113.presentation.list
+package com.serj113.common.presentation.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.serj113.common.presentation.adapter.bindable.BindingCreator
+import com.serj113.common.presentation.adapter.bindable.ItemView
 
 class ItemViewAdapter : RecyclerView.Adapter<ItemViewAdapter.ViewHolder>() {
     private var mItemViews: MutableList<ItemView> = mutableListOf()
@@ -32,6 +34,11 @@ class ItemViewAdapter : RecyclerView.Adapter<ItemViewAdapter.ViewHolder>() {
     fun addItems(items: List<ItemView>) {
         mItemViews.addAll(items)
         notifyDataSetChanged()
+    }
+
+    fun setItems(items: List<ItemView>) {
+        mItemViews.clear()
+        addItems(items)
     }
 
     private fun getItem(position: Int) = mItemViews[position]

@@ -52,6 +52,20 @@ class MovieRepositoryImpl @Inject constructor(
         }.getData()
     }
 
+    override fun fetchPopularMovies(page: Long): Flow<Entity<MovieList>> {
+        return flow {
+            emit(Loading)
+            val response = movieApi.getPopularMovie(page = page)
+            if (response.isSuccessful) {
+                try {
+                    emit(Success(response.body()!!))
+                } catch (e: Throwable) {
+                    emit(Error(e))
+                }
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
     override fun fetchMovieReviews(movieId: Long, page: Long): Flow<Entity<ReviewList>> {
         return flow {
             emit(Loading)

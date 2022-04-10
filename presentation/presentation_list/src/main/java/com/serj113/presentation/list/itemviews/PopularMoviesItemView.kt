@@ -16,19 +16,18 @@ class PopularMoviesItemView :
 
     private val itemViewAdapter by lazy { ItemViewAdapter() }
 
-    private var layoutManager: LinearLayoutManager? = null
-
     override fun bind(binding: RecycleItemViewBinding, state: State) {
         itemViewAdapter.setItems(state.popularMovieItemViews)
     }
 
     override fun createBinding(parent: ViewGroup): RecycleItemViewBinding {
         val binding = RecycleItemViewBinding.inflate(
-            LayoutInflater.from(parent.context)
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
-        layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
-        binding.root.layoutManager = layoutManager
-        binding.root.adapter = itemViewAdapter
+        binding.rv.layoutManager = LinearLayoutManager(parent.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rv.adapter = itemViewAdapter
         return binding
     }
 

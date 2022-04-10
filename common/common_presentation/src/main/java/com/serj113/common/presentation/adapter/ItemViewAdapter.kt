@@ -41,6 +41,10 @@ class ItemViewAdapter : RecyclerView.Adapter<ItemViewAdapter.ViewHolder>() {
         addItems(items)
     }
 
+    fun getItemView(position: Int): ItemView? {
+        return mItemViews.getOrNull(position)
+    }
+
     private fun getItem(position: Int) = mItemViews[position]
 
     inner class ViewHolder(val viewBinding: ViewBinding) : RecyclerView.ViewHolder(viewBinding.root)

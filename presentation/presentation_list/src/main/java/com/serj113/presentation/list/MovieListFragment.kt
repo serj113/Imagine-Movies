@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.serj113.base_presentation.BaseFragment
 import com.serj113.common.presentation.adapter.ItemViewAdapter
@@ -17,6 +18,7 @@ import com.serj113.presentation.list.MovieListFragmentDirections.actionMovieList
 import com.serj113.presentation.list.databinding.MovieListFragmentBinding
 import com.serj113.presentation.list.itemviews.GridMovieItemView
 import com.serj113.presentation.list.itemviews.PopularMovieItemView
+import com.serj113.presentation.list.itemviews.PopularMoviesItemView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -33,38 +35,38 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAdapter()
         var runnable: Runnable? = null
         runnable = Runnable {
             view.removeCallbacks(runnable)
             StartUpMeasurer.stop()
         }
         view.post(runnable)
-        initAdapter()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.movieListViewState.observe(viewLifecycleOwner, {
+        viewModel.movieListViewState.observe(viewLifecycleOwner) {
             when (it) {
                 is MovieListViewState.Success -> {
                     val itemViews = mutableListOf<ItemView>()
                     val popularMovies = it.popularMovies.map { movie ->
                         PopularMovieItemView().apply {
-                            GridMovieItemView().apply {
-                                state.movieTitle = movie.title
-                                state.movieRating = movie.voteAverage.toString()
-                                state.movieImageUrl = "${BuildConfig.IMAGE_URL}/${movie.posterPath}"
-                                state.onClick = {
-                                    onClick(movie)
-                                }
+                            state.movieTitle = movie.title
+                            state.movieRating = movie.voteAverage.toString()
+                            state.movieImageUrl = "${BuildConfig.IMAGE_URL}/${movie.posterPath}"
+                            state.onClick = {
+                                onClick(movie)
                             }
                         }
                     }
                     if (popularMovies.isNotEmpty()) {
-//                        itemViews.add(
-//
-//                        )
+                        itemViews.add(
+                            PopularMoviesItemView().apply {
+                                state.popularMovieItemViews = popularMovies
+                            }
+                        )
                     }
                     it.data.let { list ->
                         val gridMovieItemViews = list.map {
@@ -90,9 +92,10 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
 
                 }
             }
-        })
+        }
 
         viewModel.fetchMovieList()
+        viewModel.fetchPopularMovieList()
     }
 
     override fun onDestroy() {
@@ -107,7 +110,6 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
     private fun initAdapter() {
         itemViewAdapter = ItemViewAdapter()
         binding?.let {
-            it.recyclerView.adapter = itemViewAdapter
             it.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
@@ -116,6 +118,16 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
                     }
                 }
             })
+            it.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2).apply {
+                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return if (itemViewAdapter?.getItemView(position) is PopularMoviesItemView) {
+                            2
+                        } else 1
+                    }
+                }
+            }
+            it.recyclerView.adapter = itemViewAdapter
         }
     }
 

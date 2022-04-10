@@ -1,5 +1,6 @@
 package com.serj113.common.presentation.adapter.bindable
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 
@@ -22,5 +23,11 @@ abstract class BindableItemView<V : ViewBinding, S> : ItemView() {
 
     override fun bind(viewBinding: ViewBinding) {
         bind(viewBinding as V, state)
+    }
+
+    override fun getView(): View? {
+        return if (this::vBinding.isInitialized) {
+            vBinding.root
+        } else null
     }
 }

@@ -2,10 +2,13 @@ package com.serj113.presentation.list.itemviews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.serj113.common.presentation.adapter.ItemViewAdapter
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
 import com.serj113.common.presentation.adapter.bindable.ItemView
+import com.serj113.presentation.list.R
 import com.serj113.presentation.list.databinding.RecycleItemViewBinding
 
 class PopularMoviesItemView :
@@ -28,6 +31,12 @@ class PopularMoviesItemView :
         )
         binding.rv.layoutManager = LinearLayoutManager(parent.context, LinearLayoutManager.HORIZONTAL, false)
         binding.rv.adapter = itemViewAdapter
+        binding.rv.addItemDecoration(
+            DividerItemDecoration(parent.context, DividerItemDecoration.HORIZONTAL).apply {
+                AppCompatResources.getDrawable(parent.context, R.drawable.horizontal_decoration)
+                    ?.let { setDrawable(it) }
+            }
+        )
         return binding
     }
 

@@ -1,9 +1,13 @@
 package com.serj113.presentation.list.itemviews
 
+import android.graphics.drawable.GradientDrawable
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import com.bumptech.glide.Glide
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
+import com.serj113.presentation.list.R
 import com.serj113.presentation.list.databinding.PopularMovieItemViewBinding
 
 class PopularMovieItemView :
@@ -25,11 +29,17 @@ class PopularMovieItemView :
     }
 
     override fun createBinding(parent: ViewGroup): PopularMovieItemViewBinding {
-        return PopularMovieItemViewBinding.inflate(
+        val viewBinding = PopularMovieItemViewBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
+        viewBinding.ivPoster.background = GradientDrawable().apply {
+            setColor(parent.context.resources.getColor(R.color.white))
+            cornerRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, parent.context.resources.displayMetrics)
+        }
+        viewBinding.ivPoster.clipToOutline = true
+        return viewBinding
     }
 
     class State {

@@ -1,5 +1,6 @@
 package com.serj113.presentation.list.itemviews
 
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -16,7 +17,7 @@ class PopularMovieItemView :
     override val viewType: Int = PopularMovieItemView::javaClass.hashCode()
     override val state = State()
 
-    override fun bind(binding: PopularMovieItemViewBinding, state: State) {
+    override fun bind(binding: PopularMovieItemViewBinding) {
         binding.tvTitle.text = state.movieTitle
         binding.tvRate.text = state.movieRating
         Glide
@@ -36,7 +37,8 @@ class PopularMovieItemView :
         )
         viewBinding.ivPoster.background = GradientDrawable().apply {
             setColor(parent.context.resources.getColor(R.color.white))
-            cornerRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, parent.context.resources.displayMetrics)
+            setStroke(1, Color.BLACK)
+            cornerRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12f, parent.context.resources.displayMetrics)
         }
         viewBinding.ivPoster.clipToOutline = true
         return viewBinding

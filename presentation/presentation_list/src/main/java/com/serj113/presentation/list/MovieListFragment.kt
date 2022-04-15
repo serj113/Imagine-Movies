@@ -1,9 +1,12 @@
 package com.serj113.presentation.list
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
+import android.view.ViewGroup.MarginLayoutParams
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.serj113.base_presentation.BaseFragment
 import com.serj113.common.presentation.adapter.ItemViewAdapter
 import com.serj113.common.presentation.adapter.bindable.ItemView
+import com.serj113.common.presentation.itemviews.TextItemView
 import com.serj113.common.presentation.util.navigateTo
 import com.serj113.lib.startup.StartUpMeasurer
 import com.serj113.model.Movie
@@ -79,6 +83,24 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
                                 }
                             }
                         }
+                        itemViews.add(
+                            TextItemView().apply {
+                                state.text = "Explore"
+                                state.textSize = 20f
+                                state.typeface = Typeface.BOLD
+                                state.layoutParams = MarginLayoutParams(
+                                    LayoutParams.WRAP_CONTENT,
+                                    LayoutParams.WRAP_CONTENT
+                                ).apply {
+                                    setMargins(
+                                        requireContext().resources.getDimension(R.dimen.dp_4).toInt(),
+                                        0,
+                                        0,
+                                        requireContext().resources.getDimension(R.dimen.dp_4).toInt()
+                                    )
+                                }
+                            }
+                        )
                         itemViews.addAll(gridMovieItemViews)
                     }
                     lifecycleScope.launch {
@@ -121,7 +143,8 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
             it.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
-                        return if (itemViewAdapter?.getItemView(position) is PopularMoviesItemView) {
+                        return if (itemViewAdapter?.getItemView(position) is PopularMoviesItemView ||
+                                itemViewAdapter?.getItemView(position) is TextItemView) {
                             2
                         } else 1
                     }

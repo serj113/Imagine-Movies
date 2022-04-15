@@ -12,7 +12,7 @@ class GridMovieItemView :
 
     override val state: State = State()
 
-    override fun bind(binding: MovieListItemBinding, state: State) {
+    override fun bind(binding: MovieListItemBinding) {
         binding.tvTitle.text = state.movieTitle
         binding.tvRate.text = state.movieRating
         Glide

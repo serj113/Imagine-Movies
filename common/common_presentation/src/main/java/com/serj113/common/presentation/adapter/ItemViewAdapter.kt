@@ -16,7 +16,7 @@ class ItemViewAdapter : RecyclerView.Adapter<ItemViewAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        getItem(position).bind(holder.viewBinding)
+        getItem(position).bindView(holder.viewBinding)
     }
 
     override fun getItemViewType(position: Int): Int {

@@ -2,8 +2,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#CABBBBBB"/>
-            <corners android:radius="2dp" />
+            <solid android:color="@android:color/black"/>
+            <corners android:radius="@dimen/dp_12" />
         </shape>
     </item>
 
@@ -11,22 +11,14 @@
         android:left="0dp"
         android:right="0dp"
         android:top="0dp"
-        android:bottom="2dp">
+        android:bottom="0dp">
         <shape android:shape="rectangle">
             <solid android:color="@android:color/white"/>
             <corners
-                android:bottomLeftRadius="8dp"
-                android:bottomRightRadius="8dp"
-                android:topLeftRadius="8dp"
-                android:topRightRadius="8dp" />
+                android:bottomLeftRadius="@dimen/dp_12"
+                android:bottomRightRadius="@dimen/dp_12"
+                android:topLeftRadius="@dimen/dp_12"
+                android:topRightRadius="@dimen/dp_12" />
         </shape>
     </item>
 </layer-list>
-
-    <!--<?xml version="1.0" encoding="UTF-8"?>-->
-    <!--<shape xmlns:android="http://schemas.android.com/apk/res/android">-->
-    <!--    <solid android:color="#ffffffff"/>-->
-
-    <!--    <corners android:bottomRightRadius="8dp" android:bottomLeftRadius="8dp"-->
-    <!--        android:topLeftRadius="8dp" android:topRightRadius="8dp"/>-->
-    <!--</shape>-->

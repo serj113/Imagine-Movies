@@ -16,9 +16,10 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="@dimen/dp_8"
         android:layout_marginTop="240dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="@dimen/dp_8"
+        app:cardCornerRadius="@dimen/dp_12"
         app:cardElevation="1dp"
         app:cardMaxElevation="1dp"
         app:cardUseCompatPadding="true">

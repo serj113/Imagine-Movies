@@ -20,7 +20,7 @@ class MovieListViewModel @Inject constructor(
     private val useCase: FetchMovieUseCase,
     private val popularMovieUseCase: FetchPopularMovieUseCase
 ) : ViewModel() {
-    private var page = 1L
+    private var page = 2L
     private var movieList = mutableListOf<Movie>()
     private var popularMovieList = mutableListOf<Movie>()
 

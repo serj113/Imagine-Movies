@@ -6,6 +6,7 @@ import com.serj113.common.presentation.util.DateUtils
 import com.serj113.common.presentation.util.NumberUtils
 import com.serj113.domain.base.Entity
 import com.serj113.domain.interactor.FetchMovieDetailUseCase
+import com.serj113.domain.interactor.FetchMovieRecommendationsUseCase
 import com.serj113.domain.interactor.FetchMovieReviewUseCase
 import com.serj113.model.Cast
 import com.serj113.model.Movie
@@ -20,8 +21,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    private val fetchMoviewReviewUseCase: FetchMovieReviewUseCase,
-    private val fetchMovieDetailUseCase: FetchMovieDetailUseCase
+    private val fetchMovieReviewUseCase: FetchMovieReviewUseCase,
+    private val fetchMovieDetailUseCase: FetchMovieDetailUseCase,
+    private val fetchMovieRecommendationsUseCase: FetchMovieRecommendationsUseCase
 ) : ViewModel() {
     private val pagingConfig = PagingConfig(pageSize = 20, enablePlaceholders = false)
 
@@ -38,6 +40,8 @@ class MovieDetailViewModel @Inject constructor(
 
     private var listCast = MediatorLiveData<List<Cast>>()
     private var entityListReview = MediatorLiveData<Entity<PagingData<Review>>>()
+
+    private var movieRecommendations = MutableLiveData<List<Movie>>(listOf())
 
     private fun fetchCast(movieId: Long) {
         viewModelScope.launch(Dispatchers.Default) {
@@ -57,6 +61,21 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
+    private fun fetchMovieRecommendations(movieId: Long) {
+        viewModelScope.launch(Dispatchers.Default) {
+            fetchMovieRecommendationsUseCase
+                .invoke(FetchMovieRecommendationsUseCase.Args(movieId, 1))
+                .onEach {
+                    when (it) {
+                        is Entity.Success -> {
+                            movieRecommendations.postValue(it.data.results)
+                        }
+                    }
+                }
+                .collect()
+        }
+    }
+
     fun bind(movie: Movie) {
         movieBackdrop.postValue(BuildConfig.IMAGE_URL + movie.backdropPath)
         movieSynopsis.postValue(movie.overview)
@@ -66,10 +85,11 @@ class MovieDetailViewModel @Inject constructor(
         movieReleaseDate.postValue(DateUtils.formatDate(movie.releaseDate))
         movieId = movie.id.toLong()
         fetchCast(movieId)
+        fetchMovieRecommendations(movieId)
         entityListReview.apply {
             val listReview = Pager(
                 config = pagingConfig,
-                pagingSourceFactory = { ReviewPagingDataSource(movieId, fetchMoviewReviewUseCase) }
+                pagingSourceFactory = { ReviewPagingDataSource(movieId, fetchMovieReviewUseCase) }
             ).liveData.cachedIn(viewModelScope)
 
             postValue(Entity.Idle)
@@ -101,4 +121,6 @@ class MovieDetailViewModel @Inject constructor(
     fun getListReview(): LiveData<Entity<PagingData<Review>>> = entityListReview
 
     fun getListCast(): LiveData<List<Cast>> = listCast
+
+    fun getMovieRecommendations(): LiveData<List<Movie>> = movieRecommendations
 }

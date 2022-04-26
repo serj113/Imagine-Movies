@@ -14,7 +14,6 @@ interface MovieApi {
     suspend fun getDiscoverMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY,
-
         @Query("page")
         page: Long
     ): Response<MovieList>
@@ -23,9 +22,18 @@ interface MovieApi {
     suspend fun getPopularMovie(
         @Query("api_key")
         apiKey: String = BuildConfig.API_KEY,
-
         @Query("page")
         page: Long
+    ): Response<MovieList>
+
+    @GET("movie/{id}/recommendations")
+    suspend fun getMovieRecommendations(
+        @Path("id")
+        id: Long,
+        @Query("page")
+        page: Long,
+        @Query("api_key")
+        apiKey: String = BuildConfig.API_KEY
     ): Response<MovieList>
 
     @GET("movie/latest")

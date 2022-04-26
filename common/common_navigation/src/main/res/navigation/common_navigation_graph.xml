@@ -19,6 +19,9 @@
         <argument
             android:name="movie"
             app:argType="com.serj113.model.Movie" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieDetailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

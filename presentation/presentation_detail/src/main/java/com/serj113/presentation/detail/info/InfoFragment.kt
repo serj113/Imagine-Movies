@@ -1,18 +1,17 @@
 package com.serj113.presentation.detail.info
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.serj113.base_presentation.BaseFragment
+import com.serj113.common.presentation.adapter.HorizontalDecoration
 import com.serj113.common.presentation.adapter.ItemViewAdapter
 import com.serj113.common.presentation.adapter.bindable.ItemView
 import com.serj113.common.presentation.util.navigateTo
@@ -22,14 +21,15 @@ import com.serj113.presentation.detail.MovieDetailFragmentDirections
 import com.serj113.presentation.detail.MovieDetailViewModel
 import com.serj113.presentation.detail.R
 import com.serj113.presentation.detail.databinding.FragmentInfoBinding
+import com.serj113.presentation.detail.itemviews.CastItemView
 import com.serj113.presentation.detail.itemviews.MovieItemView
-import com.serj113.presentation.list.MovieListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class InfoFragment : BaseFragment<FragmentInfoBinding>() {
 
     private val viewModel: MovieDetailViewModel by activityViewModels()
+    private var castItemViewAdapter: ItemViewAdapter? = null
     private var recoItemViewAdapter: ItemViewAdapter? = null
     private var similarItemViewAdapter: ItemViewAdapter? = null
 
@@ -79,6 +79,21 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
             binding?.tvRevenue?.text = it
         }
 
+        viewModel.getListCast().observe(viewLifecycleOwner) {
+            val itemViews = mutableListOf<ItemView>()
+            if (it.isNotEmpty()) {
+                itemViews.addAll(
+                    it.map { cast ->
+                        CastItemView().apply {
+                            state.cast = cast
+                        }
+                    }
+                )
+            }
+            binding?.rvCasts?.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            castItemViewAdapter?.setItems(itemViews)
+        }
+
         viewModel.getMovieRecommendations().observe(viewLifecycleOwner) {
             val itemViews = mutableListOf<ItemView>()
             if (it.isNotEmpty()) {
@@ -106,9 +121,35 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
     }
 
     private fun initAdapter() {
+        castItemViewAdapter = ItemViewAdapter()
         recoItemViewAdapter = ItemViewAdapter()
         similarItemViewAdapter = ItemViewAdapter()
         binding?.let {
+            it.rvCasts.layoutManager = LinearLayoutManager(
+                requireContext(),
+                RecyclerView.HORIZONTAL,
+                false
+            )
+            it.rvCasts.adapter = castItemViewAdapter
+            it.rvCasts.addItemDecoration(HorizontalDecoration(requireContext()))
+            it.rvCasts.addOnItemTouchListener(
+                object : RecyclerView.OnItemTouchListener {
+
+                    override fun onTouchEvent(view: RecyclerView, event: MotionEvent) {}
+
+                    override fun onInterceptTouchEvent(view: RecyclerView, event: MotionEvent): Boolean {
+                        when (event.action) {
+                            MotionEvent.ACTION_DOWN -> {
+                                it.rvCasts.parent?.requestDisallowInterceptTouchEvent(true)
+                            }
+                        }
+                        return false
+                    }
+
+                    override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+                }
+            )
+
             it.rvRecommendations.layoutManager = LinearLayoutManager(
                 requireContext(),
                 RecyclerView.HORIZONTAL,
@@ -145,12 +186,7 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
                 false
             )
             it.rvSimilar.adapter = similarItemViewAdapter
-            it.rvSimilar.addItemDecoration(
-                DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL).apply {
-                    AppCompatResources.getDrawable(requireContext(), R.drawable.horizontal_decoration)
-                        ?.let { drawable -> setDrawable(drawable) }
-                }
-            )
+            it.rvSimilar.addItemDecoration(HorizontalDecoration(requireContext()))
             it.rvSimilar.addOnItemTouchListener(
                 object : RecyclerView.OnItemTouchListener {
 

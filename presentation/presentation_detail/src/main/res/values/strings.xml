@@ -9,6 +9,7 @@
     <string name="info_budget">Budget</string>
     <string name="info_revenue">Revenue</string>
     <string name="info_status">Status</string>
+    <string name="info_casts">Casts</string>
     <string name="info_movie_recommendations">Recommendations</string>
     <string name="info_movie_similar">Similar</string>
 

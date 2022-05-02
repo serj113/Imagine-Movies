@@ -36,6 +36,16 @@ interface MovieApi {
         apiKey: String = BuildConfig.API_KEY
     ): Response<MovieList>
 
+    @GET("movie/{id}/similar")
+    suspend fun getMovieSimilar(
+        @Path("id")
+        id: Long,
+        @Query("page")
+        page: Long,
+        @Query("api_key")
+        apiKey: String = BuildConfig.API_KEY
+    ): Response<MovieList>
+
     @GET("movie/latest")
     suspend fun getLatestMovie(
         @Query("api_key")

@@ -13,6 +13,8 @@ interface MovieRepository {
 
     fun fetchMovieRecommendations(movieId: Long, page: Long): Flow<Entity<MovieList>>
 
+    fun fetchMovieSimilar(movieId: Long, page: Long): Flow<Entity<MovieList>>
+
     fun fetchMovieReviews(movieId: Long, page: Long): Flow<Entity<ReviewList>>
 
     fun fetchMovieDetail(movieId: Long): Flow<Entity<MovieDetail>>

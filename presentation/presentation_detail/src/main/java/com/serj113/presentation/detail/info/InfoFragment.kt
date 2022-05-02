@@ -31,6 +31,7 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
 
     private val viewModel: MovieDetailViewModel by activityViewModels()
     private var recoItemViewAdapter: ItemViewAdapter? = null
+    private var similarItemViewAdapter: ItemViewAdapter? = null
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -81,32 +82,32 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
         viewModel.getMovieRecommendations().observe(viewLifecycleOwner) {
             val itemViews = mutableListOf<ItemView>()
             if (it.isNotEmpty()) {
-                itemViews.addAll(
-                    it.map { movie ->
-                        MovieItemView().apply {
-                            state.movieTitle = movie.title
-                            state.movieRating = movie.voteAverage.toString()
-                            state.movieImageUrl = "${BuildConfig.IMAGE_URL}/${movie.posterPath}"
-                            state.onClick = {
-                                onClick(movie)
-                            }
-                        }
-                    }
-                )
+                itemViews.addAll(getMovieItemViews(it))
             }
             binding?.rvRecommendations?.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
             recoItemViewAdapter?.setItems(itemViews)
+        }
+
+        viewModel.getMovieSimilar().observe(viewLifecycleOwner) {
+            val itemViews = mutableListOf<ItemView>()
+            if (it.isNotEmpty()) {
+                itemViews.addAll(getMovieItemViews(it))
+            }
+            binding?.rvSimilar?.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            similarItemViewAdapter?.setItems(itemViews)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         recoItemViewAdapter = null
+        similarItemViewAdapter = null
         _binding = null
     }
 
     private fun initAdapter() {
         recoItemViewAdapter = ItemViewAdapter()
+        similarItemViewAdapter = ItemViewAdapter()
         binding?.let {
             it.rvRecommendations.layoutManager = LinearLayoutManager(
                 requireContext(),
@@ -137,6 +138,49 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
                     override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
                 }
             )
+
+            it.rvSimilar.layoutManager = LinearLayoutManager(
+                requireContext(),
+                RecyclerView.HORIZONTAL,
+                false
+            )
+            it.rvSimilar.adapter = similarItemViewAdapter
+            it.rvSimilar.addItemDecoration(
+                DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL).apply {
+                    AppCompatResources.getDrawable(requireContext(), R.drawable.horizontal_decoration)
+                        ?.let { drawable -> setDrawable(drawable) }
+                }
+            )
+            it.rvSimilar.addOnItemTouchListener(
+                object : RecyclerView.OnItemTouchListener {
+
+                    override fun onTouchEvent(view: RecyclerView, event: MotionEvent) {}
+
+                    override fun onInterceptTouchEvent(view: RecyclerView, event: MotionEvent): Boolean {
+                        when (event.action) {
+                            MotionEvent.ACTION_DOWN -> {
+                                it.rvSimilar.parent?.requestDisallowInterceptTouchEvent(true)
+                            }
+                        }
+                        return false
+                    }
+
+                    override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+                }
+            )
+        }
+    }
+
+    private fun getMovieItemViews(movies: List<Movie>): List<MovieItemView> {
+        return movies.map { movie ->
+            MovieItemView().apply {
+                state.movieTitle = movie.title
+                state.movieRating = movie.voteAverage.toString()
+                state.movieImageUrl = "${BuildConfig.IMAGE_URL}/${movie.posterPath}"
+                state.onClick = {
+                    onClick(movie)
+                }
+            }
         }
     }
 

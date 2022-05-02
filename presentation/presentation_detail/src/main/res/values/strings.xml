@@ -10,6 +10,7 @@
     <string name="info_revenue">Revenue</string>
     <string name="info_status">Status</string>
     <string name="info_movie_recommendations">Recommendations</string>
+    <string name="info_movie_similar">Similar</string>
 
     <!-- review -->
     <string name="review_empty">No reviews found.\n\nSorry, we couldn\'t find any reviews,

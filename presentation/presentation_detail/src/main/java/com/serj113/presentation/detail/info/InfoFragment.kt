@@ -23,6 +23,7 @@ import com.serj113.presentation.detail.R
 import com.serj113.presentation.detail.databinding.FragmentInfoBinding
 import com.serj113.presentation.detail.itemviews.CastItemView
 import com.serj113.presentation.detail.itemviews.MovieItemView
+import com.serj113.presentation.detail.itemviews.ReviewItemView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +31,7 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
 
     private val viewModel: MovieDetailViewModel by activityViewModels()
     private var castItemViewAdapter: ItemViewAdapter? = null
+    private var reviewItemViewAdapter: ItemViewAdapter? = null
     private var recoItemViewAdapter: ItemViewAdapter? = null
     private var similarItemViewAdapter: ItemViewAdapter? = null
 
@@ -90,8 +92,27 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
                     }
                 )
             }
-            binding?.rvCasts?.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            val visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            binding?.tvCasts?.visibility = visibility
+            binding?.rvCasts?.visibility = visibility
             castItemViewAdapter?.setItems(itemViews)
+        }
+
+        viewModel.getListReview().observe(viewLifecycleOwner) {
+            val itemViews = mutableListOf<ItemView>()
+            if (it.isNotEmpty()) {
+                itemViews.addAll(
+                    it.take(4).map { review ->
+                        ReviewItemView().apply {
+                            state.review = review
+                        }
+                    }
+                )
+            }
+            val visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            binding?.tvReviews?.visibility = visibility
+            binding?.rvReviews?.visibility = visibility
+            reviewItemViewAdapter?.setItems(itemViews)
         }
 
         viewModel.getMovieRecommendations().observe(viewLifecycleOwner) {
@@ -99,7 +120,9 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
             if (it.isNotEmpty()) {
                 itemViews.addAll(getMovieItemViews(it))
             }
-            binding?.rvRecommendations?.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            val visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            binding?.tvRecommendations?.visibility = visibility
+            binding?.rvRecommendations?.visibility = visibility
             recoItemViewAdapter?.setItems(itemViews)
         }
 
@@ -108,13 +131,17 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
             if (it.isNotEmpty()) {
                 itemViews.addAll(getMovieItemViews(it))
             }
-            binding?.rvSimilar?.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            val visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+            binding?.tvSimilar?.visibility = visibility
+            binding?.rvSimilar?.visibility = visibility
             similarItemViewAdapter?.setItems(itemViews)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        castItemViewAdapter = null
+        reviewItemViewAdapter = null
         recoItemViewAdapter = null
         similarItemViewAdapter = null
         _binding = null
@@ -122,6 +149,7 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
 
     private fun initAdapter() {
         castItemViewAdapter = ItemViewAdapter()
+        reviewItemViewAdapter = ItemViewAdapter()
         recoItemViewAdapter = ItemViewAdapter()
         similarItemViewAdapter = ItemViewAdapter()
         binding?.let {
@@ -149,6 +177,9 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>() {
                     override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
                 }
             )
+
+            it.rvReviews.layoutManager = LinearLayoutManager(requireContext())
+            it.rvReviews.adapter = reviewItemViewAdapter
 
             it.rvRecommendations.layoutManager = LinearLayoutManager(
                 requireContext(),

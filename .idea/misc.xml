@@ -12,6 +12,8 @@
         <entry key="presentation/presentation_detail/src/main/res/layout/fragment_info.xml" value="0.2644927536231884" />
         <entry key="presentation/presentation_detail/src/main/res/layout/movie_detail_fragment.xml" value="0.22056159420289856" />
         <entry key="presentation/presentation_detail/src/main/res/layout/movie_item_view.xml" value="0.2644927536231884" />
+        <entry key="presentation/presentation_detail/src/main/res/layout/review_item_view.xml" value="0.22056159420289856" />
+        <entry key="presentation/presentation_detail/src/main/res/layout/review_list_item.xml" value="0.22056159420289856" />
         <entry key="presentation/presentation_list/src/main/res/layout/movie_list_item.xml" value="0.33" />
         <entry key="presentation/presentation_list/src/main/res/layout/popular_movie_item_view.xml" value="0.33" />
         <entry key="presentation/presentation_list/src/main/res/layout/popular_movies_item_view.xml" value="0.10925925925925926" />

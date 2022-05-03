@@ -256,6 +256,7 @@
             android:layout_height="8dp" />
 
         <TextView
+            android:id="@+id/tv_casts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/info_casts"
@@ -277,6 +278,29 @@
             android:layout_height="8dp" />
 
         <TextView
+            android:id="@+id/tv_reviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info_reviews"
+            android:layout_marginBottom="4dp"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_reviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:id="@+id/tv_recommendations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/info_movie_recommendations"
@@ -298,6 +322,7 @@
             android:layout_height="8dp" />
 
         <TextView
+            android:id="@+id/tv_similar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/info_movie_similar"

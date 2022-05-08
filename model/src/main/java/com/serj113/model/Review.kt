@@ -6,11 +6,11 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Review (
     @field:Json(name = "author")
-    var author: String,
+    var author: String = "",
     @field:Json(name = "content")
-    var content: String,
+    var content: String ="",
     @field:Json(name = "id")
-    var id: String,
+    var id: String = "",
     @field:Json(name = "url")
-    var url: String
+    var url: String = ""
 )

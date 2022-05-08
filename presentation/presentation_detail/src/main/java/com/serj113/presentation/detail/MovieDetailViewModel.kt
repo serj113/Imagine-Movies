@@ -1,7 +1,7 @@
 package com.serj113.presentation.detail
 
+import android.util.Log
 import androidx.lifecycle.*
-import androidx.paging.*
 import com.serj113.common.presentation.util.DateUtils
 import com.serj113.common.presentation.util.NumberUtils
 import com.serj113.domain.base.Entity
@@ -12,7 +12,6 @@ import com.serj113.domain.interactor.FetchMovieSimilarUseCase
 import com.serj113.model.Cast
 import com.serj113.model.Movie
 import com.serj113.model.Review
-import com.serj113.presentation.detail.datasource.ReviewPagingDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -27,7 +26,6 @@ class MovieDetailViewModel @Inject constructor(
     private val fetchMovieRecommendationsUseCase: FetchMovieRecommendationsUseCase,
     private val fetchMovieSimilarUseCase: FetchMovieSimilarUseCase
 ) : ViewModel() {
-    private val pagingConfig = PagingConfig(pageSize = 20, enablePlaceholders = false)
 
     private val movieBackdrop = MutableLiveData<String>()
     private val movieSynopsis = MutableLiveData<String>()
@@ -41,7 +39,7 @@ class MovieDetailViewModel @Inject constructor(
     private var movieId = 0L
 
     private var listCast = MediatorLiveData<List<Cast>>()
-    private var entityListReview = MediatorLiveData<Entity<PagingData<Review>>>()
+    private var listReview = MediatorLiveData<List<Review>>()
 
     private var movieRecommendations = MutableLiveData<List<Movie>>(listOf())
     private var movieSimilar = MutableLiveData<List<Movie>>(listOf())
@@ -94,6 +92,21 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
+    private fun fetchReview(movieId: Long) {
+        viewModelScope.launch(Dispatchers.Default) {
+            fetchMovieReviewUseCase
+                .invoke(FetchMovieReviewUseCase.Args(movieId, 1))
+                .onEach {
+                    when (it) {
+                        is Entity.Success -> {
+                            listReview.postValue(it.data.results)
+                        }
+                    }
+                }
+                .collect()
+        }
+    }
+
     fun bind(movie: Movie) {
         movieBackdrop.postValue(BuildConfig.IMAGE_URL + movie.backdropPath)
         movieSynopsis.postValue(movie.overview)
@@ -103,20 +116,9 @@ class MovieDetailViewModel @Inject constructor(
         movieReleaseDate.postValue(DateUtils.formatDate(movie.releaseDate))
         movieId = movie.id.toLong()
         fetchCast(movieId)
+        fetchReview(movieId)
         fetchMovieRecommendations(movieId)
         fetchMovieSimilar(movieId)
-        entityListReview.apply {
-            val listReview = Pager(
-                config = pagingConfig,
-                pagingSourceFactory = { ReviewPagingDataSource(movieId, fetchMovieReviewUseCase) }
-            ).liveData.cachedIn(viewModelScope)
-
-            postValue(Entity.Idle)
-
-            addSource(listReview) {
-                postValue(Entity.Success(it))
-            }
-        }
     }
 
     fun getMovieBackdrop(): LiveData<String> = movieBackdrop
@@ -137,9 +139,11 @@ class MovieDetailViewModel @Inject constructor(
 
     fun getMovieRevenue(): LiveData<String> = movieRevenue
 
-    fun getListReview(): LiveData<Entity<PagingData<Review>>> = entityListReview
-
     fun getListCast(): LiveData<List<Cast>> = listCast
+
+    fun getListReview(): LiveData<List<Review>> {
+        return listReview
+    }
 
     fun getMovieRecommendations(): LiveData<List<Movie>> = movieRecommendations
 

@@ -1,11 +1,11 @@
 package com.serj113.imaginemovies
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.serj113.lib.startup.StartUpMeasurer
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class App : Application() {
+class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 

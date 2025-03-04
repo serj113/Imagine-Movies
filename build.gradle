@@ -1,41 +1,37 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
-    apply from: "$rootDir/dependencies.gradle"
-
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath gradlePlugins.androidGradle
-        classpath gradlePlugins.kotlin
-        classpath gradlePlugins.googleServices
-        classpath gradlePlugins.navigation
-        classpath gradlePlugins.hilt
-        classpath gradlePlugins.firebaseCrashlytics
-        classpath gradlePlugins.firebasePerf
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.hilt) apply false
+    alias(libs.plugins.navigation) apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
-ext {
-    androidx_junit_version = '1.1.1'
-    espresso_version = '3.2.0'
-    hamkrest_version = '1.7.0.0'
-    junit_version = '4.12'
-    mockk_version = '1.9.3'
-}
+//buildscript {
+//    apply from: "$rootDir/dependencies.gradle"
+//
+//    repositories {
+//        google()
+//        jcenter()
+//    }
+//    dependencies {
+//        classpath gradlePlugins.androidGradle
+//        classpath gradlePlugins.kotlin
+//        classpath gradlePlugins.googleServices
+//        classpath gradlePlugins.navigation
+//        classpath "com.google.dagger.hilt.android:2.47"
+//        classpath gradlePlugins.firebaseCrashlytics
+//        classpath gradlePlugins.firebasePerf
+//
+//        // NOTE: Do not place your application dependencies here; they belong
+//        // in the individual module build.gradle files
+//    }
+//}
+//
+//allprojects {
+//    repositories {
+//        google()
+//        jcenter()
+//    }
+//}

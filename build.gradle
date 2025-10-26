@@ -5,7 +5,8 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        gradlePluginPortal()
     }
     dependencies {
         classpath gradlePlugins.androidGradle
@@ -24,7 +25,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 

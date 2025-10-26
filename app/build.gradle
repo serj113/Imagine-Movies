@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply from: "$rootDir/build_configs.gradle"
 
 android {
+    namespace buildConfigs.applicationId
     compileSdkVersion buildConfigs.compileSdk
     buildToolsVersion buildConfigs.buildTools
     ndkVersion buildConfigs.ndkVersion
@@ -88,7 +89,7 @@ dependencies {
     kapt buildDependencies.roomKapt
 
     implementation buildDependencies.glide
-    annotationProcessor buildDependencies.glideAnnotation
+    kapt buildDependencies.glideAnnotation
 
     implementation platform(buildDependencies.firebaseBom)
     implementation buildDependencies.firebaseAnalytics

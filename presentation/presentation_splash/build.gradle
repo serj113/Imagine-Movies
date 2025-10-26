@@ -1,5 +1,13 @@
 apply from: "$rootDir/presentation.gradle"
 
+android {
+    namespace "com.serj113.imaginemovies.presentation_splash"
+
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
 dependencies {
     implementation buildDependencies.material
     implementation buildDependencies.lifecycleExtensions

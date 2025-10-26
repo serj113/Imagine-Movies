@@ -5,6 +5,7 @@ plugins {
 apply from: "$rootDir/build_configs.gradle"
 
 android {
+    namespace "com.serj113.imaginemovies.lib_startup"
     compileSdkVersion buildConfigs.compileSdk
     buildToolsVersion buildConfigs.buildTools
 
@@ -30,6 +31,9 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 

@@ -8,6 +8,7 @@ plugins {
 apply from: "$rootDir/build_configs.gradle"
 
 android {
+    namespace "com.serj113.imaginemovies.common_presentation"
     compileSdkVersion buildConfigs.compileSdk
     buildToolsVersion buildConfigs.buildTools
 

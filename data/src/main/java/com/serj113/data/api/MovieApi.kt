@@ -1,6 +1,6 @@
 package com.serj113.data.api
 
-import com.serj113.data.BuildConfig
+import com.serj113.imaginemovies.model.BuildConfig
 import com.serj113.model.MovieDetail
 import com.serj113.model.MovieList
 import com.serj113.model.ReviewList

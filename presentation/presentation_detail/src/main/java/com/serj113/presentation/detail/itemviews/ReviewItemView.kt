@@ -3,8 +3,8 @@ package com.serj113.presentation.detail.itemviews
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
+import com.serj113.imaginemovies.presentation_detail.databinding.ReviewItemViewBinding
 import com.serj113.model.Review
-import com.serj113.presentation.detail.databinding.ReviewItemViewBinding
 
 class ReviewItemView : BindableItemView<ReviewItemViewBinding, ReviewItemView.State>() {
 

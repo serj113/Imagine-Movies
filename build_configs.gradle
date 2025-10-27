@@ -1,10 +1,10 @@
 ext {
     buildConfigs = [
         applicationId: "com.serj113.imaginemovies",
-        compileSdk   : 31,
+        compileSdk   : 33,
         buildTools   : '29.0.3',
-        minSdk       : 16,
-        targetSdk    : 31,
+        minSdk       : 23,
+        targetSdk    : 33,
         versionCode  : 10200,
         versionName  : "1.2.0",
         ndkVersion   : "20.1.5948944"

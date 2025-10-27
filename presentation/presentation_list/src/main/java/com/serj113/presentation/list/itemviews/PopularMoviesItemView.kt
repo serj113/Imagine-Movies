@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.serj113.common.presentation.adapter.ItemViewAdapter
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
 import com.serj113.common.presentation.adapter.bindable.ItemView
-import com.serj113.presentation.list.R
-import com.serj113.presentation.list.databinding.PopularMoviesItemViewBinding
+import com.serj113.imaginemovies.common_presentation.R as RCom
+import com.serj113.imaginemovies.presentation_list.R
+import com.serj113.imaginemovies.presentation_list.databinding.PopularMoviesItemViewBinding
 
 class PopularMoviesItemView :
     BindableItemView<PopularMoviesItemViewBinding, PopularMoviesItemView.State>() {
@@ -33,7 +34,7 @@ class PopularMoviesItemView :
         binding.rv.adapter = itemViewAdapter
         binding.rv.addItemDecoration(
             DividerItemDecoration(parent.context, DividerItemDecoration.HORIZONTAL).apply {
-                AppCompatResources.getDrawable(parent.context, R.drawable.horizontal_decoration)
+                AppCompatResources.getDrawable(parent.context, RCom.drawable.horizontal_decoration)
                     ?.let { setDrawable(it) }
             }
         )

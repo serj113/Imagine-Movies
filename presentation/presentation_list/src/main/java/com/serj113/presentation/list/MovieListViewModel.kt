@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.serj113.domain.base.Entity
 import com.serj113.domain.base.Entity.Success
 import com.serj113.domain.interactor.FetchMovieUseCase
 import com.serj113.domain.interactor.FetchPopularMovieUseCase
@@ -41,6 +42,8 @@ class MovieListViewModel @Inject constructor(
                                 MovieListViewState.Success(movieList, popularMovieList)
                             )
                         }
+
+                        else -> { }
                     }
                 }
                 .collect()
@@ -59,6 +62,8 @@ class MovieListViewModel @Inject constructor(
                                 MovieListViewState.Success(movieList, popularMovieList)
                             )
                         }
+
+                        else -> { }
                     }
                 }
                 .collect()

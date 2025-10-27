@@ -5,11 +5,10 @@ import android.graphics.drawable.GradientDrawable
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import com.bumptech.glide.Glide
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.presentation.list.R
-import com.serj113.presentation.list.databinding.PopularMovieItemViewBinding
+import com.serj113.imaginemovies.presentation_list.R
+import com.serj113.imaginemovies.presentation_list.databinding.PopularMovieItemViewBinding
 
 class PopularMovieItemView :
     BindableItemView<PopularMovieItemViewBinding, PopularMovieItemView.State>() {

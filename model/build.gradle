@@ -17,6 +17,8 @@ android {
         versionCode buildConfigs.versionCode
         versionName buildConfigs.versionName
 
+        buildConfigField 'String', 'API_KEY', "${getProperty("local.properties", "api_key")}"
+        buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -43,6 +45,21 @@ android {
 
     buildFeatures {
         buildConfig = true
+    }
+}
+
+def getProperty(String filename, String propName) {
+    def propsFile = rootProject.file(filename)
+    if (propsFile.exists()) {
+        def props = new Properties()
+        props.load(new FileInputStream(propsFile))
+        if (props[propName] != null) {
+            return props[propName]
+        } else {
+            print("No such property " + propName + " in file " + filename)
+        }
+    } else {
+        print(filename + " does not exist!")
     }
 }
 

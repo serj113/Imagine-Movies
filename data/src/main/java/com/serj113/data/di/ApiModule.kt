@@ -1,7 +1,7 @@
 package com.serj113.data.di
 
-import com.serj113.data.BuildConfig
 import com.serj113.data.api.MovieApi
+import com.serj113.imaginemovies.data.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

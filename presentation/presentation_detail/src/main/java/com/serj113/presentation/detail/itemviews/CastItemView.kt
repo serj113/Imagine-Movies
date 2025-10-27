@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
+import com.serj113.imaginemovies.presentation_detail.BuildConfig
+import com.serj113.imaginemovies.presentation_detail.databinding.CastItemViewBinding
 import com.serj113.model.Cast
-import com.serj113.presentation.detail.BuildConfig
-import com.serj113.presentation.detail.databinding.CastItemViewBinding
 
 class CastItemView : BindableItemView<CastItemViewBinding, CastItemView.State>() {
 

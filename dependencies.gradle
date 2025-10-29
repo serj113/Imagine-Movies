@@ -128,7 +128,7 @@ ext {
         websocketClient              : '2.3',
         phoenixChannel               : '2.0.1',
         androidCrop                  : '1.0.1@aar',
-        leakcanary                   : '2.4',
+        leakcanary                   : '2.12',
         pagerslidingtabstrip         : '1.0.1',
         photoview                    : '1.3.1',
         branch                       : '3.2.0',

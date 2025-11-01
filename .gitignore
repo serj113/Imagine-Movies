@@ -47,6 +47,10 @@ captures/
 .idea/assetWizardSettings.xml
 .idea/AndroidProjectSystem.xml
 .idea/appInsightsSettings.xml
+<<<<<<< HEAD
+=======
+.idea/runConfigurations.xml
+>>>>>>> 731d8ea (chore: remove unused files)
 .idea/dictionaries
 .idea/libraries
 # Android Studio 3 in .gitignore file.

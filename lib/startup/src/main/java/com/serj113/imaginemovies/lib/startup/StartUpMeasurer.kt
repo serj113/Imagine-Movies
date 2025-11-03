@@ -1,4 +1,4 @@
-package com.serj113.lib.startup
+package com.serj113.imaginemovies.lib.startup
 
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.perf.ktx.performance

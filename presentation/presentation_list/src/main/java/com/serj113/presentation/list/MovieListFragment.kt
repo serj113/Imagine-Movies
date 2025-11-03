@@ -19,7 +19,7 @@ import com.serj113.common.presentation.util.navigateTo
 import com.serj113.imaginemovies.common_presentation.R
 import com.serj113.imaginemovies.presentation_list.BuildConfig
 import com.serj113.imaginemovies.presentation_list.databinding.MovieListFragmentBinding
-import com.serj113.lib.startup.StartUpMeasurer
+import com.serj113.imaginemovies.lib.startup.StartUpMeasurer
 import com.serj113.model.Movie
 import com.serj113.presentation.list.MovieListFragmentDirections.actionMovieListFragmentToDetailFragment
 import com.serj113.presentation.list.itemviews.GridMovieItemView

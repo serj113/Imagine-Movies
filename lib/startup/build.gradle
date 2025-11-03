@@ -5,7 +5,7 @@ plugins {
 apply from: "$rootDir/build_configs.gradle"
 
 android {
-    namespace "com.serj113.imaginemovies.lib_startup"
+    namespace "com.serj113.imaginemovies.lib.startup"
     compileSdkVersion buildConfigs.compileSdk
     buildToolsVersion buildConfigs.buildTools
 

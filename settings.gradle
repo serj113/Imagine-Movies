@@ -1,11 +1,8 @@
 rootProject.name='Imagine-Movies'
 
 include ':app'
-
 include ':model'
-
 include ':data'
-
 include ':domain'
 
 include ':base_presentation'
@@ -13,21 +10,17 @@ project(':base_presentation').projectDir = new File("./base/base_presentation")
 
 include ':common_navigation'
 project(':common_navigation').projectDir = new File("./common/common_navigation")
-
 include ':common_presentation'
 project(':common_presentation').projectDir = new File("./common/common_presentation")
 
 include ':lib_startup'
-project(':lib_startup').projectDir = new File("./lib/lib_startup")
+project(':lib_startup').projectDir = new File("./lib/startup")
 
 include ':presentation_detail'
 project(':presentation_detail').projectDir = new File("./presentation/presentation_detail")
-
 include ':presentation_list'
 project(':presentation_list').projectDir = new File("./presentation/presentation_list")
-
 include ':presentation_login'
 project(':presentation_login').projectDir = new File("./presentation/presentation_login")
-
 include ':presentation_splash'
 project(':presentation_splash').projectDir = new File("./presentation/presentation_splash")

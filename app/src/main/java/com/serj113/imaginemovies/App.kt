@@ -1,7 +1,7 @@
 package com.serj113.imaginemovies
 
 import android.app.Application
-import com.serj113.lib.startup.StartUpMeasurer
+import com.serj113.imaginemovies.lib.startup.StartUpMeasurer
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

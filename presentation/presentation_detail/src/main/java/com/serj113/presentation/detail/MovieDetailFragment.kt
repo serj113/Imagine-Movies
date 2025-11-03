@@ -16,8 +16,10 @@ import com.serj113.common.presentation.adapter.HorizontalDecoration
 import com.serj113.common.presentation.adapter.ItemViewAdapter
 import com.serj113.common.presentation.adapter.bindable.ItemView
 import com.serj113.common.presentation.util.navigateTo
+import com.serj113.imaginemovies.common_presentation.R
+import com.serj113.imaginemovies.presentation_detail.BuildConfig
+import com.serj113.imaginemovies.presentation_detail.databinding.MovieDetailFragmentBinding
 import com.serj113.model.Movie
-import com.serj113.presentation.detail.databinding.MovieDetailFragmentBinding
 import com.serj113.presentation.detail.itemviews.CastItemView
 import com.serj113.presentation.detail.itemviews.MovieItemView
 import com.serj113.presentation.detail.itemviews.ReviewItemView

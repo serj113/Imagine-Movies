@@ -12,7 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.serj113.common.presentation.util.navigateTo
-import com.serj113.presentation.login.databinding.LoginFragmentBinding
+import com.serj113.imaginemovies.presentation_login.databinding.LoginFragmentBinding
 import com.serj113.presentation.login.LoginFragmentDirections.actionLoginFragmentToMovieListFragment
 
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +30,8 @@ class LoginFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken(getString(123123123))
+//            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)

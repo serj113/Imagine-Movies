@@ -2,11 +2,12 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id 'com.google.dagger.hilt.android'
 }
 apply from: "$rootDir/build_configs.gradle"
 
 android {
+    namespace "com.serj113.imaginemovies.data"
     compileSdkVersion buildConfigs.compileSdk
     buildToolsVersion buildConfigs.buildTools
 
@@ -30,16 +31,20 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     lintOptions {
         abortOnError false
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 
@@ -79,8 +84,6 @@ dependencies {
     implementation buildDependencies.roomRuntime
     kapt buildDependencies.roomKapt
 
-    debugImplementation debugBuildDependencies.flipper
-    debugImplementation debugBuildDependencies.flipperNetwork
     debugImplementation debugBuildDependencies.soloader
 
     testImplementation 'junit:junit:4.12'

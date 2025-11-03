@@ -9,9 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.serj113.base_presentation.BaseFragment
 import com.serj113.common.presentation.util.navigateTo
+import com.serj113.imaginemovies.presentation_splash.databinding.SplashFragmentBinding
 import com.serj113.presentation.splash.SplashFragmentDirections.actionSplashFragmentToLoginFragment
 import com.serj113.presentation.splash.SplashFragmentDirections.actionSplashFragmentToMovieListFragment
-import com.serj113.presentation.splash.databinding.SplashFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

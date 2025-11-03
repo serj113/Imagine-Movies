@@ -9,6 +9,7 @@ import com.serj113.domain.interactor.FetchMovieDetailUseCase
 import com.serj113.domain.interactor.FetchMovieRecommendationsUseCase
 import com.serj113.domain.interactor.FetchMovieReviewUseCase
 import com.serj113.domain.interactor.FetchMovieSimilarUseCase
+import com.serj113.imaginemovies.presentation_detail.BuildConfig
 import com.serj113.model.Cast
 import com.serj113.model.Movie
 import com.serj113.model.Review
@@ -56,6 +57,8 @@ class MovieDetailViewModel @Inject constructor(
                             movieBudget.postValue(NumberUtils.formatCurrency(it.data.budget))
                             movieRevenue.postValue(NumberUtils.formatCurrency(it.data.revenue))
                         }
+
+                        else -> { }
                     }
                 }
                 .collect()
@@ -71,6 +74,8 @@ class MovieDetailViewModel @Inject constructor(
                         is Entity.Success -> {
                             movieRecommendations.postValue(it.data.results)
                         }
+
+                        else -> { }
                     }
                 }
                 .collect()
@@ -86,6 +91,8 @@ class MovieDetailViewModel @Inject constructor(
                         is Entity.Success -> {
                             movieSimilar.postValue(it.data.results)
                         }
+
+                        else -> { }
                     }
                 }
                 .collect()
@@ -101,6 +108,8 @@ class MovieDetailViewModel @Inject constructor(
                         is Entity.Success -> {
                             listReview.postValue(it.data.results)
                         }
+
+                        else -> { }
                     }
                 }
                 .collect()

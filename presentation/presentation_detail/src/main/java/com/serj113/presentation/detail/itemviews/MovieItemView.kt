@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.presentation.detail.R
-import com.serj113.presentation.detail.databinding.MovieItemViewBinding
+import com.serj113.imaginemovies.presentation_detail.databinding.MovieItemViewBinding
+import com.serj113.imaginemovies.presentation_detail.R
 
 class MovieItemView :
     BindableItemView<MovieItemViewBinding, MovieItemView.State>() {

@@ -1,8 +1,14 @@
 apply from: "$rootDir/presentation.gradle"
 
 android {
+    namespace "com.serj113.imaginemovies.presentation_detail"
+
     defaultConfig {
         buildConfigField 'String', 'IMAGE_URL', '"https://image.tmdb.org/t/p/original"'
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 
@@ -26,7 +32,7 @@ dependencies {
     kapt buildDependencies.hiltKapt
 
     implementation buildDependencies.glide
-    annotationProcessor buildDependencies.glideAnnotation
+    kapt buildDependencies.glideAnnotation
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

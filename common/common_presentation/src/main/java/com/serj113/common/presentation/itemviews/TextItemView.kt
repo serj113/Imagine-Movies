@@ -4,9 +4,8 @@ import android.graphics.Typeface
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.marginBottom
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.common.presentation.databinding.TextViewItemBinding
+import com.serj113.imaginemovies.common_presentation.databinding.TextViewItemBinding
 
 class TextItemView : BindableItemView<TextViewItemBinding, TextItemView.State>() {
 

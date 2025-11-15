@@ -1,6 +1,6 @@
 package com.serj113.data.base
 
-import com.serj113.domain.base.Entity
+import com.serj113.base.domain.Entity
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

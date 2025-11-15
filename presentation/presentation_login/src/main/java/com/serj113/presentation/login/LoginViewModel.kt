@@ -11,12 +11,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.serj113.base.domain.interactor.LoginUseCase
 import com.serj113.base_presentation.util.Event
-import com.serj113.domain.interactor.LoginUseCase
 import com.serj113.model.Account
 import com.serj113.model.AuthToken
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject

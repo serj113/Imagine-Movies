@@ -1,9 +1,10 @@
 package com.serj113.data.di
 
+import com.serj113.base.domain.repository.MovieRepository
+import com.serj113.base.domain.repository.UserRepository
 import com.serj113.data.repository.MovieRepositoryImpl
 import com.serj113.data.repository.UserRepositoryImpl
-import com.serj113.domain.repository.MovieRepository
-import com.serj113.domain.repository.UserRepository
+
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

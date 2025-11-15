@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.serj113.domain.base.Entity
-import com.serj113.domain.base.Entity.Success
-import com.serj113.domain.interactor.FetchMovieUseCase
-import com.serj113.domain.interactor.FetchPopularMovieUseCase
+import com.serj113.base.domain.Entity
+import com.serj113.base.domain.interactor.FetchMovieUseCase
+import com.serj113.base.domain.interactor.FetchPopularMovieUseCase
 import com.serj113.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +34,7 @@ class MovieListViewModel @Inject constructor(
                 .invoke(FetchMovieUseCase.Args(page))
                 .onEach {
                     when (it) {
-                        is Success -> {
+                        is Entity.Success -> {
                             page += 1
                             movieList.addAll(it.data.results)
                             _movieListViewState.postValue(
@@ -56,7 +55,7 @@ class MovieListViewModel @Inject constructor(
                 .invoke()
                 .onEach {
                     when (it) {
-                        is Success -> {
+                        is Entity.Success -> {
                             popularMovieList.addAll(it.data.results)
                             _movieListViewState.postValue(
                                 MovieListViewState.Success(movieList, popularMovieList)

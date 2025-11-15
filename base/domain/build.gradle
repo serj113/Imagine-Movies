@@ -7,7 +7,7 @@ plugins {
 apply from: "$rootDir/build_configs.gradle"
 
 android {
-    namespace "com.serj113.imaginemovies.data"
+    namespace "com.serj113.imaginemovies.base.domain"
     compileSdkVersion buildConfigs.compileSdk
     buildToolsVersion buildConfigs.buildTools
 
@@ -17,8 +17,6 @@ android {
         versionCode buildConfigs.versionCode
         versionName buildConfigs.versionName
 
-        buildConfigField 'String', 'API_KEY', "${getProperty("local.properties", "api_key")}"
-        buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -48,45 +46,16 @@ android {
     }
 }
 
-def getProperty(String filename, String propName) {
-    def propsFile = rootProject.file(filename)
-    if (propsFile.exists()) {
-        def props = new Properties()
-        props.load(new FileInputStream(propsFile))
-        if (props[propName] != null) {
-            return props[propName]
-        } else {
-            print("No such property " + propName + " in file " + filename)
-        }
-    } else {
-        print(filename + " does not exist!")
-    }
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':base_domain')
     implementation project(path: ':model')
-
     implementation buildDependencies.kotlinStdlib
-    implementation buildDependencies.coreKtx
-    implementation buildDependencies.appcompat
-
-    implementation buildDependencies.retrofit
-    implementation buildDependencies.moshiConverter
 
     implementation buildDependencies.coroutinesCore
 
     implementation buildDependencies.hilt
     kapt buildDependencies.hiltKapt
 
-    implementation buildDependencies.room
-    implementation buildDependencies.roomRuntime
-    kapt buildDependencies.roomKapt
-
-    debugImplementation debugBuildDependencies.soloader
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
 }

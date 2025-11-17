@@ -52,7 +52,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':base_domain')
-    implementation project(path: ':data')
+    implementation project(path: ':base_data')
     implementation project(path: ':lib_startup')
     implementation project(path: ':base_presentation')
     implementation project(path: ':presentation_detail')

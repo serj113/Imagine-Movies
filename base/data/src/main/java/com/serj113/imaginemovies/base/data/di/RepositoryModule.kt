@@ -1,7 +1,7 @@
 package com.serj113.imaginemovies.base.data.di
 
-import com.serj113.base.domain.repository.MovieRepository
-import com.serj113.base.domain.repository.UserRepository
+import com.serj113.imaginemovies.base.domain.repository.MovieRepository
+import com.serj113.imaginemovies.base.domain.repository.UserRepository
 import com.serj113.imaginemovies.base.data.repository.MovieRepositoryImpl
 import com.serj113.imaginemovies.base.data.repository.UserRepositoryImpl
 

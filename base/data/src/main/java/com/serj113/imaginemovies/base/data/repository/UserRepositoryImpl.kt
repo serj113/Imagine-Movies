@@ -1,7 +1,7 @@
 package com.serj113.imaginemovies.base.data.repository
 
-import com.serj113.base.domain.repository.UserRepository
 import com.serj113.imaginemovies.base.data.local.sharedpref.SharedPrefManager
+import com.serj113.imaginemovies.base.domain.repository.UserRepository
 import com.serj113.model.Account
 import com.serj113.model.AuthToken
 import kotlinx.coroutines.Dispatchers

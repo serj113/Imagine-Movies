@@ -1,12 +1,12 @@
 package com.serj113.imaginemovies.base.data.repository
 
-import com.serj113.base.domain.Entity
-import com.serj113.base.domain.repository.MovieRepository
 import com.serj113.imaginemovies.base.data.api.MovieApi
 import com.serj113.imaginemovies.base.data.base.NetworkBoundResource
 import com.serj113.imaginemovies.base.data.local.database.MovieDao
 import com.serj113.imaginemovies.base.data.local.database.entity.MovieLocal
 import com.serj113.imaginemovies.base.data.local.database.entity.toEntity
+import com.serj113.imaginemovies.base.domain.Entity
+import com.serj113.imaginemovies.base.domain.repository.MovieRepository
 import com.serj113.model.MovieDetail
 import com.serj113.model.MovieList
 import com.serj113.model.ReviewList

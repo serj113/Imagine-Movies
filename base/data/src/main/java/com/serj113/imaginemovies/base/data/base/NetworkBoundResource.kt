@@ -1,6 +1,6 @@
 package com.serj113.imaginemovies.base.data.base
 
-import com.serj113.base.domain.Entity
+import com.serj113.imaginemovies.base.domain.Entity
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

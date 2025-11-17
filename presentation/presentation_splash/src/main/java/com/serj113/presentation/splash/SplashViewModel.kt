@@ -1,8 +1,8 @@
 package com.serj113.presentation.splash
 
-import com.serj113.base.domain.interactor.IsLoginUseCase
 import com.serj113.base_presentation.BaseViewModel
 import com.serj113.base_presentation.util.Event
+import com.serj113.imaginemovies.base.domain.interactor.IsLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

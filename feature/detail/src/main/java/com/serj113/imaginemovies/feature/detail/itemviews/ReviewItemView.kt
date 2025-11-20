@@ -1,10 +1,10 @@
-package com.serj113.presentation.detail.itemviews
+package com.serj113.imaginemovies.feature.detail.itemviews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.imaginemovies.presentation_detail.databinding.ReviewItemViewBinding
 import com.serj113.imaginemovies.base.model.Review
+import com.serj113.imaginemovies.feature.detail.databinding.ReviewItemViewBinding
 
 class ReviewItemView : BindableItemView<ReviewItemViewBinding, ReviewItemView.State>() {
 

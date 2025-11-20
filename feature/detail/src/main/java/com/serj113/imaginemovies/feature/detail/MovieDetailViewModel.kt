@@ -1,4 +1,4 @@
-package com.serj113.presentation.detail
+package com.serj113.imaginemovies.feature.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -12,7 +12,6 @@ import com.serj113.imaginemovies.base.domain.interactor.FetchMovieDetailUseCase
 import com.serj113.imaginemovies.base.domain.interactor.FetchMovieRecommendationsUseCase
 import com.serj113.imaginemovies.base.domain.interactor.FetchMovieReviewUseCase
 import com.serj113.imaginemovies.base.domain.interactor.FetchMovieSimilarUseCase
-import com.serj113.imaginemovies.presentation_detail.BuildConfig
 import com.serj113.imaginemovies.base.model.Cast
 import com.serj113.imaginemovies.base.model.Movie
 import com.serj113.imaginemovies.base.model.Review

@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.serj113.presentation.detail.MovieDetailFragment"
+        android:name="com.serj113.imaginemovies.feature.detail.MovieDetailFragment"
         android:label="detail_fragment">
         <argument
             android:name="movie"

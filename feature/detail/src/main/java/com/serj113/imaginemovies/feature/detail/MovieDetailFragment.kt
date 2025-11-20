@@ -1,4 +1,4 @@
-package com.serj113.presentation.detail
+package com.serj113.imaginemovies.feature.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,13 +16,12 @@ import com.serj113.imaginemovies.common.presentation.adapter.HorizontalDecoratio
 import com.serj113.imaginemovies.common.presentation.adapter.ItemViewAdapter
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.ItemView
 import com.serj113.imaginemovies.common.presentation.util.navigateTo
-import com.serj113.imaginemovies.presentation_detail.BuildConfig
-import com.serj113.imaginemovies.presentation_detail.databinding.MovieDetailFragmentBinding
 import com.serj113.imaginemovies.base.model.Movie
 import com.serj113.imaginemovies.common.presentation.R
-import com.serj113.presentation.detail.itemviews.CastItemView
-import com.serj113.presentation.detail.itemviews.MovieItemView
-import com.serj113.presentation.detail.itemviews.ReviewItemView
+import com.serj113.imaginemovies.feature.detail.databinding.MovieDetailFragmentBinding
+import com.serj113.imaginemovies.feature.detail.itemviews.CastItemView
+import com.serj113.imaginemovies.feature.detail.itemviews.MovieItemView
+import com.serj113.imaginemovies.feature.detail.itemviews.ReviewItemView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

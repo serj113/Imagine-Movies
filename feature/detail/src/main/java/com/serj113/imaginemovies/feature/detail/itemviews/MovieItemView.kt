@@ -1,4 +1,4 @@
-package com.serj113.presentation.detail.itemviews
+package com.serj113.imaginemovies.feature.detail.itemviews
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.imaginemovies.presentation_detail.databinding.MovieItemViewBinding
-import com.serj113.imaginemovies.presentation_detail.R
+import com.serj113.imaginemovies.feature.detail.R
+import com.serj113.imaginemovies.feature.detail.databinding.MovieItemViewBinding
 
 class MovieItemView :
     BindableItemView<MovieItemViewBinding, MovieItemView.State>() {

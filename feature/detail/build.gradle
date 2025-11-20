@@ -1,7 +1,7 @@
 apply from: "$rootDir/presentation.gradle"
 
 android {
-    namespace "com.serj113.imaginemovies.presentation_detail"
+    namespace "com.serj113.imaginemovies.feature.detail"
 
     defaultConfig {
         buildConfigField 'String', 'IMAGE_URL', '"https://image.tmdb.org/t/p/original"'

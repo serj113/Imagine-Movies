@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.serj113.base_presentation.BaseFragment
+import com.serj113.imaginemovies.base.presentation.BaseFragment
 import com.serj113.common.presentation.adapter.HorizontalDecoration
 import com.serj113.common.presentation.adapter.ItemViewAdapter
 import com.serj113.common.presentation.adapter.bindable.ItemView

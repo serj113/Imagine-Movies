@@ -1,6 +1,6 @@
-package com.serj113.base_presentation.extention
+package com.serj113.imaginemovies.base.presentation.extention
 
-import com.serj113.base_presentation.util.Event
+import com.serj113.imaginemovies.base.presentation.util.Event
 
 fun Event<Boolean>.isTrue(): Boolean {
     return if (hasBeenHandled) {

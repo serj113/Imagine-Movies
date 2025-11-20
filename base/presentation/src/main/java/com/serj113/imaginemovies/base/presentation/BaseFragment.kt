@@ -1,4 +1,4 @@
-package com.serj113.base_presentation
+package com.serj113.imaginemovies.base.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater

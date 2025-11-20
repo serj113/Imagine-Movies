@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.serj113.base_presentation.util.Event
+import com.serj113.imaginemovies.base.presentation.util.Event
 import com.serj113.imaginemovies.base.domain.interactor.LoginUseCase
 import com.serj113.imaginemovies.base.model.Account
 import com.serj113.imaginemovies.base.model.AuthToken

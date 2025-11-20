@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.serj113.base_presentation.BaseFragment
+import com.serj113.imaginemovies.base.presentation.BaseFragment
 import com.serj113.common.presentation.adapter.ItemViewAdapter
 import com.serj113.common.presentation.adapter.bindable.ItemView
 import com.serj113.common.presentation.itemviews.TextItemView

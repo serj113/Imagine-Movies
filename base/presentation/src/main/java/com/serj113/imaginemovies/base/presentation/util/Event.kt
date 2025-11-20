@@ -1,4 +1,4 @@
-package com.serj113.base_presentation.util
+package com.serj113.imaginemovies.base.presentation.util
 
 open class Event<out T>(private val content: T) {
 

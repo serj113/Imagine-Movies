@@ -1,13 +1,12 @@
 package com.serj113.presentation.splash
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.serj113.base_presentation.BaseFragment
+import com.serj113.imaginemovies.base.presentation.BaseFragment
 import com.serj113.common.presentation.util.navigateTo
 import com.serj113.imaginemovies.presentation_splash.databinding.SplashFragmentBinding
 import com.serj113.presentation.splash.SplashFragmentDirections.actionSplashFragmentToLoginFragment

@@ -1,4 +1,4 @@
-package com.serj113.common.presentation.adapter
+package com.serj113.imaginemovies.common.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.serj113.imaginemovies.common_presentation.databinding.LoadStateFooterItemBinding
+import com.serj113.imaginemovies.common.presentation.databinding.LoadStateFooterItemBinding
 
 class ListLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<ListLoadStateAdapter.LoadStateViewHolder>() {

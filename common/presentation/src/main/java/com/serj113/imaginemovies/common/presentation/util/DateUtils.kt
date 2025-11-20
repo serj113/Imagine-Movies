@@ -1,4 +1,4 @@
-package com.serj113.common.presentation.util
+package com.serj113.imaginemovies.common.presentation.util
 
 import java.text.ParseException
 import java.text.SimpleDateFormat

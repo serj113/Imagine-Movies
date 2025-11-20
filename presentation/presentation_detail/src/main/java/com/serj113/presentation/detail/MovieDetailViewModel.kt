@@ -5,8 +5,8 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.serj113.common.presentation.util.DateUtils
-import com.serj113.common.presentation.util.NumberUtils
+import com.serj113.imaginemovies.common.presentation.util.DateUtils
+import com.serj113.imaginemovies.common.presentation.util.NumberUtils
 import com.serj113.imaginemovies.base.domain.Entity
 import com.serj113.imaginemovies.base.domain.interactor.FetchMovieDetailUseCase
 import com.serj113.imaginemovies.base.domain.interactor.FetchMovieRecommendationsUseCase

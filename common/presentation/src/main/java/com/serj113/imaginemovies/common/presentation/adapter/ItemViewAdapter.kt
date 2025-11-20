@@ -1,10 +1,10 @@
-package com.serj113.common.presentation.adapter
+package com.serj113.imaginemovies.common.presentation.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.serj113.common.presentation.adapter.bindable.BindingCreator
-import com.serj113.common.presentation.adapter.bindable.ItemView
+import com.serj113.imaginemovies.common.presentation.adapter.bindable.BindingCreator
+import com.serj113.imaginemovies.common.presentation.adapter.bindable.ItemView
 
 class ItemViewAdapter : RecyclerView.Adapter<ItemViewAdapter.ViewHolder>() {
     private var mItemViews: MutableList<ItemView> = mutableListOf()

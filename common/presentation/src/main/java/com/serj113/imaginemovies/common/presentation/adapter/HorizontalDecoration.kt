@@ -1,9 +1,9 @@
-package com.serj113.common.presentation.adapter
+package com.serj113.imaginemovies.common.presentation.adapter
 
 import android.content.Context
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.serj113.imaginemovies.common_presentation.R
+import com.serj113.imaginemovies.common.presentation.R
 
 class HorizontalDecoration(context: Context) : DividerItemDecoration(context, HORIZONTAL) {
     init {

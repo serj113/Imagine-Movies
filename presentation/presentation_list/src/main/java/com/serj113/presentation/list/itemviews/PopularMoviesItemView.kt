@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.serj113.common.presentation.adapter.ItemViewAdapter
-import com.serj113.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.common.presentation.adapter.bindable.ItemView
-import com.serj113.imaginemovies.common_presentation.R as RCom
-import com.serj113.imaginemovies.presentation_list.R
+import com.serj113.imaginemovies.common.presentation.adapter.ItemViewAdapter
+import com.serj113.imaginemovies.common.presentation.adapter.bindable.BindableItemView
+import com.serj113.imaginemovies.common.presentation.adapter.bindable.ItemView
+import com.serj113.imaginemovies.common.presentation.R as RCom
 import com.serj113.imaginemovies.presentation_list.databinding.PopularMoviesItemViewBinding
 
 class PopularMoviesItemView :

@@ -3,7 +3,7 @@ package com.serj113.presentation.detail.itemviews
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.serj113.common.presentation.adapter.bindable.BindableItemView
+import com.serj113.imaginemovies.common.presentation.adapter.bindable.BindableItemView
 import com.serj113.imaginemovies.presentation_detail.BuildConfig
 import com.serj113.imaginemovies.presentation_detail.databinding.CastItemViewBinding
 import com.serj113.imaginemovies.base.model.Cast

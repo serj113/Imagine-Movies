@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.serj113.common.presentation.util.navigateTo
+import com.serj113.imaginemovies.common.presentation.util.navigateTo
 import com.serj113.imaginemovies.presentation_login.databinding.LoginFragmentBinding
 import com.serj113.presentation.login.LoginFragmentDirections.actionLoginFragmentToMovieListFragment
 

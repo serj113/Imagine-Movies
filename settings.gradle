@@ -12,9 +12,9 @@ include ':base_presentation'
 project(':base_presentation').projectDir = new File("./base/presentation")
 
 include ':common_navigation'
-project(':common_navigation').projectDir = new File("./common/common_navigation")
+project(':common_navigation').projectDir = new File("./common/navigation")
 include ':common_presentation'
-project(':common_presentation').projectDir = new File("./common/common_presentation")
+project(':common_presentation').projectDir = new File("./common/presentation")
 
 include ':lib_startup'
 project(':lib_startup').projectDir = new File("./lib/startup")

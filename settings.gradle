@@ -1,7 +1,6 @@
 rootProject.name='Imagine-Movies'
 
 include ':app'
-include ':model'
 
 include ':base_domain'
 project(':base_domain').projectDir = new File("./base/domain")
@@ -9,6 +8,8 @@ include ':base_data'
 project(':base_data').projectDir = new File("./base/data")
 include ':base_presentation'
 project(':base_presentation').projectDir = new File("./base/base_presentation")
+include ':base_model'
+project(':base_model').projectDir = new File("./base/model")
 
 include ':common_navigation'
 project(':common_navigation').projectDir = new File("./common/common_navigation")

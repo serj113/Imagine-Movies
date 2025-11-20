@@ -7,7 +7,7 @@ plugins {
 apply from: "$rootDir/build_configs.gradle"
 
 android {
-    namespace "com.serj113.imaginemovies.model"
+    namespace "com.serj113.imaginemovies.base.model"
     compileSdkVersion buildConfigs.compileSdk
     buildToolsVersion buildConfigs.buildTools
 

@@ -1,9 +1,9 @@
 package com.serj113.imaginemovies.base.data.api
 
-import com.serj113.imaginemovies.model.BuildConfig
-import com.serj113.model.MovieDetail
-import com.serj113.model.MovieList
-import com.serj113.model.ReviewList
+import com.serj113.imaginemovies.base.model.BuildConfig
+import com.serj113.imaginemovies.base.model.MovieDetail
+import com.serj113.imaginemovies.base.model.MovieList
+import com.serj113.imaginemovies.base.model.ReviewList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

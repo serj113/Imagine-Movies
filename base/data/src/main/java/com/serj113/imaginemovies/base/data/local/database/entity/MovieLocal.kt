@@ -3,8 +3,8 @@ package com.serj113.imaginemovies.base.data.local.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.serj113.model.Movie
-import com.serj113.model.MovieList
+import com.serj113.imaginemovies.base.model.Movie
+import com.serj113.imaginemovies.base.model.MovieList
 
 @Entity(tableName = "movie")
 data class MovieLocal(

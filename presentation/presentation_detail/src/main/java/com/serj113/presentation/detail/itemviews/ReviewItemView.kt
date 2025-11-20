@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.serj113.common.presentation.adapter.bindable.BindableItemView
 import com.serj113.imaginemovies.presentation_detail.databinding.ReviewItemViewBinding
-import com.serj113.model.Review
+import com.serj113.imaginemovies.base.model.Review
 
 class ReviewItemView : BindableItemView<ReviewItemViewBinding, ReviewItemView.State>() {
 

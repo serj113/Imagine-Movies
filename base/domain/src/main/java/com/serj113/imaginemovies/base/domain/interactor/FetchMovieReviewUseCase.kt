@@ -2,7 +2,7 @@ package com.serj113.imaginemovies.base.domain.interactor
 
 import com.serj113.imaginemovies.base.domain.Entity
 import com.serj113.imaginemovies.base.domain.FlowUseCaseWithArgs
-import com.serj113.model.ReviewList
+import com.serj113.imaginemovies.base.model.ReviewList
 
 abstract class FetchMovieReviewUseCase :
     FlowUseCaseWithArgs<FetchMovieReviewUseCase.Args, Entity<ReviewList>>() {

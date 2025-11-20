@@ -18,7 +18,7 @@
         android:label="detail_fragment">
         <argument
             android:name="movie"
-            app:argType="com.serj113.model.Movie" />
+            app:argType="com.serj113.imaginemovies.base.model.Movie" />
         <action
             android:id="@+id/action_movieDetailFragment_to_movieDetailFragment"
             app:destination="@id/detailFragment" />

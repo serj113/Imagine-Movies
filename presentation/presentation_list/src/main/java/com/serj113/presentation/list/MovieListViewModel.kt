@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.serj113.imaginemovies.base.domain.Entity
 import com.serj113.imaginemovies.base.domain.interactor.FetchMovieUseCase
 import com.serj113.imaginemovies.base.domain.interactor.FetchPopularMovieUseCase
-import com.serj113.model.Movie
+import com.serj113.imaginemovies.base.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect

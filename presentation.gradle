@@ -52,7 +52,7 @@ dependencies {
     api project(path: ':base_presentation')
     api project(path: ':common_navigation')
     api project(path: ':common_presentation')
-    api project(path: ':model')
+    api project(path: ':base_model')
 
     api buildDependencies.kotlinStdlib
     api buildDependencies.coreKtx

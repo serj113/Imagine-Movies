@@ -13,8 +13,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.serj113.base_presentation.util.Event
 import com.serj113.imaginemovies.base.domain.interactor.LoginUseCase
-import com.serj113.model.Account
-import com.serj113.model.AuthToken
+import com.serj113.imaginemovies.base.model.Account
+import com.serj113.imaginemovies.base.model.AuthToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await

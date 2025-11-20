@@ -13,9 +13,9 @@ import com.serj113.imaginemovies.base.domain.interactor.FetchMovieRecommendation
 import com.serj113.imaginemovies.base.domain.interactor.FetchMovieReviewUseCase
 import com.serj113.imaginemovies.base.domain.interactor.FetchMovieSimilarUseCase
 import com.serj113.imaginemovies.presentation_detail.BuildConfig
-import com.serj113.model.Cast
-import com.serj113.model.Movie
-import com.serj113.model.Review
+import com.serj113.imaginemovies.base.model.Cast
+import com.serj113.imaginemovies.base.model.Movie
+import com.serj113.imaginemovies.base.model.Review
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect

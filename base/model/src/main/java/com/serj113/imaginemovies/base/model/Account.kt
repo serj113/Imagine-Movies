@@ -1,4 +1,4 @@
-package com.serj113.model
+package com.serj113.imaginemovies.base.model
 
 data class Account(
     var uid: String,

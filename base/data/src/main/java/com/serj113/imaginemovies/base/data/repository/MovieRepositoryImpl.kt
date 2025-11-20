@@ -7,9 +7,9 @@ import com.serj113.imaginemovies.base.data.local.database.entity.MovieLocal
 import com.serj113.imaginemovies.base.data.local.database.entity.toEntity
 import com.serj113.imaginemovies.base.domain.Entity
 import com.serj113.imaginemovies.base.domain.repository.MovieRepository
-import com.serj113.model.MovieDetail
-import com.serj113.model.MovieList
-import com.serj113.model.ReviewList
+import com.serj113.imaginemovies.base.model.MovieDetail
+import com.serj113.imaginemovies.base.model.MovieList
+import com.serj113.imaginemovies.base.model.ReviewList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

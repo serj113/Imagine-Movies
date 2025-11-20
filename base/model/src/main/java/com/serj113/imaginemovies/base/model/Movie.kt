@@ -1,4 +1,4 @@
-package com.serj113.model
+package com.serj113.imaginemovies.base.model
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

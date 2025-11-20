@@ -1,9 +1,9 @@
 package com.serj113.imaginemovies.base.domain.repository
 
 import com.serj113.imaginemovies.base.domain.Entity
-import com.serj113.model.MovieDetail
-import com.serj113.model.MovieList
-import com.serj113.model.ReviewList
+import com.serj113.imaginemovies.base.model.MovieDetail
+import com.serj113.imaginemovies.base.model.MovieList
+import com.serj113.imaginemovies.base.model.ReviewList
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {

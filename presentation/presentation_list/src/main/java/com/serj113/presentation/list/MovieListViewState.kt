@@ -1,6 +1,6 @@
 package com.serj113.presentation.list
 
-import com.serj113.model.Movie
+import com.serj113.imaginemovies.base.model.Movie
 
 sealed class MovieListViewState {
     data class Success(

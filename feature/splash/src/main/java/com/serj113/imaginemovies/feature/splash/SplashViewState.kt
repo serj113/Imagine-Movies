@@ -1,4 +1,4 @@
-package com.serj113.presentation.splash
+package com.serj113.imaginemovies.feature.splash
 
 sealed class SplashViewState {
     object GoToLogin : SplashViewState()

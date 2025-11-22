@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.serj113.presentation.splash.SplashFragment"
+        android:name="com.serj113.imaginemovies.feature.splash.SplashFragment"
         android:label="splash_fragment">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"

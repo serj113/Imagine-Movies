@@ -1,4 +1,4 @@
-package com.serj113.presentation.splash
+package com.serj113.imaginemovies.feature.splash
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.serj113.imaginemovies.base.presentation.BaseFragment
 import com.serj113.imaginemovies.common.presentation.util.navigateTo
-import com.serj113.imaginemovies.presentation_splash.databinding.SplashFragmentBinding
-import com.serj113.presentation.splash.SplashFragmentDirections.actionSplashFragmentToLoginFragment
-import com.serj113.presentation.splash.SplashFragmentDirections.actionSplashFragmentToMovieListFragment
+import com.serj113.imaginemovies.feature.splash.SplashFragmentDirections.actionSplashFragmentToLoginFragment
+import com.serj113.imaginemovies.feature.splash.SplashFragmentDirections.actionSplashFragmentToMovieListFragment
+import com.serj113.imaginemovies.feature.splash.databinding.SplashFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

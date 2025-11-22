@@ -1,4 +1,4 @@
-package com.serj113.presentation.splash
+package com.serj113.imaginemovies.feature.splash
 
 import com.serj113.imaginemovies.base.presentation.BaseViewModel
 import com.serj113.imaginemovies.base.presentation.util.Event

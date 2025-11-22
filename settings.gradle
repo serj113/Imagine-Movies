@@ -25,6 +25,5 @@ include ':feature_list'
 project(':feature_list').projectDir = new File("./feature/list")
 include ':feature_login'
 project(':feature_login').projectDir = new File("./feature/login")
-
-include ':presentation_splash'
-project(':presentation_splash').projectDir = new File("./presentation/presentation_splash")
+include ':feature_splash'
+project(':feature_splash').projectDir = new File("./feature/splash")

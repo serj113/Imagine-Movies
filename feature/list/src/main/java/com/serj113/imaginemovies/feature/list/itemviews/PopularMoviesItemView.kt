@@ -1,4 +1,4 @@
-package com.serj113.presentation.list.itemviews
+package com.serj113.imaginemovies.feature.list.itemviews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.serj113.imaginemovies.common.presentation.adapter.ItemViewAdapter
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.BindableItemView
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.ItemView
+import com.serj113.imaginemovies.feature.list.databinding.PopularMoviesItemViewBinding
 import com.serj113.imaginemovies.common.presentation.R as RCom
-import com.serj113.imaginemovies.presentation_list.databinding.PopularMoviesItemViewBinding
 
 class PopularMoviesItemView :
     BindableItemView<PopularMoviesItemViewBinding, PopularMoviesItemView.State>() {

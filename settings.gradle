@@ -21,9 +21,9 @@ project(':lib_startup').projectDir = new File("./lib/startup")
 
 include ':feature_detail'
 project(':feature_detail').projectDir = new File("./feature/detail")
+include ':feature_list'
+project(':feature_list').projectDir = new File("./feature/list")
 
-include ':presentation_list'
-project(':presentation_list').projectDir = new File("./presentation/presentation_list")
 include ':presentation_login'
 project(':presentation_login').projectDir = new File("./presentation/presentation_login")
 include ':presentation_splash'

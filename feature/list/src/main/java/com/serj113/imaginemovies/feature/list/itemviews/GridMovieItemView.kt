@@ -1,10 +1,10 @@
-package com.serj113.presentation.list.itemviews
+package com.serj113.imaginemovies.feature.list.itemviews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.imaginemovies.presentation_list.databinding.MovieListItemBinding
+import com.serj113.imaginemovies.feature.list.databinding.MovieListItemBinding
 
 class GridMovieItemView :
     BindableItemView<MovieListItemBinding, GridMovieItemView.State>() {

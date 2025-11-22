@@ -1,4 +1,4 @@
-package com.serj113.presentation.list
+package com.serj113.imaginemovies.feature.list
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -16,15 +16,14 @@ import com.serj113.imaginemovies.common.presentation.adapter.ItemViewAdapter
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.ItemView
 import com.serj113.imaginemovies.common.presentation.itemviews.TextItemView
 import com.serj113.imaginemovies.common.presentation.util.navigateTo
-import com.serj113.imaginemovies.presentation_list.BuildConfig
-import com.serj113.imaginemovies.presentation_list.databinding.MovieListFragmentBinding
 import com.serj113.imaginemovies.lib.startup.StartUpMeasurer
 import com.serj113.imaginemovies.base.model.Movie
 import com.serj113.imaginemovies.common.presentation.R
-import com.serj113.presentation.list.MovieListFragmentDirections.actionMovieListFragmentToDetailFragment
-import com.serj113.presentation.list.itemviews.GridMovieItemView
-import com.serj113.presentation.list.itemviews.PopularMovieItemView
-import com.serj113.presentation.list.itemviews.PopularMoviesItemView
+import com.serj113.imaginemovies.feature.list.MovieListFragmentDirections.actionMovieListFragmentToDetailFragment
+import com.serj113.imaginemovies.feature.list.databinding.MovieListFragmentBinding
+import com.serj113.imaginemovies.feature.list.itemviews.GridMovieItemView
+import com.serj113.imaginemovies.feature.list.itemviews.PopularMovieItemView
+import com.serj113.imaginemovies.feature.list.itemviews.PopularMoviesItemView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

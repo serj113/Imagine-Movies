@@ -1,4 +1,4 @@
-package com.serj113.presentation.list
+package com.serj113.imaginemovies.feature.list
 
 import androidx.recyclerview.widget.DiffUtil
 import com.serj113.imaginemovies.base.model.Movie

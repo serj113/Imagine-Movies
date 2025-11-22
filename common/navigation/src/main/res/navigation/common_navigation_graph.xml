@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/movieListFragment"
-        android:name="com.serj113.presentation.list.MovieListFragment"
+        android:name="com.serj113.imaginemovies.feature.list.MovieListFragment"
         android:label="movie_list_fragment">
         <action
             android:id="@+id/action_movieListFragment_to_detailFragment"

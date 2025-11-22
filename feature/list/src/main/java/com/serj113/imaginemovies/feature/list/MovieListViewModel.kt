@@ -1,4 +1,4 @@
-package com.serj113.presentation.list
+package com.serj113.imaginemovies.feature.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.serj113.presentation.list.itemviews
+package com.serj113.imaginemovies.feature.list.itemviews
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.BindableItemView
-import com.serj113.imaginemovies.presentation_list.R
-import com.serj113.imaginemovies.presentation_list.databinding.PopularMovieItemViewBinding
+import com.serj113.imaginemovies.feature.list.R
+import com.serj113.imaginemovies.feature.list.databinding.PopularMovieItemViewBinding
 
 class PopularMovieItemView :
     BindableItemView<PopularMovieItemViewBinding, PopularMovieItemView.State>() {

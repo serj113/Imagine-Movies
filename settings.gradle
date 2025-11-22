@@ -2,32 +2,28 @@ rootProject.name='Imagine-Movies'
 
 include ':app'
 
-include ':model'
-
-include ':data'
-
-include ':domain'
-
+include ':base_domain'
+project(':base_domain').projectDir = new File("./base/domain")
+include ':base_data'
+project(':base_data').projectDir = new File("./base/data")
+include ':base_model'
+project(':base_model').projectDir = new File("./base/model")
 include ':base_presentation'
-project(':base_presentation').projectDir = new File("./base/base_presentation")
+project(':base_presentation').projectDir = new File("./base/presentation")
 
 include ':common_navigation'
-project(':common_navigation').projectDir = new File("./common/common_navigation")
-
+project(':common_navigation').projectDir = new File("./common/navigation")
 include ':common_presentation'
-project(':common_presentation').projectDir = new File("./common/common_presentation")
+project(':common_presentation').projectDir = new File("./common/presentation")
 
 include ':lib_startup'
-project(':lib_startup').projectDir = new File("./lib/lib_startup")
+project(':lib_startup').projectDir = new File("./lib/startup")
 
-include ':presentation_detail'
-project(':presentation_detail').projectDir = new File("./presentation/presentation_detail")
-
-include ':presentation_list'
-project(':presentation_list').projectDir = new File("./presentation/presentation_list")
-
-include ':presentation_login'
-project(':presentation_login').projectDir = new File("./presentation/presentation_login")
-
-include ':presentation_splash'
-project(':presentation_splash').projectDir = new File("./presentation/presentation_splash")
+include ':feature_detail'
+project(':feature_detail').projectDir = new File("./feature/detail")
+include ':feature_list'
+project(':feature_list').projectDir = new File("./feature/list")
+include ':feature_login'
+project(':feature_login').projectDir = new File("./feature/login")
+include ':feature_splash'
+project(':feature_splash').projectDir = new File("./feature/splash")

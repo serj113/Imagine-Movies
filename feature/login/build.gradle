@@ -1,0 +1,30 @@
+apply from: "$rootDir/presentation.gradle"
+
+android {
+    namespace "com.serj113.imaginemovies.feature.login"
+
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+dependencies {
+    implementation buildDependencies.material
+    implementation buildDependencies.constraintLayout
+
+    implementation buildDependencies.lifecycleExtensions
+
+    implementation buildDependencies.firebaseUiAuth
+    implementation platform(buildDependencies.firebaseBom)
+    implementation buildDependencies.firebaseAuth
+
+    implementation buildDependencies.coroutinesPlayServices
+
+    implementation buildDependencies.playAuth
+
+    kapt buildDependencies.hiltKapt
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

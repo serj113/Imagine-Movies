@@ -1,0 +1,41 @@
+apply from: "$rootDir/presentation.gradle"
+
+android {
+    namespace "com.serj113.imaginemovies.feature.detail"
+
+    defaultConfig {
+        buildConfigField 'String', 'IMAGE_URL', '"https://image.tmdb.org/t/p/original"'
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+dependencies {
+    implementation buildDependencies.fragmentKtx
+
+    implementation buildDependencies.paging
+
+    implementation buildDependencies.material
+    implementation buildDependencies.constraintLayout
+    implementation buildDependencies.recyclerView
+    implementation buildDependencies.cardView
+    implementation buildDependencies.viewpager
+    implementation buildDependencies.circleImageView
+
+    implementation buildDependencies.lifecycleExtensions
+    implementation buildDependencies.lifecycleViewmodel
+    implementation buildDependencies.lifecycleLivedata
+    implementation buildDependencies.lifecycleRuntime
+
+    kapt buildDependencies.hiltKapt
+
+    implementation buildDependencies.glide
+    kapt buildDependencies.glideAnnotation
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}

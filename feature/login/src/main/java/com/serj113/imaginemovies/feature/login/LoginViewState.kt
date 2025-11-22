@@ -1,4 +1,4 @@
-package com.serj113.presentation.login
+package com.serj113.imaginemovies.feature.login
 
 sealed class LoginViewState {
     object GoToMovieList : LoginViewState()

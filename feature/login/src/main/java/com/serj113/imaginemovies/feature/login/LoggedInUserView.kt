@@ -1,4 +1,4 @@
-package com.serj113.presentation.login
+package com.serj113.imaginemovies.feature.login
 
 /**
  * User details post authentication that is exposed to the UI

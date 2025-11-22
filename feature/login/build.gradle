@@ -1,7 +1,7 @@
 apply from: "$rootDir/presentation.gradle"
 
 android {
-    namespace "com.serj113.imaginemovies.presentation_login"
+    namespace "com.serj113.imaginemovies.feature.login"
 
     buildFeatures {
         buildConfig = true

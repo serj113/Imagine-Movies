@@ -23,8 +23,8 @@ include ':feature_detail'
 project(':feature_detail').projectDir = new File("./feature/detail")
 include ':feature_list'
 project(':feature_list').projectDir = new File("./feature/list")
+include ':feature_login'
+project(':feature_login').projectDir = new File("./feature/login")
 
-include ':presentation_login'
-project(':presentation_login').projectDir = new File("./presentation/presentation_login")
 include ':presentation_splash'
 project(':presentation_splash').projectDir = new File("./presentation/presentation_splash")

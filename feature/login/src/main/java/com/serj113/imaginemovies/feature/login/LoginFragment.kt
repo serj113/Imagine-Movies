@@ -1,4 +1,4 @@
-package com.serj113.presentation.login
+package com.serj113.imaginemovies.feature.login
 
 import android.content.Intent
 import androidx.fragment.app.Fragment
@@ -12,8 +12,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.serj113.imaginemovies.common.presentation.util.navigateTo
-import com.serj113.imaginemovies.presentation_login.databinding.LoginFragmentBinding
-import com.serj113.presentation.login.LoginFragmentDirections.actionLoginFragmentToMovieListFragment
+import com.serj113.imaginemovies.feature.login.LoginFragmentDirections.actionLoginFragmentToMovieListFragment
+import com.serj113.imaginemovies.feature.login.databinding.LoginFragmentBinding
 
 import dagger.hilt.android.AndroidEntryPoint
 

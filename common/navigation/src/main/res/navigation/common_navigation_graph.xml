@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.serj113.presentation.login.LoginFragment"
+        android:name="com.serj113.imaginemovies.feature.login.LoginFragment"
         android:label="login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_movieListFragment"

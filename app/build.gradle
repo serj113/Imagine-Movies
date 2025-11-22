@@ -57,7 +57,7 @@ dependencies {
     implementation project(path: ':base_presentation')
     implementation project(path: ':feature_detail')
     implementation project(path: ':feature_list')
-    implementation project(path: ':presentation_login')
+    implementation project(path: ':feature_login')
     implementation project(path: ':presentation_splash')
 
     implementation buildDependencies.kotlinStdlib

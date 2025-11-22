@@ -1,4 +1,4 @@
-package com.serj113.presentation.login
+package com.serj113.imaginemovies.feature.login
 
 /**
  * Authentication result : success (user details) or error message.

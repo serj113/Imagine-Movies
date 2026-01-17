@@ -14,7 +14,7 @@ abstract class NetworkBoundResource<ResultType : Any, RequestType : Any> {
         emit(Entity.Loading)
         val localResult = loadLocal().firstOrNull()
         if (shouldFetch(localResult)) {
-            emit(fetchRemote().first())
+            emit(fetchRemote().firstOrNull() ?: Entity.Error(Throwable()))
         } else {
             emitAll(
                 loadLocal().map {

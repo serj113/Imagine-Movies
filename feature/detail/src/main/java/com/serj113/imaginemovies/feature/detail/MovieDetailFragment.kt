@@ -11,13 +11,15 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.serj113.imaginemovies.base.model.Movie
 import com.serj113.imaginemovies.base.presentation.BaseFragment
+import com.serj113.imaginemovies.common.presentation.R
 import com.serj113.imaginemovies.common.presentation.adapter.HorizontalDecoration
 import com.serj113.imaginemovies.common.presentation.adapter.ItemViewAdapter
 import com.serj113.imaginemovies.common.presentation.adapter.bindable.ItemView
 import com.serj113.imaginemovies.common.presentation.util.navigateTo
-import com.serj113.imaginemovies.base.model.Movie
-import com.serj113.imaginemovies.common.presentation.R
+import com.serj113.imaginemovies.feature.detail.MovieDetailFragmentArgs
+import com.serj113.imaginemovies.feature.detail.MovieDetailFragmentDirections
 import com.serj113.imaginemovies.feature.detail.databinding.MovieDetailFragmentBinding
 import com.serj113.imaginemovies.feature.detail.itemviews.CastItemView
 import com.serj113.imaginemovies.feature.detail.itemviews.MovieItemView

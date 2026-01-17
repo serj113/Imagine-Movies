@@ -19,7 +19,7 @@ import com.serj113.imaginemovies.common.presentation.util.navigateTo
 import com.serj113.imaginemovies.lib.startup.StartUpMeasurer
 import com.serj113.imaginemovies.base.model.Movie
 import com.serj113.imaginemovies.common.presentation.R
-import com.serj113.imaginemovies.feature.list.MovieListFragmentDirections.actionMovieListFragmentToDetailFragment
+import com.serj113.imaginemovies.feature.list.MovieListFragmentDirections
 import com.serj113.imaginemovies.feature.list.databinding.MovieListFragmentBinding
 import com.serj113.imaginemovies.feature.list.itemviews.GridMovieItemView
 import com.serj113.imaginemovies.feature.list.itemviews.PopularMovieItemView
@@ -156,7 +156,7 @@ class MovieListFragment : BaseFragment<MovieListFragmentBinding>() {
     }
 
     private fun navigateToMovieDetail(movie: Movie) {
-        navigateTo(actionMovieListFragmentToDetailFragment(movie))
+        navigateTo(MovieListFragmentDirections.actionMovieListFragmentToDetailFragment(movie))
     }
 
     private fun onClick(movie: Movie) {

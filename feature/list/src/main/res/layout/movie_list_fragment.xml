@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recyclerView"
-    android:name="com.serj113.imaginemovies.ui.list.MovieListFragment"
+    android:name="com.serj113.imaginemovies.feature.list.MovieListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MovieListFragment"

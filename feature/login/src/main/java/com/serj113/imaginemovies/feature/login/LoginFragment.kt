@@ -12,7 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.serj113.imaginemovies.common.presentation.util.navigateTo
-import com.serj113.imaginemovies.feature.login.LoginFragmentDirections.actionLoginFragmentToMovieListFragment
+import com.serj113.imaginemovies.feature.login.LoginFragmentDirections
 import com.serj113.imaginemovies.feature.login.databinding.LoginFragmentBinding
 
 import dagger.hilt.android.AndroidEntryPoint
@@ -80,7 +80,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToMovieList() {
-        navigateTo(actionLoginFragmentToMovieListFragment())
+        navigateTo(LoginFragmentDirections.actionLoginFragmentToMovieListFragment())
     }
 
     companion object {

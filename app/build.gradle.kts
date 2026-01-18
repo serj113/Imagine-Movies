@@ -60,6 +60,14 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
+    }
 }
 
 dependencies {
@@ -81,6 +89,12 @@ dependencies {
     implementation(libs.androidx.legacy)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.multidex)
+
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material)
 
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)

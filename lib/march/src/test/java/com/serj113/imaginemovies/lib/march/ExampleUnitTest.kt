@@ -1,4 +1,4 @@
-package com.serj113.presentation.splash
+package com.serj113.imaginemovies.lib.march
 
 import org.junit.Test
 

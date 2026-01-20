@@ -1,13 +1,10 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.kotlin.android.get().pluginId)
-    id(libs.plugins.ksp.get().pluginId)
-    id(libs.plugins.hilt.get().pluginId)
-    id(libs.plugins.navigation.safeargs.get().pluginId)
 }
 
 android {
-    namespace = "com.serj113.imaginemovies.feature.splash"
+    namespace = "com.serj113.imaginemovies.lib.march"
     compileSdk = Configuration.compileSdk
     buildToolsVersion = Configuration.buildTools
 
@@ -44,41 +41,23 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
     }
 }
 
 dependencies {
-    implementation(project(":base_domain"))
-    implementation(project(":base_model"))
-    implementation(project(":base_presentation"))
-    implementation(project(":common_navigation"))
-    implementation(project(":common_presentation"))
-
     implementation(libs.kotlin.stdlib)
     implementation(libs.androidx.core)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.legacy)
 
-    implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.recyclerview)
-    implementation(libs.androidx.cardview)
-    implementation(libs.circle.imageview)
-
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-
-    implementation(libs.androidx.lifecycle.extensions)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
-
-    implementation(libs.glide)
-    ksp(libs.glide.compiler)
+    api(platform(libs.compose.bom))
+    api(libs.compose.ui)
+    api(libs.compose.ui.graphics)
+    api(libs.compose.ui.tooling.preview)
+    api(libs.compose.material)
 
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.2'

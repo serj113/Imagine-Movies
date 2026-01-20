@@ -34,6 +34,8 @@ project(':common_presentation').projectDir = new File("./common/presentation")
 
 include ':lib_startup'
 project(':lib_startup').projectDir = new File("./lib/startup")
+include ':lib_march'
+project(':lib_march').projectDir = new File("./lib/march")
 
 include ':feature_detail'
 project(':feature_detail').projectDir = new File("./feature/detail")
@@ -41,5 +43,3 @@ include ':feature_list'
 project(':feature_list').projectDir = new File("./feature/list")
 include ':feature_login'
 project(':feature_login').projectDir = new File("./feature/login")
-include ':feature_splash'
-project(':feature_splash').projectDir = new File("./feature/splash")

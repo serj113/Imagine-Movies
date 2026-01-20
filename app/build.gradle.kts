@@ -80,7 +80,6 @@ dependencies {
     implementation(project(":feature_detail"))
     implementation(project(":feature_list"))
     implementation(project(":feature_login"))
-    implementation(project(":feature_splash"))
     implementation(project(":lib_startup"))
 
     implementation(libs.kotlin.stdlib)
@@ -89,6 +88,8 @@ dependencies {
     implementation(libs.androidx.legacy)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.multidex)
+
+    implementation(libs.androidx.splashscreen)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.ui)

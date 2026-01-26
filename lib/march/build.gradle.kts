@@ -59,6 +59,8 @@ dependencies {
     api(libs.compose.ui.tooling.preview)
     api(libs.compose.material)
 
+    debugApi(libs.debug.compose.ui.tooling)
+
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

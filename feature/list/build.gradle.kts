@@ -47,6 +47,11 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
     }
 }
 
@@ -56,6 +61,7 @@ dependencies {
     implementation(project(":base_presentation"))
     implementation(project(":common_navigation"))
     implementation(project(":common_presentation"))
+    implementation(project(":lib_march"))
     implementation(project(":lib_startup"))
 
     implementation(libs.kotlin.stdlib)
@@ -68,6 +74,7 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.cardview)
     implementation(libs.circle.imageview)
+    implementation(libs.coil.compose)
 
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)

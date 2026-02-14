@@ -37,8 +37,6 @@ class MovieListViewModel @Inject constructor(
         MutableLiveData(MovieListViewState.Loading)
     val movieListViewState: LiveData<MovieListViewState> = _movieListViewState
 
-    private val actions: MutableSharedFlow<MovieListAction> = MutableSharedFlow()
-
     private val mutableEffect: MutableSharedFlow<MovieListEffect> = MutableSharedFlow()
     val effect: SharedFlow<MovieListEffect> = mutableEffect
 
@@ -95,6 +93,9 @@ class MovieListViewModel @Inject constructor(
     }
 
     override fun onUiAction(action: MovieListAction) {
-        actions.tryEmit(action)
+        when(action) {
+            MovieListAction.LoadMore -> Unit
+            MovieListAction.OnTapItem -> Unit
+        }
     }
 }

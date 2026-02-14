@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.serj113.imaginemovies.feature.list.IMovieListViewModel
 import com.serj113.imaginemovies.feature.list.data.MovieListAction
 import com.serj113.imaginemovies.feature.list.data.MovieListViewState
-import com.serj113.imaginemovies.lib.march.base.Spacing
+import com.serj113.imaginemovies.lib.march.base.Spacing.x16
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,8 +36,8 @@ fun MovieListScreen(viewState: MovieListViewState, viewModel: IMovieListViewMode
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 contentPadding = paddingValues,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(x16),
+                verticalArrangement = Arrangement.spacedBy(x16),
                 state = scrollState,
             ) {
                 items(viewState.movies) { movie ->
@@ -49,7 +49,7 @@ fun MovieListScreen(viewState: MovieListViewState, viewModel: IMovieListViewMode
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(Spacing.x16),
+                                .padding(x16),
                             contentAlignment = Alignment.Center
                         ) {
                             CircularProgressIndicator(

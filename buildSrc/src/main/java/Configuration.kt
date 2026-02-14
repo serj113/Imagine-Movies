@@ -3,8 +3,8 @@ object Configuration {
     const val debugIdSuffix = ".debug"
     const val buildTools = "29.0.3"
     const val ndkVersion = "20.1.5948944"
-    const val compileSdk = 33
-    const val targetSdk = 33
+    const val compileSdk = 34
+    const val targetSdk = 34
     const val minSdk = 23
     const val majorVersion = 1
     const val minorVersion = 2

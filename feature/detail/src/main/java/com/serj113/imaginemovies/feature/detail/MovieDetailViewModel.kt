@@ -15,10 +15,19 @@ import com.serj113.imaginemovies.base.domain.interactor.FetchMovieSimilarUseCase
 import com.serj113.imaginemovies.base.model.Cast
 import com.serj113.imaginemovies.base.model.Movie
 import com.serj113.imaginemovies.base.model.Review
+import com.serj113.imaginemovies.feature.detail.data.MovieDetailAction
+import com.serj113.imaginemovies.feature.detail.data.MovieDetailEffect
+import com.serj113.imaginemovies.feature.detail.data.MovieDetailViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,7 +37,7 @@ class MovieDetailViewModel @Inject constructor(
     private val fetchMovieDetailUseCase: FetchMovieDetailUseCase,
     private val fetchMovieRecommendationsUseCase: FetchMovieRecommendationsUseCase,
     private val fetchMovieSimilarUseCase: FetchMovieSimilarUseCase
-) : ViewModel() {
+) : ViewModel(), IMovieDetailViewModel {
 
     private val movieBackdrop = MutableLiveData<String>()
     private val movieSynopsis = MutableLiveData<String>()
@@ -47,6 +56,18 @@ class MovieDetailViewModel @Inject constructor(
     private var movieRecommendations = MutableLiveData<List<Movie>>(listOf())
     private var movieSimilar = MutableLiveData<List<Movie>>(listOf())
 
+    private val mutableEffect: MutableSharedFlow<MovieDetailEffect> = MutableSharedFlow()
+    val effect: SharedFlow<MovieDetailEffect> = mutableEffect
+
+    private val mutableStateFlow: MutableStateFlow<MovieDetailViewState> =
+        MutableStateFlow(MovieDetailViewState())
+    val stateFlow: StateFlow<MovieDetailViewState> = mutableStateFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = MovieDetailViewState(),
+        )
+
     private fun fetchCast(movieId: Long) {
         viewModelScope.launch(Dispatchers.Default) {
             fetchMovieDetailUseCase
@@ -60,7 +81,7 @@ class MovieDetailViewModel @Inject constructor(
                             movieRevenue.postValue(NumberUtils.formatCurrency(it.data.revenue))
                         }
 
-                        else -> { }
+                        else -> {}
                     }
                 }
                 .collect()
@@ -77,7 +98,7 @@ class MovieDetailViewModel @Inject constructor(
                             movieRecommendations.postValue(it.data.results)
                         }
 
-                        else -> { }
+                        else -> {}
                     }
                 }
                 .collect()
@@ -94,7 +115,7 @@ class MovieDetailViewModel @Inject constructor(
                             movieSimilar.postValue(it.data.results)
                         }
 
-                        else -> { }
+                        else -> {}
                     }
                 }
                 .collect()
@@ -111,7 +132,7 @@ class MovieDetailViewModel @Inject constructor(
                             listReview.postValue(it.data.results)
                         }
 
-                        else -> { }
+                        else -> {}
                     }
                 }
                 .collect()
@@ -159,4 +180,7 @@ class MovieDetailViewModel @Inject constructor(
     fun getMovieRecommendations(): LiveData<List<Movie>> = movieRecommendations
 
     fun getMovieSimilar(): LiveData<List<Movie>> = movieSimilar
+    override fun onUiAction(action: MovieDetailAction) {
+        TODO("Not yet implemented")
+    }
 }
